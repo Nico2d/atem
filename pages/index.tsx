@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Button } from "./shared/button";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <h1>
           Welcome to <a href="https://nextjs.org">Atem</a>
         </h1>
+        <Button text="Zaloguj się" />
       </main>
     </div>
   );
