@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Montserrat, sans-serif;
     background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.fontColor};
+    transition: all 0.50s linear;
   }
 
   a {
