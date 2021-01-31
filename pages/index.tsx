@@ -1,15 +1,24 @@
 import Head from "next/head";
 import { useState } from "react";
-import { FontSizeSelector } from "./components/molecules/fontSizeSelector";
+import {
+  FontSizeSelector,
+  useFontSizeSelector,
+} from "./components/molecules/fontSizeSelector";
 import { ThemeToggler } from "./components/molecules/themeToggler";
 import { Layout } from "./components/templates/layout";
 import { useDarkMode } from "./components/templates/useDarkMode";
 
 const Home = () => {
-  const [theme, themeToggler, mountedComponent] = useDarkMode();
-  const [fontSize, setFontSize] = useState('1rem')
+  const [theme, themeToggler, mountedThemeComponent] = useDarkMode();
+  const [
+    fontSize,
+    fontController,
+    mountedSizeComponent,
+  ] = useFontSizeSelector();
 
-  if (!mountedComponent) return <div />;
+  if (!mountedThemeComponent) return <div />;
+  if (!mountedSizeComponent) return <div />;
+
   return (
     <Layout theme={theme} fontSize={fontSize}>
       <Head>
@@ -18,10 +27,9 @@ const Home = () => {
       </Head>
 
       <main>
-
         <p>Welcome on Atem</p>
         <ThemeToggler theme={theme} toggleTheme={themeToggler} />
-        <FontSizeSelector getValue={setFontSize}/>
+        <FontSizeSelector fontSize={fontSize} fontController={fontController} />
       </main>
     </Layout>
   );
