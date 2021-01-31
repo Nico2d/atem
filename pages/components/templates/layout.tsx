@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./themeColors";
+import { lightTheme, darkTheme } from "../../utils/themeColors";
 import { createGlobalStyle } from "styled-components";
 
 export const Layout = ({ children, theme, fontSize }: any) => {
@@ -8,8 +8,6 @@ export const Layout = ({ children, theme, fontSize }: any) => {
     fontSize: fontSize,
     colors: theme === "light" ? lightTheme : darkTheme,
   };
-  console.log(fontSize);
-  // themeMode.fontSize = fontSize;
 
   return (
     <ThemeProvider theme={themeObj}>
@@ -29,7 +27,9 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.fontColor};
     font-size: ${({ theme }) => theme.fontSize};
-    transition: all 0.50s linear;
+    transition-property: background, color;
+    transition-duration: 1s ;
+    transition-timing-function:ease ;
   }
 
   a {
