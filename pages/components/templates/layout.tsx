@@ -1,21 +1,14 @@
-import { useContext } from "react";
-import { ThemeContext, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./themeColors";
-import { useDarkMode } from "./useDarkMode";
 import { createGlobalStyle } from "styled-components";
-import { ThemeToggler } from "../molecules/themeToggler";
 
-export const Layout = ({ children }: any) => {
-  const [theme, themeToggler, mountedComponent] = useDarkMode();
+export const Layout = ({ children, theme }: any) => {
   const themeMode = theme === "light" ? lightTheme : darkTheme;
-  const themeContext = useContext(ThemeContext);
 
-  if (!mountedComponent) return <div />;
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
-      <ThemeToggler theme={theme} toggleTheme={themeToggler} />
-      themeMode: {theme}, {themeContext} <br />
+
       {children}
     </ThemeProvider>
   );
