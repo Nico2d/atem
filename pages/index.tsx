@@ -1,9 +1,12 @@
 import Head from "next/head";
+import React from "react";
+import styled from "styled-components";
 import {
   FontSizeSelector,
   useFontSizeSelector,
 } from "./components/molecules/fontSizeSelector";
 import { ThemeToggler, useDarkMode } from "./components/molecules/themeToggler";
+import { Sidebar } from "./components/organisms/sidebar";
 import { Layout } from "./components/templates/layout";
 
 const Home = () => {
@@ -24,17 +27,34 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout theme={theme} fontSize={fontSize}>
-        <main>
-          <p>Welcome on Atem</p>
-          <ThemeToggler theme={theme} toggleTheme={themeToggler} />
-          <FontSizeSelector
-            fontSize={fontSize}
-            fontController={fontController}
-          />
-        </main>
+        <Container>
+          <Sidebar />
+          <StyledMain>
+            <p>Welcome on Atem</p>
+            <ThemeToggler theme={theme} toggleTheme={themeToggler} />
+            <FontSizeSelector
+              fontSize={fontSize}
+              fontController={fontController}
+            />
+          </StyledMain>
+        </Container>
       </Layout>
     </>
   );
 };
 
 export default Home;
+
+const Container = styled.div`
+  display: flex;
+`;
+
+const StyledMain = styled.main`
+  margin-left: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  /* background: red; */
+`;

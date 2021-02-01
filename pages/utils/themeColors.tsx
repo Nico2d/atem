@@ -8,6 +8,7 @@ export const lightTheme: Colors = {
   fontColor: "#121212",
   green: "#2DA12D",
   red: "#CD3232",
+  sidebar: "#0065FF",
 };
 
 export const darkTheme: Colors = {
@@ -18,4 +19,5 @@ export const darkTheme: Colors = {
   fontColor: "#FFFFFF",
   green: "#2DA12D",
   red: "#CD3232",
+  sidebar: "#202020",
 };

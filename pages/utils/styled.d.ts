@@ -9,6 +9,7 @@ declare module "styled-components" {
     fontColor: string;
     green: string;
     red: string;
+    sidebar: string;
   }
   export interface DefaultTheme {
     borderRadius: string;

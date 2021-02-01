@@ -12,7 +12,6 @@ export const Layout = ({ children, theme, fontSize }: any) => {
   return (
     <ThemeProvider theme={themeObj}>
       <GlobalStyle />
-      {fontSize}
       {children}
     </ThemeProvider>
   );
