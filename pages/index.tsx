@@ -29,12 +29,12 @@ const Home = () => {
       </Head>
       <Layout theme={theme} fontSize={fontSize}>
         <main>
-          {/* <p>Welcome on Atem</p>
+          <p>Welcome on Atem</p>
           <ThemeToggler theme={theme} toggleTheme={themeToggler} />
           <FontSizeSelector
             fontSize={fontSize}
             fontController={fontController}
-          /> */}
+          />
           <Signing />
         </main>
       </Layout>

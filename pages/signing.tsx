@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { SignIn } from "../components/organisms/signIn";
 
 export const Signing = () => {
   return (
@@ -8,6 +9,9 @@ export const Signing = () => {
         <span>Podziel</span> swój wysiłek i <span>pomnóż</span> korzyści płynące
         ze studiów
       </h2>
+      <div>
+        <SignIn />
+      </div>
     </StyledSigning>
   );
 };
