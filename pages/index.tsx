@@ -8,6 +8,7 @@ import {
   useDarkMode,
 } from "../components/molecules/themeToggler";
 import { Layout } from "../components/templates/layout";
+import { Signing } from "./signing";
 
 const Home = () => {
   const [theme, themeToggler, mountedThemeComponent] = useDarkMode();
@@ -28,12 +29,13 @@ const Home = () => {
       </Head>
       <Layout theme={theme} fontSize={fontSize}>
         <main>
-          <p>Welcome on Atem</p>
+          {/* <p>Welcome on Atem</p>
           <ThemeToggler theme={theme} toggleTheme={themeToggler} />
           <FontSizeSelector
             fontSize={fontSize}
             fontController={fontController}
-          />
+          /> */}
+          <Signing />
         </main>
       </Layout>
     </>
