@@ -2,9 +2,12 @@ import Head from "next/head";
 import {
   FontSizeSelector,
   useFontSizeSelector,
-} from "./components/molecules/fontSizeSelector";
-import { ThemeToggler, useDarkMode } from "./components/molecules/themeToggler";
-import { Layout } from "./components/templates/layout";
+} from "../components/molecules/fontSizeSelector";
+import {
+  ThemeToggler,
+  useDarkMode,
+} from "../components/molecules/themeToggler";
+import { Layout } from "../components/templates/layout";
 
 const Home = () => {
   const [theme, themeToggler, mountedThemeComponent] = useDarkMode();
