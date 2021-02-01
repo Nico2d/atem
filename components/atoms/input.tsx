@@ -15,7 +15,6 @@ type inputProps = {
 };
 
 const StyledInput = styled.input`
-  padding-left: 0.5rem;
   border: none;
   border-bottom: 1px solid ${(props) => props.theme.colors.fontColor};
   background: transparent;

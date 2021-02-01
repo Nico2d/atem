@@ -41,4 +41,8 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  h1, h2, h3, h4{
+    margin: 0;
+  }
 `;

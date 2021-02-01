@@ -1,5 +1,5 @@
 import React from "react";
 
-export const SignOut = (props) => {
+export const SignUp = (props) => {
   return <div></div>;
 };

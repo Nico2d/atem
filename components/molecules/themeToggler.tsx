@@ -4,7 +4,7 @@ import { ThemeMode } from "../../utils/enums";
 
 export const useDarkMode = () => {
   const [theme, setTheme] = useState(ThemeMode.light);
-  const [mountedThemeComponent, setmountedThemeComponent] = useState(false);
+  const [mountedThemeComponent, setMountedThemeComponent] = useState(false);
 
   const setMode = (mode: ThemeMode): void => {
     window.localStorage.setItem("theme", mode);
@@ -22,7 +22,7 @@ export const useDarkMode = () => {
 
     console.log(ThemeMode[localTheme]);
     localTheme ? setTheme(ThemeMode[localTheme]) : setMode(ThemeMode.light);
-    setmountedThemeComponent(true);
+    setMountedThemeComponent(true);
   }, []);
 
   return [theme, themeToggler, mountedThemeComponent];
