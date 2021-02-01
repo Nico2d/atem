@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FontSizeMode } from "../../utils/themeFonts";
 
 export const useFontSizeSelector = () => {
   const [fontSize, setfontSize] = useState("1rem");
@@ -21,9 +22,9 @@ export const useFontSizeSelector = () => {
 export const FontSizeSelector = ({ fontSize, fontController }) => {
   return (
     <select value={fontSize} onChange={(e) => fontController(e.target.value)}>
-      <option value=".8rem">mała</option>
-      <option value="1rem">normalna</option>
-      <option value="1.2rem">duża</option>
+      <option value={FontSizeMode.fontSizeS}>mała</option>
+      <option value={FontSizeMode.fontSizeM}>normalna</option>
+      <option value={FontSizeMode.fontSizeL}>duża</option>
     </select>
   );
 };

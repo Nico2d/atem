@@ -4,10 +4,13 @@ import styled from "styled-components";
 import {
   FontSizeSelector,
   useFontSizeSelector,
-} from "./components/molecules/fontSizeSelector";
-import { ThemeToggler, useDarkMode } from "./components/molecules/themeToggler";
-import { Sidebar } from "./components/organisms/sidebar";
-import { Layout } from "./components/templates/layout";
+} from "../components/molecules/fontSizeSelector";
+import {
+  ThemeToggler,
+  useDarkMode,
+} from "../components/molecules/themeToggler";
+import { Sidebar } from "../components/organisms/sidebar";
+import { Layout } from "../components/templates/layout";
 
 const Home = () => {
   const [theme, themeToggler, mountedThemeComponent] = useDarkMode();
@@ -56,5 +59,4 @@ const StyledMain = styled.main`
   justify-content: center;
   height: 100vh;
   width: 100%;
-  /* background: red; */
 `;

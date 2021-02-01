@@ -1,6 +1,10 @@
 import "styled-components";
 
 declare module "styled-components" {
+  export interface DefaultTheme {
+    colors: Colors;
+    fonts: Fonts;
+  }
   export interface Colors {
     primary: string;
     background: string;
@@ -11,9 +15,9 @@ declare module "styled-components" {
     red: string;
     sidebar: string;
   }
-  export interface DefaultTheme {
-    borderRadius: string;
+
+  export interface Fonts {
+    family: string;
     fontSize: string;
-    colors: Colors;
   }
 }
