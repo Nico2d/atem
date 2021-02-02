@@ -27,10 +27,12 @@ export const Signing = () => {
             styleType="primary"
             text={isSignIn ? "Zaloguj" : "Zarejestruj"}
           />
-          <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
-          <h4 onClick={() => setIsSignIn(!isSignIn)}>
-            {isSignIn ? "Załóż konto" : "Zaloguj się"}{" "}
-          </h4>
+          <StyledCreateAccountText>
+            <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
+            <h4 onClick={() => setIsSignIn(!isSignIn)}>
+              {isSignIn ? "Załóż konto" : "Zaloguj się"}{" "}
+            </h4>
+          </StyledCreateAccountText>
         </StyledSigningBox>
       </StyledSigningWrapper>
     </StyledSigning>
@@ -87,6 +89,17 @@ const StyledSigningBox = styled.div`
   padding: 2rem;
   width: 300px;
 
+  @media ${device.mobileL} {
+    min-width: 380px;
+  }
+`;
+
+const StyledCreateAccountText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+
   h3 {
     margin-top: 1.4rem;
     font-weight: normal;
@@ -99,7 +112,19 @@ const StyledSigningBox = styled.div`
     border-bottom: 1px solid ${(props) => props.theme.colors.primary};
   }
 
-  @media ${device.mobileL} {
-    min-width: 380px;
+  @media ${device.tablet} {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+
+    h3 {
+      margin-right: 1rem;
+      margin-top: 0;
+    }
+
+    h4 {
+      margin-top: 0;
+    }
   }
 `;
