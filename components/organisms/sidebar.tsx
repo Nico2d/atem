@@ -12,7 +12,7 @@ import { MobileLabel } from "../molecules/mobileLabel";
 import { OutsideAlerter } from "../atoms/outSide";
 
 export const Sidebar = () => {
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
   const toggleNavigation = () => {
     console.log("toggle Menu");
     setIsHidden(!isHidden);
@@ -20,8 +20,7 @@ export const Sidebar = () => {
 
   return (
     <>
-      {isHidden && <p>ELO</p>}
-      <OutsideAlerter method={toggleNavigation}>
+      <OutsideAlerter method={toggleNavigation} isActive={isHidden}>
         <MobileLabel toggleMenu={toggleNavigation} isClosed={isHidden} />
         <Container isHidden={isHidden}>
           <UserWrapper>
