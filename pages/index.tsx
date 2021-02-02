@@ -54,7 +54,7 @@ const Home = () => {
 export default Home;
 
 const Container = styled.div`
-  display: flex;
+  display: block;
 `;
 
 const StyledMain = styled.main`

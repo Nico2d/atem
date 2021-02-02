@@ -28,7 +28,6 @@ const Label = styled.div`
   height: 50px;
   width: 100vw;
   background: ${({ theme }) => theme.colors.cardColor};
-  position: absolute;
   top: 0;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
