@@ -11,11 +11,8 @@ import { Avatar } from "../atoms/avatar";
 export const Sidebar = () => {
   return (
     <Container>
-      <AvatarWrapper>
-        <Avatar imageUrl="https://johannesippen.com/img/blog/humans-not-users/header.jpg" />
-        Jan Kowalski
-      </AvatarWrapper>
-
+      <Avatar imageUrl="https://johannesippen.com/img/blog/humans-not-users/header.jpg" />
+      <UserName>Jan Kowalski</UserName>
       <StyledNav>
         <div>
           <IconText>
@@ -44,8 +41,8 @@ export const Sidebar = () => {
   );
 };
 
-const AvatarWrapper = styled.div`
-  height: 350px;
+const UserName = styled.p`
+  margin-bottom: 2rem;
 `;
 
 const Container = styled.div`
@@ -79,8 +76,8 @@ const IconText = styled.div`
 
 const StyledNav = styled.nav`
   text-align-last: left;
-  background: red;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  flex-grow: 1;
 `;

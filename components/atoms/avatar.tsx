@@ -9,7 +9,7 @@ export const Avatar: React.FC<Props> = ({ imageUrl }) => {
 };
 
 const Wrapper = styled.div<Props>`
-  margin: 2rem 0;
+  margin-top: 2rem;
   background-image: url(${(props) => props.imageUrl});
   background-position: center;
   background-size: cover;
