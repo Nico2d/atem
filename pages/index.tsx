@@ -39,11 +39,14 @@ const Home = () => {
           <Sidebar />
           <StyledMain>
             <p>Welcome on Atem</p>
-            {/* <ThemeToggler theme={theme} toggleTheme={themeToggler} />
+            <ThemeToggler theme={theme} toggleTheme={themeToggler} />
             <FontSizeSelector
               fontSize={fontSize}
               fontController={fontController}
-            /> */}
+            />
+            <TestBlock />
+            <TestBlock />
+            <TestBlock />
           </StyledMain>
         </Container>
       </Layout>
@@ -61,6 +64,15 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
+
+  flex-flow: column;
+`;
+
+const TestBlock = styled.div`
+  height: 300px;
+  width: 300px;
+  background: red;
+  margin: 2rem;
 `;

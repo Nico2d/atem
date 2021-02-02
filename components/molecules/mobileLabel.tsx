@@ -1,14 +1,18 @@
 import styled from "styled-components";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
+import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 
-export const MobileLabel: React.FC<{ toggleMenu: () => void }> = ({
-  toggleMenu,
-}) => {
+export const MobileLabel: React.FC<{
+  toggleMenu: () => void;
+  isClosed: boolean;
+}> = ({ toggleMenu, isClosed }) => {
   return (
-    <Label>
+    <Container>
       <Title>ATEM</Title>
-      <Menu onClick={toggleMenu} />
-    </Label>
+      <Menu onClick={toggleMenu}>
+        {isClosed ? <MenuRoundedIcon /> : <CloseRoundedIcon />}
+      </Menu>
+    </Container>
   );
 };
 
@@ -20,11 +24,11 @@ const Title = styled.h1`
   line-height: 50px;
 `;
 
-const Menu = styled(MenuRoundedIcon)`
+const Menu = styled.div`
   margin: auto 0;
 `;
 
-const Label = styled.div`
+const Container = styled.div`
   height: 50px;
   width: 100vw;
   background: ${({ theme }) => theme.colors.cardColor};
@@ -33,4 +37,8 @@ const Label = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;
+  position: fixed;
+  z-index: 900;
 `;
+
+
