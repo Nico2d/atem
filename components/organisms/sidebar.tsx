@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
@@ -6,55 +6,95 @@ import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 import SettingsRoundedIcon from "@material-ui/icons/SettingsRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import SystemUpdateAltRoundedIcon from "@material-ui/icons/SystemUpdateAltRounded";
+import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import { Avatar } from "../atoms/avatar";
+import { MobileLabel } from "../molecules/mobileLabel";
 
 export const Sidebar = () => {
+  const [isHidden, setIsHidden] = useState(false);
+  const hideNavigation = () => {
+    console.log("toggle Menu");
+    setIsHidden(!isHidden);
+  };
+
   return (
-    <Container>
-      <Avatar imageUrl="https://johannesippen.com/img/blog/humans-not-users/header.jpg" />
-      <UserName>Jan Kowalski</UserName>
-      <StyledNav>
-        <div>
-          <IconText>
-            <DashboardRoundedIcon /> Dashboard
-          </IconText>
-          <IconText>
-            <SearchRoundedIcon /> Wyszukiwarka
-          </IconText>
-          <IconText>
-            <SystemUpdateAltRoundedIcon /> Wstaw zadanie
-          </IconText>
-          <IconText>
-            <ShoppingCartRoundedIcon /> Koszyk
-          </IconText>
-        </div>
-        <div>
-          <IconText>
-            <SettingsRoundedIcon /> Ustawienia
-          </IconText>
-          <IconText>
-            <ExitToAppRoundedIcon /> Wyloguj
-          </IconText>
-        </div>
-      </StyledNav>
-    </Container>
+    <>
+      <MobileLabel toggleMenu={hideNavigation} />
+      {/* <Container isHidden={isHidden}>
+        <Close onClick={hideNavigation} />
+
+        <UserWrapper>
+          <Avatar imageUrl="https://johannesippen.com/img/blog/humans-not-users/header.jpg" />
+          <UserName>Jan Kowalski</UserName>
+        </UserWrapper>
+        <StyledNav>
+          <div>
+            <IconText>
+              <DashboardRoundedIcon /> Dashboard
+            </IconText>
+            <IconText>
+              <SearchRoundedIcon /> Wyszukiwarka
+            </IconText>
+            <IconText>
+              <SystemUpdateAltRoundedIcon /> Wstaw zadanie
+            </IconText>
+            <IconText>
+              <ShoppingCartRoundedIcon /> Koszyk
+            </IconText>
+          </div>
+          <div>
+            <IconText>
+              <SettingsRoundedIcon /> Ustawienia
+            </IconText>
+            <IconText>
+              <ExitToAppRoundedIcon /> Wyloguj
+            </IconText>
+          </div>
+        </StyledNav>
+      </Container> */}
+    </>
   );
 };
+const Close = styled(CloseRoundedIcon)`
+  margin: 1rem;
+  margin-left: auto;
 
-const UserName = styled.p`
-  margin-bottom: 2rem;
+  @media (min-width: 1024px) {
+    display: none;
+  }
 `;
 
-const Container = styled.div`
+const UserWrapper = styled.div`
+  display: flex;
+  flex-flow: row;
+  line-height: 50px;
+
+  @media (min-width: 1024px) {
+    margin: 2rem 0;
+    display: block;
+  }
+`;
+
+const UserName = styled.p`
+  font-size: ${({ theme }) => theme.fonts.fontSize}rem;
+  margin-left: 1rem;
+`;
+
+const Container = styled.div<{ isHidden: boolean }>`
   height: 100vh;
   width: 300px;
   background: ${({ theme }) => theme.colors.sidebar};
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  position: fixed;
   z-index: 999;
-  display: flex;
+  display: ${(props) => (props.isHidden ? "none" : "flex")};
   flex-flow: column;
   align-items: center;
+  position: absolute;
+  left: 0;
+
+  @media (min-width: 1024px) {
+    position: fixed;
+  }
 `;
 
 const IconText = styled.div`

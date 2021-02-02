@@ -18,6 +18,6 @@ declare module "styled-components" {
 
   export interface Fonts {
     family: string;
-    fontSize: string;
+    fontSize: number;
   }
 }

@@ -28,17 +28,22 @@ const Home = () => {
       <Head>
         <title>Atem</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Layout theme={theme} fontSize={fontSize}>
         <Container>
           <Sidebar />
           <StyledMain>
             <p>Welcome on Atem</p>
-            <ThemeToggler theme={theme} toggleTheme={themeToggler} />
+            {/* <ThemeToggler theme={theme} toggleTheme={themeToggler} />
             <FontSizeSelector
               fontSize={fontSize}
               fontController={fontController}
-            />
+            /> */}
           </StyledMain>
         </Container>
       </Layout>
@@ -53,7 +58,6 @@ const Container = styled.div`
 `;
 
 const StyledMain = styled.main`
-  margin-left: 300px;
   display: flex;
   align-items: center;
   justify-content: center;

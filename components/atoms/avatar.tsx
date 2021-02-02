@@ -9,12 +9,17 @@ export const Avatar: React.FC<Props> = ({ imageUrl }) => {
 };
 
 const Wrapper = styled.div<Props>`
-  margin-top: 2rem;
   background-image: url(${(props) => props.imageUrl});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 150px;
-  height: 150px;
-  clip-path: circle(75px at center);
+  clip-path: circle(50%);
+  margin: auto;
+  width: 50px;
+  height: 50px;
+
+  @media (min-width: 1024px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
