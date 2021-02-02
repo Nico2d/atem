@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../atoms/button";
 import { ThemeMode } from "../../utils/enums";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 
 export const useDarkMode = () => {
-  const [theme, setTheme] = useState(ThemeMode.light);
   const [mountedThemeComponent, setMountedThemeComponent] = useState(false);
+  const [theme, setTheme] = useLocalStorage("theme", ThemeMode.light);
 
   const setMode = (mode: ThemeMode): void => {
-    window.localStorage.setItem("theme", mode);
     setTheme(mode);
   };
 
@@ -18,10 +18,6 @@ export const useDarkMode = () => {
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("theme");
-
-    console.log(ThemeMode[localTheme]);
-    localTheme ? setTheme(ThemeMode[localTheme]) : setMode(ThemeMode.light);
     setMountedThemeComponent(true);
   }, []);
 
