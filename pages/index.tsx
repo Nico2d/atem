@@ -28,13 +28,13 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout theme={theme} fontSize={fontSize}>
-        <main>
-          <p>Welcome on Atem</p>
+        <main style={{ width: "100%", height: "100vh" }}>
+          {/* <p>Welcome on Atem</p>
           <ThemeToggler theme={theme} toggleTheme={themeToggler} />
           <FontSizeSelector
             fontSize={fontSize}
             fontController={fontController}
-          />
+          /> */}
           <Signing />
         </main>
       </Layout>

@@ -27,6 +27,7 @@ export const useDarkMode = () => {
 export const ThemeToggler = ({ theme, toggleTheme }) => {
   return (
     <Button
+      styleType="primary"
       text={theme === ThemeMode.light ? "Light mode" : "Dark mode"}
       onClick={toggleTheme}
     />

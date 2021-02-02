@@ -4,7 +4,10 @@ import { FontSizeMode } from "../../utils/themeFonts";
 
 export const useFontSizeSelector = () => {
   const [mountedSizeComponent, setMountedSizeComponent] = useState(false);
-  const [fontSize, setFontSize] = useLocalStorage("fontSize", "1rem");
+  const [fontSize, setFontSize] = useLocalStorage(
+    "fontSize",
+    FontSizeMode.fontSizeM
+  );
 
   const fontController = (mode: string): void => {
     setFontSize(mode);
