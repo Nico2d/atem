@@ -14,10 +14,10 @@ const StyledButton = styled.button<Props>`
   color: white;
   background-color: ${(props) =>
     props.styleType === "primary"
-      ? props.theme.colors.primary
+      ? props.theme.colors?.primary
       : props.styleType === "secondary"
       ? "transparent"
-      : props.theme.colors.primary};
+      : props.theme.colors?.primary};
   padding: 1rem 4rem;
   border: ${(props) =>
     props.styleType === "secondary" ? "1px solid white" : "none"};

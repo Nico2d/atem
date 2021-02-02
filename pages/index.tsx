@@ -8,7 +8,7 @@ import {
   useDarkMode,
 } from "../components/molecules/themeToggler";
 import { Layout } from "../components/templates/layout";
-import { Signing } from "./signing";
+import Signing from "./signing";
 
 const Home = () => {
   const [theme, themeToggler, mountedThemeComponent] = useDarkMode();

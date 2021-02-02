@@ -16,10 +16,10 @@ type inputProps = {
 
 const StyledInput = styled.input`
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.colors.fontColor};
+  border-bottom: 1px solid ${(props) => props.theme.colors?.fontColor};
   background: transparent;
   outline: none;
   font-size: 1.5rem;
-  color: ${(props) => props.theme.colors.fontColor};
+  color: ${(props) => props.theme.colors?.fontColor};
   width: 90%;
 `;

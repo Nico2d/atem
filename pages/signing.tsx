@@ -6,7 +6,7 @@ import { SignUp } from "../components/organisms/signUp";
 import { useMediaQuery } from "../Hooks/useMediaQuery";
 import { device } from "../Styles/breakpoints";
 
-export const Signing = () => {
+const Signing = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -30,7 +30,7 @@ export const Signing = () => {
           <StyledCreateAccountText>
             <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
             <h4 onClick={() => setIsSignIn(!isSignIn)}>
-              {isSignIn ? "Załóż konto" : "Zaloguj się"}{" "}
+              {isSignIn ? "Załóż konto" : "Zaloguj się"}
             </h4>
           </StyledCreateAccountText>
         </StyledSigningBox>
@@ -38,6 +38,8 @@ export const Signing = () => {
     </StyledSigning>
   );
 };
+
+export default Signing;
 
 const StyledSigning = styled.div`
   display: flex;
@@ -48,7 +50,7 @@ const StyledSigning = styled.div`
 
 const StyledSigningWrapper = styled.div`
   padding: 1rem;
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.colors?.background};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,7 +86,7 @@ const StyledSigningBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.cardColor};
+  background-color: ${(props) => props.theme.colors?.cardColor};
   border-radius: 1rem;
   padding: 2rem;
   width: 300px;
@@ -106,10 +108,10 @@ const StyledCreateAccountText = styled.div`
   }
 
   h4 {
-    color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors?.primary};
     cursor: pointer;
     margin-top: 0.5rem;
-    border-bottom: 1px solid ${(props) => props.theme.colors.primary};
+    border-bottom: 1px solid ${(props) => props.theme.colors?.primary};
   }
 
   @media ${device.tablet} {
