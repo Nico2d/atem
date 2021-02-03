@@ -5,7 +5,8 @@ import styled from "styled-components";
 import { CheckboxField } from "../molecules/checkboxField";
 import { useForm } from "react-hook-form";
 import { Button } from "../atoms/button";
-import { SignInForm } from "../../Types";
+import { SignInForm } from "../../types";
+import { InputErrorMessage } from "../atoms/inputErrorMessage";
 
 export const SignIn = () => {
   const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
@@ -21,14 +22,14 @@ export const SignIn = () => {
         type={inputTypes.text}
         register={register({ required: true })}
       />
-      {errors.login && "Email jest wymagany"}
+      <InputErrorMessage error={errors.login && "Email jest wymagany"} />
       <Input
         name="password"
         placeholder="Hasło"
         type={inputTypes.password}
         register={register({ required: true })}
       />
-      {errors.password && "Hasło jest wymagane"}
+      <InputErrorMessage error={errors.password && "Hasło jest wymagane"} />
       <CheckboxField text="Pozostań zalogowany" />
       <Button
         styleType="primary"
