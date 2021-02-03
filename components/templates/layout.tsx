@@ -2,12 +2,11 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "../../utils/themeColors";
 import { createGlobalStyle } from "styled-components";
 import { Typography } from "../../utils/themeFonts";
-import { ThemeMode } from "../../utils/enums";
 
 type Props = {
   children: any;
-  theme: ThemeMode;
-  fontSize: number;
+  theme: any;
+  fontSize: any;
 };
 
 export const Layout: React.FC<Props> = ({ children, theme, fontSize }) => {
