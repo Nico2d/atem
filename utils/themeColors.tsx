@@ -9,6 +9,7 @@ export const lightTheme: Colors = {
   green: "#2DA12D",
   red: "#CD3232",
   sidebar: "#0065FF",
+  white: "#FFFFFF",
 };
 
 export const darkTheme: Colors = {
@@ -20,4 +21,5 @@ export const darkTheme: Colors = {
   green: "#2DA12D",
   red: "#CD3232",
   sidebar: "#202020",
+  white: "#FFFFFF",
 };

@@ -1,7 +1,6 @@
 import { MobileLabel } from "../molecules/mobileLabel";
 import { OutsideAlerter } from "../atoms/outSide";
 import { useState } from "react";
-import styled from "styled-components";
 
 export const Navigation = ({ children }) => {
   const [isHidden, setIsHidden] = useState(true);

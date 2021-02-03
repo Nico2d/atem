@@ -63,6 +63,7 @@ const IconText = styled.a`
   cursor: pointer;
   margin-bottom: 16px;
   padding-left: 2.5rem;
+  font-size: ${({ theme }) => theme.fonts.fontSize * 1.3}rem;
 
   svg {
     position: absolute;

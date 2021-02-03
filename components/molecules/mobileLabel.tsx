@@ -31,7 +31,8 @@ const Menu = styled.div`
 const Container = styled.div`
   height: 50px;
   width: 100vw;
-  background: ${({ theme }) => theme.colors.cardColor};
+  background: ${({ theme }) => theme.colors.sidebar};
+  color: ${({ theme }) => theme.colors.white};
   top: 0;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
