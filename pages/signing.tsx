@@ -8,7 +8,7 @@ import { device } from "../Styles/breakpoints";
 
 const Signing = () => {
   const [isSignIn, setIsSignIn] = useState(true);
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isDesktop = useMediaQuery(device.tablet);
 
   return (
     <StyledSigning>
@@ -18,7 +18,7 @@ const Signing = () => {
             <span>Podziel</span> swój wysiłek i <span>pomnóż</span> korzyści
             płynące ze studiów
           </h2>
-          {!isMobile && <Button text="Załóż konto" styleType="secondary" />}
+          {isDesktop && <Button text="Załóż konto" styleType="secondary" />}
         </StyledTitleWrapper>
         <StyledSigningBox>
           <h2>{isSignIn ? "Zaloguj" : "Zarejestruj"}</h2>

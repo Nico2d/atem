@@ -20,7 +20,9 @@ const StyledButton = styled.button<Props>`
       : props.theme.colors?.primary};
   padding: 1rem 4rem;
   border: ${(props) =>
-    props.styleType === "secondary" ? "1px solid white" : "none"};
+    props.styleType === "secondary"
+      ? `1px solid ${props.theme.colors?.linesColor}`
+      : "none"};
   border-radius: 2rem;
   cursor: pointer;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
