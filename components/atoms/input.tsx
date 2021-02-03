@@ -1,10 +1,19 @@
 import React from "react";
-import styled, { ThemeConsumer } from "styled-components";
+import styled from "styled-components";
 import { inputTypes } from "../../utils/enums";
 
 export const Input: React.FC<inputProps> = React.memo(
-  ({ name, placeholder, type }: inputProps) => {
-    return <StyledInput type={type} placeholder={placeholder} name={name} />;
+  ({ name, placeholder, type, register }: inputProps) => {
+    return (
+      <>
+        <StyledInput
+          type={type}
+          ref={register}
+          placeholder={placeholder}
+          name={name}
+        />
+      </>
+    );
   }
 );
 
@@ -12,6 +21,7 @@ type inputProps = {
   name: string;
   placeholder: string;
   type: inputTypes;
+  register?: any;
 };
 
 const StyledInput = styled.input`

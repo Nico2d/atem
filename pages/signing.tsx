@@ -23,10 +23,6 @@ const Signing = () => {
         <StyledSigningBox>
           <h2>{isSignIn ? "Zaloguj" : "Zarejestruj"}</h2>
           {isSignIn ? <SignIn /> : <SignUp />}
-          <Button
-            styleType="primary"
-            text={isSignIn ? "Zaloguj" : "Zarejestruj"}
-          />
           <StyledCreateAccountText>
             <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
             <h4 onClick={() => setIsSignIn(!isSignIn)}>
