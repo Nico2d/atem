@@ -42,6 +42,13 @@ const Signing = () => {
 export default Signing;
 
 const StyledSigning = styled.div`
+  background-image: url("../public/signing_bg.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
