@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { ThemeConsumer } from "styled-components";
 import { inputTypes } from "../../utils/enums";
 
 export const Input: React.FC<inputProps> = React.memo(
@@ -20,6 +20,7 @@ const StyledInput = styled.input`
   background: transparent;
   outline: none;
   font-size: 1.5rem;
+  font-family: ${(props) => props.theme.fonts.family};
   color: ${(props) => props.theme.colors?.fontColor};
   width: 90%;
 `;

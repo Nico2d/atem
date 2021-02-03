@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { Checkbox } from "../atoms/checkbox";
 
 export const CheckboxField = ({ text }: checkboxFieldProps) => {
@@ -18,7 +19,7 @@ export const CheckboxField = ({ text }: checkboxFieldProps) => {
           checkboxChangedHandler(event)
         }
       />
-      <span style={{ marginLeft: "0.4rem" }}>{text}</span>
+      <StyledSpan style={{ marginLeft: "0.4rem" }}>{text}</StyledSpan>
     </label>
   );
 };
@@ -26,3 +27,7 @@ export const CheckboxField = ({ text }: checkboxFieldProps) => {
 type checkboxFieldProps = {
   text: string;
 };
+
+const StyledSpan = styled.span`
+  font-family: ${(props) => props.theme.fonts.family};
+`;

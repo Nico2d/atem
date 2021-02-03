@@ -82,6 +82,7 @@ const StyledTitleWrapper = styled.div`
     font-size: 2rem;
     max-width: 650px;
     margin-bottom: 2rem;
+    font-family: ${(props) => props.theme.fonts.family};
 
     span {
       font-weight: bold;
@@ -108,6 +109,11 @@ const StyledCreateAccountText = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
+
+  h3,
+  h4 {
+    font-family: ${(props) => props.theme.fonts.family};
+  }
 
   h3 {
     margin-top: 1.4rem;

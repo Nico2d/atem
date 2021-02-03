@@ -12,6 +12,7 @@ export const Button: React.FC<Props> = ({ text, ...props }) => {
 
 const StyledButton = styled.button<Props>`
   color: white;
+  font-family: ${(props) => props.theme.fonts.family};
   background-color: ${(props) =>
     props.styleType === "primary"
       ? props.theme.colors?.primary
