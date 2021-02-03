@@ -9,6 +9,7 @@ import {
   ThemeToggler,
   useDarkMode,
 } from "../components/molecules/themeToggler";
+import { MobileNavigation } from "../components/organisms/mobileNavigation";
 import { Sidebar } from "../components/organisms/sidebar";
 import { Layout } from "../components/templates/layout";
 
@@ -36,7 +37,10 @@ const Home = () => {
       </Head>
       <Layout theme={theme} fontSize={fontSize}>
         <Container>
-          <Sidebar />
+          <MobileNavigation>
+            <Sidebar />
+          </MobileNavigation>
+
           <StyledMain>
             <p>Welcome on Atem</p>
             <ThemeToggler theme={theme} toggleTheme={themeToggler} />
@@ -64,9 +68,7 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
   width: 100%;
-
   flex-flow: column;
 `;
 
