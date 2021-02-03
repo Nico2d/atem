@@ -9,7 +9,7 @@ import {
   ThemeToggler,
   useDarkMode,
 } from "../components/molecules/themeToggler";
-import { MobileNavigation } from "../components/organisms/mobileNavigation";
+import { Navigation } from "../components/organisms/navigation";
 import { Sidebar } from "../components/organisms/sidebar";
 import { Layout } from "../components/templates/layout";
 
@@ -36,23 +36,21 @@ const Home = () => {
         />
       </Head>
       <Layout theme={theme} fontSize={fontSize}>
-        <Container>
-          <MobileNavigation>
-            <Sidebar />
-          </MobileNavigation>
+        <Navigation>
+          <Sidebar />
+        </Navigation>
 
-          <StyledMain>
-            <p>Welcome on Atem</p>
-            <ThemeToggler theme={theme} toggleTheme={themeToggler} />
-            <FontSizeSelector
-              fontSize={fontSize}
-              fontController={fontController}
-            />
-            <TestBlock />
-            <TestBlock />
-            <TestBlock />
-          </StyledMain>
-        </Container>
+        <StyledMain>
+          <p>Welcome on Atem</p>
+          <ThemeToggler theme={theme} toggleTheme={themeToggler} />
+          <FontSizeSelector
+            fontSize={fontSize}
+            fontController={fontController}
+          />
+          <TestBlock />
+          <TestBlock />
+          <TestBlock />
+        </StyledMain>
       </Layout>
     </>
   );
@@ -60,16 +58,16 @@ const Home = () => {
 
 export default Home;
 
-const Container = styled.div`
-  display: block;
-`;
-
 const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   flex-flow: column;
+
+  @media (min-width: 1024px) {
+    padding-left: 300px;
+  }
 `;
 
 const TestBlock = styled.div`
