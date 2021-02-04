@@ -39,7 +39,7 @@ const CheckboxContainer = styled.div`
 
 const Icon = styled.svg`
   fill: none;
-  stroke: ${(props) => props.theme.colors.fontColor};
+  stroke: ${(props) => props.theme.colors?.fontColor};
   stroke-width: 2px;
 `;
 const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -60,7 +60,7 @@ const StyledCheckbox = styled.div<{ checked: boolean }>`
   width: 16px;
   height: 16px;
   background: transparent;
-  border: 1px solid ${(props) => props.theme.colors.fontColor};
+  border: 1px solid ${(props) => props.theme.colors?.fontColor};
   border-radius: 3px;
   transition: all 150ms;
 

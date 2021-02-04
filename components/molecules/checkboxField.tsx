@@ -33,6 +33,6 @@ type checkboxFieldProps = {
 };
 
 const StyledSpan = styled.span`
-  font-family: ${(props) => props.theme.fonts.family};
+  font-family: ${(props) => props.theme.fonts?.family};
   cursor: pointer;
 `;

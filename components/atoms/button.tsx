@@ -22,9 +22,9 @@ export const Button: React.FC<Props> = ({
 };
 
 const StyledButton = styled.button<Props>`
-  color: ${(props) => props.theme.colors.fontColor};
+  color: ${(props) => props.theme.colors?.fontColor};
   outline: none;
-  font-family: ${(props) => props.theme.fonts.family};
+  font-family: ${(props) => props.theme.fonts?.family};
   background-color: ${(props) =>
     props.styleType === "primary"
       ? props.theme.colors?.primary

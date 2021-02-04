@@ -78,7 +78,7 @@ const StyledTitleWrapper = styled.div`
     font-size: 2rem;
     max-width: 650px;
     margin-bottom: 2rem;
-    font-family: ${(props) => props.theme.fonts.family};
+    font-family: ${(props) => props.theme.fonts?.family};
 
     span {
       font-weight: bold;
@@ -101,7 +101,7 @@ const StyledSigningBox = styled.div`
 
   @media ${device.mobileL} {
     min-width: 380px;
-    font-family: ${(props) => props.theme.fonts.family};
+    font-family: ${(props) => props.theme.fonts?.family};
   }
 `;
 
@@ -113,7 +113,7 @@ const StyledCreateAccountText = styled.div`
 
   h3,
   h4 {
-    font-family: ${(props) => props.theme.fonts.family};
+    font-family: ${(props) => props.theme.fonts?.family};
   }
 
   h3 {
