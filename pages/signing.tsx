@@ -95,8 +95,13 @@ const StyledSigningBox = styled.div`
   padding: 2rem;
   width: 300px;
 
+  h2 {
+    margin-bottom: 3rem;
+  }
+
   @media ${device.mobileL} {
     min-width: 380px;
+    font-family: ${(props) => props.theme.fonts.family};
   }
 `;
 
@@ -127,7 +132,6 @@ const StyledCreateAccountText = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
 
     h3 {
       margin-right: 1rem;
