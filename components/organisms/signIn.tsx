@@ -22,7 +22,7 @@ export const SignIn = () => {
         type={inputTypes.text}
         register={register({ required: true })}
       />
-      <InputErrorMessage error={errors.login && "Email jest wymagany"} />
+      <InputErrorMessage error={errors.login && "Login jest wymagany"} />
       <Input
         name="password"
         placeholder="Hasło"
@@ -50,5 +50,9 @@ const StyledSignIn = styled.div`
 
   > * {
     margin-bottom: 1rem;
+  }
+
+  button {
+    margin-top: 2.5rem;
   }
 `;

@@ -29,6 +29,7 @@ const StyledInput = styled.input`
   border-bottom: 1px solid ${(props) => props.theme.colors?.fontColor};
   background: transparent;
   outline: none;
+  padding-left: 0.7rem;
   font-size: 1.5rem;
   font-family: ${(props) => props.theme.fonts.family};
   color: ${(props) => props.theme.colors?.fontColor};
