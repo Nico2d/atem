@@ -30,7 +30,11 @@ export const SignIn = () => {
         register={register({ required: true })}
       />
       <InputErrorMessage error={errors.password && "Hasło jest wymagane"} />
-      <CheckboxField text="Pozostań zalogowany" />
+      <CheckboxField
+        text="Pozostań zalogowany"
+        name="staySignIn"
+        register={register}
+      />
       <Button
         styleType="primary"
         text="Zaloguj"

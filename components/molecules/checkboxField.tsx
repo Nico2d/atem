@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Checkbox } from "../atoms/checkbox";
 
-export const CheckboxField = ({ text }: checkboxFieldProps) => {
+export const CheckboxField = ({ text, name, register }: checkboxFieldProps) => {
   const [checked, setChecked] = useState(false);
 
   const checkboxChangedHandler = (
@@ -14,6 +14,8 @@ export const CheckboxField = ({ text }: checkboxFieldProps) => {
   return (
     <label>
       <Checkbox
+        name={name}
+        register={register}
         checked={checked}
         checkedHandler={(event: React.ChangeEvent<HTMLInputElement>) =>
           checkboxChangedHandler(event)
@@ -26,8 +28,11 @@ export const CheckboxField = ({ text }: checkboxFieldProps) => {
 
 type checkboxFieldProps = {
   text: string;
+  name: string;
+  register?: any;
 };
 
 const StyledSpan = styled.span`
   font-family: ${(props) => props.theme.fonts.family};
+  cursor: pointer;
 `;
