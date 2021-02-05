@@ -31,7 +31,6 @@ const StyledInput = styled.input`
   outline: none;
   padding-left: 0.7rem;
   font-size: 1.5rem;
-  font-family: ${(props) => props.theme.fonts?.family};
   color: ${(props) => props.theme.colors?.fontColor};
   width: 90%;
 `;

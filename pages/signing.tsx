@@ -1,25 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button } from "../components/atoms/button";
 import { SignIn } from "../components/organisms/signIn";
+import { SigningTitle } from "../components/organisms/signingTitle";
 import { SignUp } from "../components/organisms/signUp";
-import { useMediaQuery } from "../Hooks/useMediaQuery";
 import { device } from "../Styles/breakpoints";
 
 const Signing = () => {
   const [isSignIn, setIsSignIn] = useState(true);
-  const isDesktop = useMediaQuery(device.tablet);
 
   return (
     <StyledSigning>
       <StyledSigningWrapper>
-        <StyledTitleWrapper>
-          <h2>
-            <span>Podziel</span> swój wysiłek i <span>pomnóż</span> korzyści
-            płynące ze studiów
-          </h2>
-          {isDesktop && <Button text="Załóż konto" styleType="secondary" />}
-        </StyledTitleWrapper>
+        <SigningTitle />
         <StyledSigningBox>
           <h2>{isSignIn ? "Zaloguj" : "Zarejestruj"}</h2>
           {isSignIn ? <SignIn /> : <SignUp />}
@@ -68,24 +60,6 @@ const StyledSigningWrapper = styled.div`
   }
 `;
 
-const StyledTitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  h2 {
-    font-weight: 300;
-    font-size: 2rem;
-    max-width: 650px;
-    margin-bottom: 2rem;
-    font-family: ${(props) => props.theme.fonts?.family};
-
-    span {
-      font-weight: bold;
-    }
-  }
-`;
-
 const StyledSigningBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -101,7 +75,6 @@ const StyledSigningBox = styled.div`
 
   @media ${device.mobileL} {
     min-width: 380px;
-    font-family: ${(props) => props.theme.fonts?.family};
   }
 `;
 
@@ -110,11 +83,6 @@ const StyledCreateAccountText = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
-
-  h3,
-  h4 {
-    font-family: ${(props) => props.theme.fonts?.family};
-  }
 
   h3 {
     margin-top: 1.4rem;
