@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "../atoms/button";
 import { SignInForm } from "../../types";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
+import { ErrorMessage } from "@hookform/error-message";
 
 export const SignIn = () => {
   const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
@@ -20,16 +21,24 @@ export const SignIn = () => {
         name="login"
         placeholder="Login"
         type={inputTypes.text}
-        register={register({ required: true })}
+        register={register({ required: "Login jest wymagany" })}
       />
-      <InputErrorMessage error={errors.login && "Login jest wymagany"} />
+      <ErrorMessage
+        errors={errors}
+        name="login"
+        render={({ message }) => <InputErrorMessage error={message} />}
+      />
       <Input
         name="password"
         placeholder="Hasło"
         type={inputTypes.password}
-        register={register({ required: true })}
+        register={register({ required: "Hasło jest wymagane" })}
       />
-      <InputErrorMessage error={errors.password && "Hasło jest wymagane"} />
+      <ErrorMessage
+        errors={errors}
+        name="password"
+        render={({ message }) => <InputErrorMessage error={message} />}
+      />
       <CheckboxField
         text="Pozostań zalogowany"
         name="staySignIn"

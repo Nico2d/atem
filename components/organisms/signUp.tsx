@@ -7,6 +7,7 @@ import { Button } from "../atoms/button";
 import { Input } from "../atoms/input";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
 import { CheckboxField } from "../molecules/checkboxField";
+import { ErrorMessage } from "@hookform/error-message";
 
 export const SignUp = () => {
   const { register, errors, handleSubmit, unregister } = useForm<SignUpForm>({
@@ -20,39 +21,61 @@ export const SignUp = () => {
         name="login"
         placeholder="Login"
         type={inputTypes.text}
-        register={register({ required: true })}
+        register={register({ required: "Login jest wymagany" })}
       />
-      <InputErrorMessage error={errors.login && "Login jest wymagany"} />
+      <ErrorMessage
+        errors={errors}
+        name="login"
+        render={({ message }) => <InputErrorMessage error={message} />}
+      />
       <Input
         name="email"
         placeholder="Email"
         type={inputTypes.text}
-        register={register({ required: true })}
+        register={register({
+          required: "Email jest wymagany",
+          pattern: {
+            value: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
+            message: "Email jest niepoprawny",
+          },
+        })}
       />
-      <InputErrorMessage error={errors.email && "Email jest wymagany"} />
+      <ErrorMessage
+        errors={errors}
+        name="email"
+        render={({ message }) => <InputErrorMessage error={message} />}
+      />
       <Input
         name="password"
         placeholder="Hasło"
         type={inputTypes.password}
-        register={register({ required: true })}
+        register={register({ required: "Hasło jest wymagane" })}
       />
-      <InputErrorMessage error={errors.password && "Hasło jest wymagane"} />
+      <ErrorMessage
+        errors={errors}
+        name="password"
+        render={({ message }) => <InputErrorMessage error={message} />}
+      />
       <Input
         name="confirmPassword"
         placeholder="Potwierdź hasło"
         type={inputTypes.password}
-        register={register({ required: true })}
+        register={register({ required: "Potwierdzenie hasła jest wymagane" })}
       />
-      <InputErrorMessage
-        error={errors.confirmPassword && "Potwierdzenie hasła jest wymagane"}
+      <ErrorMessage
+        errors={errors}
+        name="confirmPassword"
+        render={({ message }) => <InputErrorMessage error={message} />}
       />
       <CheckboxField
         text="Zapoznałem się z regulaminem"
         name="acceptedTermsOfService"
-        register={register({ required: true })}
+        register={register({ required: "Musisz zaakceptować regulamin" })}
       />
-      <InputErrorMessage
-        error={errors.confirmPassword && "Musisz zapoznać się z regulaminem"}
+      <ErrorMessage
+        errors={errors}
+        name="acceptedTermsOfService"
+        render={({ message }) => <InputErrorMessage error={message} />}
       />
       <Button
         styleType="primary"
