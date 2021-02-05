@@ -42,9 +42,11 @@ export const NavigationList = () => {
           </IconText>
         </Link>
 
-        <IconText>
-          <ExitToAppRoundedIcon /> Wyloguj
-        </IconText>
+        <Link href="/">
+          <IconText>
+            <ExitToAppRoundedIcon /> Wyloguj
+          </IconText>
+        </Link>
       </LinkContainer>
     </StyledNav>
   );
