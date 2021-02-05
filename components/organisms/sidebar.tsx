@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "../../Styles/breakpoints";
 import { Avatar } from "../atoms/avatar";
 import { NavigationList } from "../molecules/navigationList";
 
@@ -22,7 +23,7 @@ const UserWrapper = styled.div`
   line-height: 50px;
   margin-bottom: 2rem;
 
-  @media (min-width: 1024px) {
+  @media ${device.tablet} {
     margin: 2rem 0;
     display: block;
   }
@@ -31,9 +32,10 @@ const UserWrapper = styled.div`
 const UserName = styled.p`
   font-size: ${({ theme }) => theme.fonts.fontSize}rem;
   text-align: center;
+  margin-left: 1rem;
 
-  @media (max-width: 1024px) {
-    margin-left: 1rem;
+  @media ${device.tablet} {
+    margin-left: 0;
   }
 `;
 
@@ -48,13 +50,10 @@ const Container = styled.div`
   align-items: center;
   position: fixed;
   left: 0;
+  height: calc(100vh - 50px);
+  top: 50px;
 
-  @media (max-width: 1023px) {
-    height: calc(100vh - 50px);
-    top: 50px;
-  }
-
-  @media (min-width: 1024px) {
+  @media ${device.tablet} {
     height: 100vh;
     top: 0;
   }

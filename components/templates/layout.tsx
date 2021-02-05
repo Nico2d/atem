@@ -1,52 +1,43 @@
+import React from "react";
 import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "../../Styles/global";
+import { ThemeMode } from "../../utils/enums";
 import { lightTheme, darkTheme } from "../../utils/themeColors";
-import { createGlobalStyle } from "styled-components";
 import { Typography } from "../../utils/themeFonts";
+import Head from "next/head";
+import { useDarkMode } from "../molecules/themeToggler";
+import { useFontSizeSelector } from "../molecules/fontSizeSelector";
 
-type Props = {
-  children: any;
-  theme: any;
-  fontSize: any;
-};
+export const Layout: React.FC<{ children: any }> = ({ children }) => {
+  const [theme, mountedThemeComponent] = useDarkMode();
+  const [fontSize, mountedSizeComponent] = useFontSizeSelector();
 
-export const Layout: React.FC<Props> = ({ children, theme, fontSize }) => {
   const themeObj = {
     fonts: {
       family: Typography.family,
       fontSize: Typography.fontSize * fontSize,
     },
-    colors: theme === "light" ? lightTheme : darkTheme,
+    colors: theme === ThemeMode.light ? lightTheme : darkTheme,
   };
 
+  if (!mountedThemeComponent) return <div />;
+  if (!mountedSizeComponent) return <div />;
   return (
-    <ThemeProvider theme={themeObj}>
-      <GlobalStyle />
-      {children}
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>Atem</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <ThemeProvider theme={themeObj}>
+        <GlobalStyle />
+        {/* {fontSize} */}
+        {children}
+      </ThemeProvider>
+    </>
   );
 };
-
-const GlobalStyle = createGlobalStyle`
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: ${({ theme }) => theme.fonts.family};
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.fontColor};
-    font-size: ${({ theme }) => theme.fonts.fontSize}rem;
-    font-weight: 300;
-    transition-property: background, color;
-    transition-duration: 1s ;
-    transition-timing-function:ease ;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-`;

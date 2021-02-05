@@ -8,7 +8,7 @@ export const MobileLabel: React.FC<{
 }> = ({ toggleMenu, isClosed }) => {
   return (
     <Container>
-      <Title>ATEM</Title>
+      <Logo>ATEM</Logo>
       <Menu onClick={toggleMenu}>
         {isClosed ? <MenuRoundedIcon /> : <CloseRoundedIcon />}
       </Menu>
@@ -16,7 +16,7 @@ export const MobileLabel: React.FC<{
   );
 };
 
-const Title = styled.h1`
+const Logo = styled.h1`
   letter-spacing: 5px;
   font-weight: 300;
   font-size: ${({ theme }) => theme.fonts.fontSize * 1.4}rem;

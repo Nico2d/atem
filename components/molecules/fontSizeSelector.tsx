@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 import { FontSizeMode } from "../../utils/themeFonts";
 
-export const useFontSizeSelector = () => {
-  const [fontSize, setfontSize] = useState("1rem");
-  const [mountedSizeComponent, setmountedSizeComponent] = useState(false);
+export const useFontSizeSelector = (): [number, (number) => void, boolean] => {
+  const [mountedSizeComponent, setMountedSizeComponent] = useState(false);
+  const [fontSize, setFontSize] = useLocalStorage(
+    "fontSize",
+    FontSizeMode.fontSizeM
+  );
 
-  const fontController = (mode: string): void => {
-    window.localStorage.setItem("fontSize", mode);
-    setfontSize(mode);
+  const fontController = (mode: number): void => {
+    setFontSize(mode);
   };
 
   useEffect(() => {
-    const localFontSize = window.localStorage.getItem("fontSize");
-    localFontSize ? setfontSize(localFontSize) : fontController("1rem");
-    setmountedSizeComponent(true);
+    setMountedSizeComponent(true);
   }, []);
 
   return [fontSize, fontController, mountedSizeComponent];

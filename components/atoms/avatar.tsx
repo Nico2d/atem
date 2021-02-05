@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../Styles/breakpoints";
 
 type Props = {
   imageUrl: string;
@@ -18,7 +19,7 @@ const Wrapper = styled.div<Props>`
   width: 50px;
   height: 50px;
 
-  @media (min-width: 1024px) {
+  @media ${device.tablet} {
     width: 150px;
     height: 150px;
   }
