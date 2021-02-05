@@ -42,6 +42,7 @@ const Icon = styled.svg`
   stroke: ${(props) => props.theme.colors?.primary};
   stroke-width: 2px;
 `;
+
 const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   border: 0;
   clip: rect(0 0 0 0);
@@ -60,7 +61,11 @@ const StyledCheckbox = styled.div<{ checked: boolean }>`
   width: 16px;
   height: 16px;
   background: transparent;
-  border: 1px solid ${(props) => props.theme.colors?.primary};
+  border: 1px solid
+    ${(props) =>
+      props.checked
+        ? props.theme.colors?.primary
+        : props.theme.colors?.linesColor};
   border-radius: 3px;
   transition: all 150ms;
 
