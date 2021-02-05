@@ -1,6 +1,7 @@
+import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
+
 const Search = () => {
-    return <div>Search</div>;
-  };
-  
-  export default Search;
-  
+  return <TemplateWithSidebar>Search</TemplateWithSidebar>;
+};
+
+export default Search;

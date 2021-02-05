@@ -1,5 +1,11 @@
+import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
+
 const Cart = () => {
-  return <div>Cart</div>;
+  return (
+    <TemplateWithSidebar>
+      <p>Cart</p>
+    </TemplateWithSidebar>
+  );
 };
 
 export default Cart;
