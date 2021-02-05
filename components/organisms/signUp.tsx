@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { SignUpForm } from "../../types";
@@ -10,9 +10,13 @@ import { CheckboxField } from "../molecules/checkboxField";
 import { ErrorMessage } from "@hookform/error-message";
 
 export const SignUp = () => {
-  const { register, errors, handleSubmit, unregister } = useForm<SignUpForm>({
+  const { register, errors, handleSubmit, watch } = useForm<SignUpForm>({
     mode: "onChange",
   });
+
+  const password = useRef({});
+  password.current = watch("password", "");
+
   const onSubmit = (data: SignUpForm) => console.log(data);
 
   return (
@@ -60,7 +64,11 @@ export const SignUp = () => {
         name="confirmPassword"
         placeholder="Potwierdź hasło"
         type={inputTypes.password}
-        register={register({ required: "Potwierdzenie hasła jest wymagane" })}
+        register={register({
+          required: "Potwierdzenie hasła jest wymagane",
+          validate: (value) =>
+            value === password.current || "Hasła się nie zgadzają",
+        })}
       />
       <ErrorMessage
         errors={errors}
