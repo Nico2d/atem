@@ -2,14 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 export const Checkbox: React.FC<inputProps> = React.memo(
-  ({ checked, checkedHandler, name, register, ...props }: inputProps) => {
+  ({ checked, checkedHandler, name, register }: inputProps) => {
     return (
       <CheckboxContainer>
         <HiddenCheckbox
           name={name}
           ref={register}
           checked={checked}
-          {...props}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             checkedHandler(event)
           }

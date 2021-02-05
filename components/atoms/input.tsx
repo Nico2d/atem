@@ -5,14 +5,12 @@ import { inputTypes } from "../../utils/enums";
 export const Input: React.FC<inputProps> = React.memo(
   ({ name, placeholder, type, register }: inputProps) => {
     return (
-      <>
-        <StyledInput
-          type={type}
-          ref={register}
-          placeholder={placeholder}
-          name={name}
-        />
-      </>
+      <StyledInput
+        type={type}
+        ref={register}
+        placeholder={placeholder}
+        name={name}
+      />
     );
   }
 );
