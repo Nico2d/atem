@@ -10,6 +10,7 @@ export const lightTheme: Colors = {
   red: "#CD3232",
   sidebar: "#0065FF",
   white: "#FFFFFF",
+  sidebarHighlight: "#FFFFFF",
 };
 
 export const darkTheme: Colors = {
@@ -22,4 +23,5 @@ export const darkTheme: Colors = {
   red: "#CD3232",
   sidebar: "#202020",
   white: "#FFFFFF",
+  sidebarHighlight: "#1378FF",
 };

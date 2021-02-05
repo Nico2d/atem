@@ -7,43 +7,47 @@ import SystemUpdateAltRoundedIcon from "@material-ui/icons/SystemUpdateAltRounde
 import styled from "styled-components";
 import Link from "next/link";
 
+import { useRouter } from "next/router";
+
 export const NavigationList = () => {
+  const router = useRouter();
+
   return (
     <StyledNav>
       <LinkContainer>
         <Link href="/dashboard">
-          <IconText>
+          <IconText isActive={router.pathname === "/dashboard"}>
             <DashboardRoundedIcon /> Dashboard
           </IconText>
         </Link>
 
         <Link href="/search">
-          <IconText>
+          <IconText isActive={router.pathname === "/search"}>
             <SearchRoundedIcon /> Wyszukiwarka
           </IconText>
         </Link>
 
         <Link href="/add-exercise">
-          <IconText>
+          <IconText isActive={router.pathname === "/add-exercise"}>
             <SystemUpdateAltRoundedIcon /> Wstaw zadanie
           </IconText>
         </Link>
 
         <Link href="/cart">
-          <IconText>
+          <IconText isActive={router.pathname === "/cart"}>
             <ShoppingCartRoundedIcon /> Koszyk
           </IconText>
         </Link>
       </LinkContainer>
       <LinkContainer>
         <Link href="/settings">
-          <IconText>
+          <IconText isActive={router.pathname === "/settings"}>
             <SettingsRoundedIcon /> Ustawienia
           </IconText>
         </Link>
 
         <Link href="/">
-          <IconText>
+          <IconText isActive={router.pathname === "/"}>
             <ExitToAppRoundedIcon /> Wyloguj
           </IconText>
         </Link>
@@ -57,7 +61,7 @@ const LinkContainer = styled.div`
   flex-flow: column;
 `;
 
-const IconText = styled.a`
+const IconText = styled.a<{ isActive?: boolean }>`
   position: relative;
   vertical-align: center;
   text-align: center;
@@ -66,6 +70,9 @@ const IconText = styled.a`
   margin-bottom: 16px;
   padding-left: 2.5rem;
   font-size: ${({ theme }) => theme.fonts.fontSize * 1.3}rem;
+  color: ${(props) =>
+    props.isActive ? props.theme.colors.sidebarHighlight : "inherit"};
+  font-weight: ${(props) => (props.isActive ? "500" : "inherit")};
 
   svg {
     position: absolute;
