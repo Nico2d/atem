@@ -1,5 +1,4 @@
 import React from "react";
-import { Input } from "../atoms/input";
 import { inputTypes } from "../../utils/enums";
 import styled from "styled-components";
 import { CheckboxField } from "../molecules/checkboxField";
