@@ -39,13 +39,13 @@ const StyledInput = styled.input`
 
   &:placeholder-shown ~ label {
     cursor: text;
-    top: 1.5rem;
+    top: 1.2rem;
   }
 
   &:focus {
     ~ label {
       position: absolute;
-      top: 0;
+      top: -0.2rem;
       display: block;
       transition: 0.2s;
     }
