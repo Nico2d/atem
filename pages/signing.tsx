@@ -50,7 +50,7 @@ const StyledSigning = styled.div`
 
 const StyledSigningWrapper = styled.div`
   padding: 1rem;
-  background-color: ${(props) => props.theme.colors?.background};
+  /* background-color: ${(props) => props.theme.colors?.background}; */
   display: flex;
   flex-direction: column;
   align-items: center;

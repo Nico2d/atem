@@ -1,8 +1,8 @@
 import { MobileLabel } from "../molecules/mobileLabel";
 import { OutsideAlerter } from "../atoms/outSide";
 import { useState } from "react";
-import { useMediaQuery } from "@material-ui/core";
 import { device } from "../../Styles/breakpoints";
+import { useMediaQuery } from "../../Hooks/useMediaQuery";
 
 export const Navigation = ({ children }) => {
   const [isHidden, setIsHidden] = useState(true);

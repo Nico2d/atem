@@ -1,9 +1,3 @@
-import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
-import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
-import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
-import SettingsRoundedIcon from "@material-ui/icons/SettingsRounded";
-import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
-import SystemUpdateAltRoundedIcon from "@material-ui/icons/SystemUpdateAltRounded";
 import styled from "styled-components";
 import Link from "next/link";
 
@@ -17,39 +11,35 @@ export const NavigationList = () => {
       <LinkContainer>
         <Link href="/dashboard">
           <IconText isActive={router.pathname === "/dashboard"}>
-            <DashboardRoundedIcon /> Dashboard
+            Dashboard
           </IconText>
         </Link>
 
         <Link href="/search">
           <IconText isActive={router.pathname === "/search"}>
-            <SearchRoundedIcon /> Wyszukiwarka
+            Wyszukiwarka
           </IconText>
         </Link>
 
         <Link href="/add-exercise">
           <IconText isActive={router.pathname === "/add-exercise"}>
-            <SystemUpdateAltRoundedIcon /> Wstaw zadanie
+            Wstaw zadanie
           </IconText>
         </Link>
 
         <Link href="/cart">
-          <IconText isActive={router.pathname === "/cart"}>
-            <ShoppingCartRoundedIcon /> Koszyk
-          </IconText>
+          <IconText isActive={router.pathname === "/cart"}>Koszyk</IconText>
         </Link>
       </LinkContainer>
       <LinkContainer>
         <Link href="/settings">
           <IconText isActive={router.pathname === "/settings"}>
-            <SettingsRoundedIcon /> Ustawienia
+            Ustawienia
           </IconText>
         </Link>
 
         <Link href="/">
-          <IconText isActive={router.pathname === "/"}>
-            <ExitToAppRoundedIcon /> Wyloguj
-          </IconText>
+          <IconText isActive={router.pathname === "/"}>Wyloguj</IconText>
         </Link>
       </LinkContainer>
     </StyledNav>

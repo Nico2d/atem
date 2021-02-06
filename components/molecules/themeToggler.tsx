@@ -3,7 +3,7 @@ import { Button } from "../atoms/button";
 import { ThemeMode } from "../../utils/enums";
 import useLocalStorage from "../../Hooks/useLocalStorage";
 
-export const useDarkMode = () => {
+export const useDarkMode = (): [string, () => void, boolean] => {
   const [mountedThemeComponent, setMountedThemeComponent] = useState(false);
   const [theme, setTheme] = useLocalStorage("theme", ThemeMode.light);
 
