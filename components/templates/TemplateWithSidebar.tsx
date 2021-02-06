@@ -21,8 +21,11 @@ const StyledMain = styled.main`
   justify-content: center;
   width: 100%;
   flex-flow: column;
+  padding: 1rem;
+  padding-top: 66px;
 
   @media ${device.tablet} {
     padding-left: 300px;
+    padding-top: 1rem;
   }
 `;

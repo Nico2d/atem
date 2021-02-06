@@ -1,4 +1,7 @@
+import React from "react";
 import styled from "styled-components";
+import { IconClose } from "../../public/icons/close";
+import { IconMenu } from "../../public/icons/menu";
 
 export const MobileLabel: React.FC<{
   toggleMenu: () => void;
@@ -7,7 +10,9 @@ export const MobileLabel: React.FC<{
   return (
     <Container>
       <Logo>ATEM</Logo>
-      <Menu onClick={toggleMenu}>{isClosed ? "O" : "X"}</Menu>
+      <Menu onClick={toggleMenu}>
+        {isClosed ? <IconMenu /> : <IconClose />}
+      </Menu>
     </Container>
   );
 };
@@ -22,6 +27,12 @@ const Logo = styled.h1`
 
 const Menu = styled.div`
   margin: auto 0;
+
+  > svg {
+    width: 25px;
+    height: 25px;
+    fill: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 const Container = styled.div`

@@ -2,6 +2,12 @@ import styled from "styled-components";
 import Link from "next/link";
 
 import { useRouter } from "next/router";
+import { Dashboard } from "../../public/icons/dashboard";
+import { Search } from "../../public/icons/search";
+import { SystemUpdate } from "../../public/icons/system_update";
+import { ShoppingCart } from "../../public/icons/shopping_cart";
+import { Settings } from "../../public/icons/settings";
+import { ExitApp } from "../../public/icons/exit_to_app";
 
 export const NavigationList = () => {
   const router = useRouter();
@@ -11,35 +17,40 @@ export const NavigationList = () => {
       <LinkContainer>
         <Link href="/dashboard">
           <IconText isActive={router.pathname === "/dashboard"}>
-            Dashboard
+            <Dashboard /> Dashboard
           </IconText>
         </Link>
 
         <Link href="/search">
           <IconText isActive={router.pathname === "/search"}>
-            Wyszukiwarka
+            <Search /> Wyszukiwarka
           </IconText>
         </Link>
 
         <Link href="/add-exercise">
           <IconText isActive={router.pathname === "/add-exercise"}>
-            Wstaw zadanie
+            <SystemUpdate /> Wstaw zadanie
           </IconText>
         </Link>
 
         <Link href="/cart">
-          <IconText isActive={router.pathname === "/cart"}>Koszyk</IconText>
+          <IconText isActive={router.pathname === "/cart"}>
+            <ShoppingCart />
+            Koszyk
+          </IconText>
         </Link>
       </LinkContainer>
       <LinkContainer>
         <Link href="/settings">
           <IconText isActive={router.pathname === "/settings"}>
-            Ustawienia
+            <Settings /> Ustawienia
           </IconText>
         </Link>
 
         <Link href="/">
-          <IconText isActive={router.pathname === "/"}>Wyloguj</IconText>
+          <IconText isActive={router.pathname === "/"}>
+            <ExitApp /> Wyloguj
+          </IconText>
         </Link>
       </LinkContainer>
     </StyledNav>
@@ -65,10 +76,14 @@ const IconText = styled.a<{ isActive?: boolean }>`
   font-weight: ${(props) => (props.isActive ? "500" : "inherit")};
 
   svg {
+    width: 25px;
+    height: 25px;
     position: absolute;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
+    fill: ${({ theme, isActive }) =>
+      isActive ? theme.colors.sidebarHighlight : theme.colors.white};
   }
 `;
 
