@@ -22,18 +22,18 @@ export const Button: React.FC<Props> = ({
 };
 
 const StyledButton = styled.button<Props>`
-  color: ${(props) => props.theme.colors?.fontColor};
+  color: ${({ theme }) => theme.colors?.fontColor};
   outline: none;
-  background-color: ${(props) =>
-    props.styleType === "primary"
-      ? props.theme.colors?.primary
-      : props.styleType === "secondary"
+  background-color: ${({ theme, styleType }) =>
+    styleType === "primary"
+      ? theme.colors?.primary
+      : styleType === "secondary"
       ? "transparent"
-      : props.theme.colors?.primary};
+      : theme.colors?.primary};
   padding: 1rem 4rem;
-  border: ${(props) =>
-    props.styleType === "secondary"
-      ? `1px solid ${props.theme.colors?.linesColor}`
+  border: ${({ theme, styleType }) =>
+    styleType === "secondary"
+      ? `1px solid ${theme.colors?.linesColor}`
       : "none"};
   border-radius: 2rem;
   cursor: pointer;

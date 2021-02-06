@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { SignIn } from "../components/organisms/signIn";
-import { SigningTitle } from "../components/organisms/signingTitle";
+import { SigningHeader } from "../components/organisms/signingHeader";
 import { SignUp } from "../components/organisms/signUp";
 import { device } from "../Styles/breakpoints";
 
@@ -10,19 +10,20 @@ const Signing = () => {
 
   return (
     <StyledSigning>
-      <StyledSigningWrapper>
-        <SigningTitle />
-        <StyledSigningBox>
-          <h2>{isSignIn ? "Zaloguj" : "Zarejestruj"}</h2>
-          {isSignIn ? <SignIn /> : <SignUp />}
-          <StyledCreateAccountText>
-            <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
-            <h4 onClick={() => setIsSignIn(!isSignIn)}>
-              {isSignIn ? "Załóż konto" : "Zaloguj się"}
-            </h4>
-          </StyledCreateAccountText>
-        </StyledSigningBox>
-      </StyledSigningWrapper>
+      <SigningHeader
+        btnClicked={() => setIsSignIn(!isSignIn)}
+        isSignIn={isSignIn}
+      />
+      <StyledSigningBox>
+        <SigningTitle>{isSignIn ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
+        {isSignIn ? <SignIn /> : <SignUp />}
+        <StyledCreateAccountText>
+          <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
+          <h4 onClick={() => setIsSignIn(!isSignIn)}>
+            {isSignIn ? "Załóż konto" : "Zaloguj się"}
+          </h4>
+        </StyledCreateAccountText>
+      </StyledSigningBox>
     </StyledSigning>
   );
 };
@@ -30,22 +31,12 @@ const Signing = () => {
 export default Signing;
 
 const StyledSigning = styled.div`
-  background-image: url("../public/signing_bg.png");
+  background: url("/signing_bg.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
-
-const StyledSigningWrapper = styled.div`
-  padding: 1rem;
-  background-color: ${(props) => props.theme.colors?.background};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,8 +45,7 @@ const StyledSigningWrapper = styled.div`
 
   @media ${device.tablet} {
     flex-direction: row;
-    align-items: flex-start;
-    height: auto;
+    align-items: center;
     width: 100%;
   }
 `;
@@ -64,18 +54,18 @@ const StyledSigningBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => props.theme.colors?.cardColor};
+  background-color: ${({ theme }) => theme.colors?.cardColor};
   border-radius: 1rem;
   padding: 2rem;
   width: 300px;
 
-  h2 {
-    margin-bottom: 3rem;
-  }
-
   @media ${device.mobileL} {
     min-width: 380px;
   }
+`;
+
+const SigningTitle = styled.h2`
+  margin-bottom: 3rem;
 `;
 
 const StyledCreateAccountText = styled.div`
@@ -90,10 +80,10 @@ const StyledCreateAccountText = styled.div`
   }
 
   h4 {
-    color: ${(props) => props.theme.colors?.primary};
+    color: ${({ theme }) => theme.colors?.primary};
     cursor: pointer;
     margin-top: 0.5rem;
-    border-bottom: 1px solid ${(props) => props.theme.colors?.primary};
+    border-bottom: 1px solid ${({ theme }) => theme.colors?.primary};
   }
 
   @media ${device.tablet} {

@@ -55,20 +55,18 @@ const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   width: 1px;
 `;
 
-const StyledCheckbox = styled.div<{ checked: boolean }>`
+const StyledCheckbox = styled.div<inputProps>`
   display: inline-block;
   width: 16px;
   height: 16px;
   background: transparent;
   border: 1px solid
-    ${(props) =>
-      props.checked
-        ? props.theme.colors?.primary
-        : props.theme.colors?.linesColor};
+    ${({ theme, checked }) =>
+      checked ? theme.colors?.primary : theme.colors?.linesColor};
   border-radius: 3px;
   transition: all 150ms;
 
   ${Icon} {
-    visibility: ${(props) => (props.checked ? "visible" : "hidden")};
+    visibility: ${({ checked }) => (checked ? "visible" : "hidden")};
   }
 `;
