@@ -5,8 +5,8 @@ import { useFontSizeSelector } from "../components/molecules/fontSizeSelector";
 import { useDarkMode } from "../components/molecules/themeToggler";
 import { GlobalStyle } from "../Styles/global";
 import { ThemeMode } from "../utils/enums";
-import { lightTheme, darkTheme } from "../utils/themeColors";
-import { Typography } from "../utils/themeFonts";
+import { lightTheme, darkTheme } from "../Styles/themeColors";
+import { Typography } from "../Styles/themeFonts";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme] = useDarkMode();

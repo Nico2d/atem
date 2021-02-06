@@ -4,24 +4,36 @@ type Props = {
   text: string;
   styleType: string;
   [x: string]: any;
+  clicked?: () => void;
+  type?: string;
 };
 
-export const Button: React.FC<Props> = ({ text, ...props }) => {
-  return <StyledButton {...props}>{text}</StyledButton>;
+export const Button: React.FC<Props> = ({
+  text,
+  type,
+  clicked,
+  ...props
+}: Props) => {
+  return (
+    <StyledButton onClick={clicked} {...props}>
+      {text}
+    </StyledButton>
+  );
 };
 
 const StyledButton = styled.button<Props>`
-  color: white;
-  background-color: ${(props) =>
-    props.styleType === "primary"
-      ? props.theme.colors?.primary
-      : props.styleType === "secondary"
+  color: ${({ theme }) => theme.colors?.fontColor};
+  outline: none;
+  background-color: ${({ theme, styleType }) =>
+    styleType === "primary"
+      ? theme.colors?.primary
+      : styleType === "secondary"
       ? "transparent"
-      : props.theme.colors?.primary};
+      : theme.colors?.primary};
   padding: 1rem 4rem;
-  border: ${(props) =>
-    props.styleType === "secondary"
-      ? `1px solid ${props.theme.colors?.linesColor}`
+  border: ${({ theme, styleType }) =>
+    styleType === "secondary"
+      ? `1px solid ${theme.colors?.linesColor}`
       : "none"};
   border-radius: 2rem;
   cursor: pointer;

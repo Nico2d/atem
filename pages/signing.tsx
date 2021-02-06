@@ -1,40 +1,29 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button } from "../components/atoms/button";
 import { SignIn } from "../components/organisms/signIn";
+import { SigningHeader } from "../components/organisms/signingHeader";
 import { SignUp } from "../components/organisms/signUp";
-import { useMediaQuery } from "../Hooks/useMediaQuery";
 import { device } from "../Styles/breakpoints";
 
 const Signing = () => {
   const [isSignIn, setIsSignIn] = useState(true);
-  const isDesktop = useMediaQuery(device.tablet);
 
   return (
     <StyledSigning>
-      <StyledSigningWrapper>
-        <StyledTitleWrapper>
-          <h2>
-            <span>Podziel</span> swój wysiłek i <span>pomnóż</span> korzyści
-            płynące ze studiów
-          </h2>
-          {isDesktop && <Button text="Załóż konto" styleType="secondary" />}
-        </StyledTitleWrapper>
-        <StyledSigningBox>
-          <h2>{isSignIn ? "Zaloguj" : "Zarejestruj"}</h2>
-          {isSignIn ? <SignIn /> : <SignUp />}
-          <Button
-            styleType="primary"
-            text={isSignIn ? "Zaloguj" : "Zarejestruj"}
-          />
-          <StyledCreateAccountText>
-            <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
-            <h4 onClick={() => setIsSignIn(!isSignIn)}>
-              {isSignIn ? "Załóż konto" : "Zaloguj się"}
-            </h4>
-          </StyledCreateAccountText>
-        </StyledSigningBox>
-      </StyledSigningWrapper>
+      <SigningHeader
+        btnClicked={() => setIsSignIn(!isSignIn)}
+        isSignIn={isSignIn}
+      />
+      <StyledSigningBox>
+        <SigningTitle>{isSignIn ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
+        {isSignIn ? <SignIn /> : <SignUp />}
+        <StyledCreateAccountText>
+          <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
+          <h4 onClick={() => setIsSignIn(!isSignIn)}>
+            {isSignIn ? "Załóż konto" : "Zaloguj się"}
+          </h4>
+        </StyledCreateAccountText>
+      </StyledSigningBox>
     </StyledSigning>
   );
 };
@@ -42,15 +31,9 @@ const Signing = () => {
 export default Signing;
 
 const StyledSigning = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
-
-const StyledSigningWrapper = styled.div`
-  padding: 1rem;
-  /* background-color: ${(props) => props.theme.colors?.background}; */
+  background: url("/signing_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,26 +42,8 @@ const StyledSigningWrapper = styled.div`
 
   @media ${device.tablet} {
     flex-direction: row;
-    align-items: flex-start;
-    height: auto;
+    align-items: center;
     width: 100%;
-  }
-`;
-
-const StyledTitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  h2 {
-    font-weight: 300;
-    font-size: 2rem;
-    max-width: 650px;
-    margin-bottom: 2rem;
-
-    span {
-      font-weight: bold;
-    }
   }
 `;
 
@@ -86,7 +51,7 @@ const StyledSigningBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => props.theme.colors?.cardColor};
+  background-color: ${({ theme }) => theme.colors?.cardColor};
   border-radius: 1rem;
   padding: 2rem;
   width: 300px;
@@ -94,6 +59,10 @@ const StyledSigningBox = styled.div`
   @media ${device.mobileL} {
     min-width: 380px;
   }
+`;
+
+const SigningTitle = styled.h2`
+  margin-bottom: 3rem;
 `;
 
 const StyledCreateAccountText = styled.div`
@@ -108,17 +77,16 @@ const StyledCreateAccountText = styled.div`
   }
 
   h4 {
-    color: ${(props) => props.theme.colors?.primary};
+    color: ${({ theme }) => theme.colors?.primary};
     cursor: pointer;
     margin-top: 0.5rem;
-    border-bottom: 1px solid ${(props) => props.theme.colors?.primary};
+    border-bottom: 1px solid ${({ theme }) => theme.colors?.primary};
   }
 
   @media ${device.tablet} {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
 
     h3 {
       margin-right: 1rem;
