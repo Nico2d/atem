@@ -30,13 +30,12 @@ const Signing = () => {
 export default Signing;
 
 const StyledSigning = styled.div`
-  background-image: url("../public/signing_bg.png");
+  background: url("/signing_bg.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +44,6 @@ const StyledSigning = styled.div`
 
 const StyledSigningWrapper = styled.div`
   padding: 1rem;
-  background-color: ${(props) => props.theme.colors?.background};
   display: flex;
   flex-direction: column;
   align-items: center;

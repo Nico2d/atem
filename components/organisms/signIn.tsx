@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { CheckboxField } from "../molecules/checkboxField";
 import { useForm } from "react-hook-form";
 import { Button } from "../atoms/button";
-import { SignInForm } from "../../types";
+import { SignInForm } from "../../Types";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
 import { ErrorMessage } from "@hookform/error-message";
 
