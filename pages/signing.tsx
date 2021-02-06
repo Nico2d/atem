@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { SignIn } from "../components/organisms/signIn";
-import { SigningTitle } from "../components/organisms/signingTitle";
+import { SigningHeader } from "../components/organisms/signingHeader";
 import { SignUp } from "../components/organisms/signUp";
 import { device } from "../Styles/breakpoints";
 
@@ -11,9 +11,9 @@ const Signing = () => {
   return (
     <StyledSigning>
       <StyledSigningWrapper>
-        <SigningTitle />
+        <SigningHeader />
         <StyledSigningBox>
-          <h2>{isSignIn ? "Zaloguj" : "Zarejestruj"}</h2>
+          <SigningTitle>{isSignIn ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
           {isSignIn ? <SignIn /> : <SignUp />}
           <StyledCreateAccountText>
             <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
@@ -67,13 +67,13 @@ const StyledSigningBox = styled.div`
   padding: 2rem;
   width: 300px;
 
-  h2 {
-    margin-bottom: 3rem;
-  }
-
   @media ${device.mobileL} {
     min-width: 380px;
   }
+`;
+
+const SigningTitle = styled.h2`
+  margin-bottom: 3rem;
 `;
 
 const StyledCreateAccountText = styled.div`

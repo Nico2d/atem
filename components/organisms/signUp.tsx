@@ -1,13 +1,14 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { SignUpForm } from "../../types";
+import { SignUpForm } from "../../Types";
 import { inputTypes } from "../../utils/enums";
 import { Button } from "../atoms/button";
 import { Input } from "../atoms/input";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
 import { CheckboxField } from "../molecules/checkboxField";
 import { ErrorMessage } from "@hookform/error-message";
+import { device } from "../../Styles/breakpoints";
 
 export const SignUp = () => {
   const { register, errors, handleSubmit, watch } = useForm<SignUpForm>({
@@ -75,11 +76,14 @@ export const SignUp = () => {
         name="confirmPassword"
         render={({ message }) => <InputErrorMessage error={message} />}
       />
-      <CheckboxField
-        text="Zapoznałem się z regulaminem"
-        name="acceptedTermsOfService"
-        register={register({ required: "Musisz zaakceptować regulamin" })}
-      />
+      <TermsOfServiceWrapper>
+        <CheckboxField
+          text="Zapoznałem się z"
+          name="acceptedTermsOfService"
+          register={register({ required: "Musisz zaakceptować regulamin" })}
+        />
+        <TermsOfService>regulaminem</TermsOfService>
+      </TermsOfServiceWrapper>
       <ErrorMessage
         errors={errors}
         name="acceptedTermsOfService"
@@ -93,6 +97,27 @@ export const SignUp = () => {
     </StyledSignIn>
   );
 };
+
+const TermsOfServiceWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media ${device.mobileL} {
+    flex-direction: row;
+  }
+`;
+
+const TermsOfService = styled.span`
+  display: inline-block;
+  color: ${(props) => props.theme.colors?.primary};
+  cursor: pointer;
+  margin-top: 0.5rem;
+
+  @media ${device.mobileL} {
+    margin-left: 0.5rem;
+    margin-top: 0;
+  }
+`;
 
 const StyledSignIn = styled.div`
   display: flex;

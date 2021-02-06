@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "../../Hooks/useMediaQuery";
-import { Button } from "../../components/atoms/button";
+import { Button } from "../atoms/button";
 import { device } from "../../Styles/breakpoints";
 
-export const SigningTitle = () => {
+export const SigningHeader = () => {
   const isDesktop = useMediaQuery(device.tablet);
 
   return (
