@@ -2,8 +2,8 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../../Styles/global";
 import { ThemeMode } from "../../utils/enums";
-import { lightTheme, darkTheme } from "../../utils/themeColors";
-import { Typography } from "../../utils/themeFonts";
+import { lightTheme, darkTheme } from "../../Styles/themeColors";
+import { Typography } from "../../Styles/themeFonts";
 
 export const Layout = ({ children, theme, fontSize }: any) => {
   let themeObj = {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../Hooks/useLocalStorage";
-import { FontSizeMode } from "../../utils/themeFonts";
+import { FontSizeMode } from "../../Styles/themeFonts";
 
 export const useFontSizeSelector = () => {
   const [mountedSizeComponent, setMountedSizeComponent] = useState(false);

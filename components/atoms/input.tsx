@@ -3,8 +3,15 @@ import styled from "styled-components";
 import { inputTypes } from "../../utils/enums";
 
 export const Input: React.FC<inputProps> = React.memo(
-  ({ name, placeholder, type }: inputProps) => {
-    return <StyledInput type={type} placeholder={placeholder} name={name} />;
+  ({ name, placeholder, type, register }: inputProps) => {
+    return (
+      <StyledInput
+        type={type}
+        ref={register}
+        placeholder={placeholder}
+        name={name}
+      />
+    );
   }
 );
 
@@ -12,6 +19,7 @@ type inputProps = {
   name: string;
   placeholder: string;
   type: inputTypes;
+  register?: any;
 };
 
 const StyledInput = styled.input`
@@ -19,6 +27,7 @@ const StyledInput = styled.input`
   border-bottom: 1px solid ${(props) => props.theme.colors?.fontColor};
   background: transparent;
   outline: none;
+  padding-left: 0.7rem;
   font-size: 1.5rem;
   color: ${(props) => props.theme.colors?.fontColor};
   width: 90%;

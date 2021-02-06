@@ -4,14 +4,26 @@ type Props = {
   text: string;
   styleType: string;
   [x: string]: any;
+  clicked?: () => void;
+  type?: string;
 };
 
-export const Button: React.FC<Props> = ({ text, ...props }) => {
-  return <StyledButton {...props}>{text}</StyledButton>;
+export const Button: React.FC<Props> = ({
+  text,
+  type,
+  clicked,
+  ...props
+}: Props) => {
+  return (
+    <StyledButton onClick={clicked} {...props}>
+      {text}
+    </StyledButton>
+  );
 };
 
 const StyledButton = styled.button<Props>`
-  color: white;
+  color: ${(props) => props.theme.colors?.fontColor};
+  outline: none;
   background-color: ${(props) =>
     props.styleType === "primary"
       ? props.theme.colors?.primary
