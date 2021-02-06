@@ -1,5 +1,5 @@
 import { MobileLabel } from "../molecules/mobileLabel";
-import { OutsideAlerter } from "../atoms/outSide";
+import { OutsideMethod } from "../atoms/OutsideMethod";
 import { useState } from "react";
 import { device } from "../../Styles/breakpoints";
 import { useMediaQuery } from "../../Hooks/useMediaQuery";
@@ -15,9 +15,9 @@ export const Navigation = ({ children }) => {
   if (isDesktop) return <> {children} </>;
 
   return (
-    <OutsideAlerter method={toggleNavigation} isActive={isHidden}>
+    <OutsideMethod method={toggleNavigation} isActive={isHidden}>
       <MobileLabel toggleMenu={toggleNavigation} isClosed={isHidden} />
       {!isHidden && children}
-    </OutsideAlerter>
+    </OutsideMethod>
   );
 };

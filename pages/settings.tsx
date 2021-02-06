@@ -1,12 +1,8 @@
-import {
-  FontSizeSelector,
-  useFontSizeSelector,
-} from "../components/molecules/fontSizeSelector";
-import {
-  ThemeToggler,
-  useDarkMode,
-} from "../components/molecules/themeToggler";
+import { FontSizeSelector } from "../components/molecules/fontSizeSelector";
+import { ThemeToggler } from "../components/molecules/themeToggler";
 import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
+import { useDarkMode } from "../Hooks/useDarkMode";
+import { useFontSizeSelector } from "../Hooks/useFontSizeSelector";
 
 const Settings = () => {
   const [theme, themeToggler] = useDarkMode();
