@@ -9,10 +9,10 @@ export const SigningHeader = ({ btnClicked, isSignIn }: signingHeaderProps) => {
 
   return (
     <StyledTitleWrapper>
-      <h2>
+      <Slogan>
         <span>Podziel</span> swój wysiłek i <span>pomnóż</span> korzyści płynące
         ze studiów
-      </h2>
+      </Slogan>
       {isDesktop && (
         <Button
           text={isSignIn ? "Załóż konto" : "Zaloguj się"}
@@ -34,15 +34,23 @@ const StyledTitleWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0 2rem;
+`;
 
-  h2 {
-    font-weight: 300;
+const Slogan = styled.h2`
+  font-weight: 300;
+  max-width: 650px;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+
+  span {
+    font-weight: 700;
+  }
+
+  @media ${device.tablet} {
+    font-size: 2.5rem; //Needs to be changed to use global font size
+  }
+
+  @media ${device.laptop} {
     font-size: 3.5rem; //Needs to be changed to use global font size
-    max-width: 650px;
-    margin-bottom: 2rem;
-
-    span {
-      font-weight: bold;
-    }
   }
 `;
