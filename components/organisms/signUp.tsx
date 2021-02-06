@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { SignUpForm } from "../../Types";
 import { inputTypes } from "../../utils/enums";
 import { Button } from "../atoms/button";
-import { Input } from "../atoms/input";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
 import { CheckboxField } from "../molecules/checkboxField";
 import { ErrorMessage } from "@hookform/error-message";
 import { device } from "../../Styles/breakpoints";
+import { InputField } from "../molecules/inputField";
 
 export const SignUp = () => {
   const { register, errors, handleSubmit, watch } = useForm<SignUpForm>({
@@ -22,7 +22,7 @@ export const SignUp = () => {
 
   return (
     <StyledSignIn>
-      <Input
+      <InputField
         name="login"
         placeholder="Login"
         type={inputTypes.text}
@@ -33,7 +33,7 @@ export const SignUp = () => {
         name="login"
         render={({ message }) => <InputErrorMessage error={message} />}
       />
-      <Input
+      <InputField
         name="email"
         placeholder="Email"
         type={inputTypes.text}
@@ -50,7 +50,7 @@ export const SignUp = () => {
         name="email"
         render={({ message }) => <InputErrorMessage error={message} />}
       />
-      <Input
+      <InputField
         name="password"
         placeholder="Hasło"
         type={inputTypes.password}
@@ -61,7 +61,7 @@ export const SignUp = () => {
         name="password"
         render={({ message }) => <InputErrorMessage error={message} />}
       />
-      <Input
+      <InputField
         name="confirmPassword"
         placeholder="Potwierdź hasło"
         type={inputTypes.password}

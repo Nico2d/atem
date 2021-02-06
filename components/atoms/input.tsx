@@ -10,6 +10,7 @@ export const Input: React.FC<inputProps> = React.memo(
         ref={register}
         placeholder={placeholder}
         name={name}
+        id={name}
       />
     );
   }
@@ -31,4 +32,22 @@ const StyledInput = styled.input`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors?.fontColor};
   width: 90%;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ label {
+    cursor: text;
+    top: 1.5rem;
+  }
+
+  &:focus {
+    ~ label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+    }
+  }
 `;
