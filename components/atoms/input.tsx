@@ -24,11 +24,11 @@ type inputProps = {
 
 const StyledInput = styled.input`
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.colors?.fontColor};
+  border-bottom: 1px solid ${({ theme }) => theme.colors?.fontColor};
   background: transparent;
   outline: none;
   padding-left: 0.7rem;
   font-size: 1.5rem;
-  color: ${(props) => props.theme.colors?.fontColor};
+  color: ${({ theme }) => theme.colors?.fontColor};
   width: 90%;
 `;

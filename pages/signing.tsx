@@ -10,19 +10,20 @@ const Signing = () => {
 
   return (
     <StyledSigning>
-      <StyledSigningWrapper>
-        <SigningHeader />
-        <StyledSigningBox>
-          <SigningTitle>{isSignIn ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
-          {isSignIn ? <SignIn /> : <SignUp />}
-          <StyledCreateAccountText>
-            <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
-            <h4 onClick={() => setIsSignIn(!isSignIn)}>
-              {isSignIn ? "Załóż konto" : "Zaloguj się"}
-            </h4>
-          </StyledCreateAccountText>
-        </StyledSigningBox>
-      </StyledSigningWrapper>
+      <SigningHeader
+        btnClicked={() => setIsSignIn(!isSignIn)}
+        isSignIn={isSignIn}
+      />
+      <StyledSigningBox>
+        <SigningTitle>{isSignIn ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
+        {isSignIn ? <SignIn /> : <SignUp />}
+        <StyledCreateAccountText>
+          <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
+          <h4 onClick={() => setIsSignIn(!isSignIn)}>
+            {isSignIn ? "Załóż konto" : "Zaloguj się"}
+          </h4>
+        </StyledCreateAccountText>
+      </StyledSigningBox>
     </StyledSigning>
   );
 };
@@ -37,14 +38,6 @@ const StyledSigning = styled.div`
   -o-background-size: cover;
   background-size: cover;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
-
-const StyledSigningWrapper = styled.div`
-  padding: 1rem;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -52,8 +45,7 @@ const StyledSigningWrapper = styled.div`
 
   @media ${device.tablet} {
     flex-direction: row;
-    align-items: flex-start;
-    height: auto;
+    align-items: center;
     width: 100%;
   }
 `;
@@ -62,7 +54,7 @@ const StyledSigningBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => props.theme.colors?.cardColor};
+  background-color: ${({ theme }) => theme.colors?.cardColor};
   border-radius: 1rem;
   padding: 2rem;
   width: 300px;
@@ -88,10 +80,10 @@ const StyledCreateAccountText = styled.div`
   }
 
   h4 {
-    color: ${(props) => props.theme.colors?.primary};
+    color: ${({ theme }) => theme.colors?.primary};
     cursor: pointer;
     margin-top: 0.5rem;
-    border-bottom: 1px solid ${(props) => props.theme.colors?.primary};
+    border-bottom: 1px solid ${({ theme }) => theme.colors?.primary};
   }
 
   @media ${device.tablet} {

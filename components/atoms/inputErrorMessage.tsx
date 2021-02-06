@@ -10,6 +10,6 @@ type inputErrorMessageProps = {
 };
 
 const StyledErrorMessage = styled.h4`
-  color: ${(props) => props.theme.colors?.red};
+  color: ${({ theme }) => theme.colors?.red};
   font-size: 0.9rem;
 `;

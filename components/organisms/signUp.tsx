@@ -109,7 +109,7 @@ const TermsOfServiceWrapper = styled.div`
 
 const TermsOfService = styled.span`
   display: inline-block;
-  color: ${(props) => props.theme.colors?.primary};
+  color: ${({ theme }) => theme.colors?.primary};
   cursor: pointer;
   margin-top: 0.5rem;
 
