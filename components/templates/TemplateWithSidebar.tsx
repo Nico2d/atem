@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../../Styles/breakpoints";
+import { Sidebar } from "../molecules/sidebar";
 import { Navigation } from "../organisms/navigation";
-import { Sidebar } from "../organisms/sidebar";
 import { Layout } from "./layout";
 
 export const TemplateWithSidebar = ({ children }) => {
