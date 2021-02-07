@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { SignIn } from "../components/organisms/signIn";
-import { SigningHeader } from "../components/organisms/signingHeader";
-import { SignUp } from "../components/organisms/signUp";
-import { device } from "../Styles/breakpoints";
+import { SignUp } from "../molecules/signUp";
+import { device } from "../../Styles/breakpoints";
+import { SignIn } from "../molecules/signIn";
+import { SigningHeader } from "../molecules/signingHeader";
 
 const Signing = () => {
   const [isSignIn, setIsSignIn] = useState(true);

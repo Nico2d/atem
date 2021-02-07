@@ -1,5 +1,5 @@
+import Signing from "../components/organisms/signing";
 import { Layout } from "../components/templates/layout";
-import Signing from "./signing";
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
         <main style={{ width: "100%", height: "100vh" }}>
           {/* <p>Welcome on Atem</p>
           <ThemeToggler theme={theme} toggleTheme={themeToggler} />
-          <FontSizeSelector
+          <FontSizeSe../components/organisms/signing
             fontSize={fontSize}
             fontController={fontController}
           /> */}
