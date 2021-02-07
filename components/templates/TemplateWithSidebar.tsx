@@ -10,7 +10,9 @@ export const TemplateWithSidebar = ({ children }) => {
       <Navigation>
         <Sidebar />
       </Navigation>
-      <StyledMain>{children}</StyledMain>
+      <StyledMain>
+        <StyledWrapper>{children}</StyledWrapper>
+      </StyledMain>
     </Layout>
   );
 };
@@ -19,13 +21,19 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  flex-flow: column;
-  padding: 1rem;
-  padding-top: 66px;
+  padding-top: 50px;
 
   @media ${device.tablet} {
+    padding-top: 0px;
     padding-left: 300px;
-    padding-top: 1rem;
+  }
+`;
+
+const StyledWrapper = styled.div`
+  display: inherit;
+  flex-flow: column;
+
+  @media ${device.tablet} {
+    display: block;
   }
 `;
