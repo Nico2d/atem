@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import Link from "next/link";
-
 import { useRouter } from "next/router";
-import { Dashboard } from "../../public/icons/dashboard";
-import { Search } from "../../public/icons/search";
-import { SystemUpdate } from "../../public/icons/system_update";
-import { ShoppingCart } from "../../public/icons/shopping_cart";
-import { Settings } from "../../public/icons/settings";
-import { ExitApp } from "../../public/icons/exit_to_app";
+import { IconDashboard } from "../../public/icons/iconDashboard";
+import { IconSearch } from "../../public/icons/iconSearch";
+import { IconSystemUpdate } from "../../public/icons/iconSystemUpdate";
+import { IconShoppingCart } from "../../public/icons/iconShoppingCart";
+import { IconSettings } from "../../public/icons/iconSettings";
+import { IconExitApp } from "../../public/icons/iconExitApp";
 
 export const NavigationList = () => {
   const router = useRouter();
@@ -17,25 +16,25 @@ export const NavigationList = () => {
       <LinkContainer>
         <Link href="/dashboard">
           <IconText isActive={router.pathname === "/dashboard"}>
-            <Dashboard /> Dashboard
+            <IconDashboard /> Dashboard
           </IconText>
         </Link>
 
         <Link href="/search">
           <IconText isActive={router.pathname === "/search"}>
-            <Search /> Wyszukiwarka
+            <IconSearch /> Wyszukiwarka
           </IconText>
         </Link>
 
         <Link href="/add-exercise">
           <IconText isActive={router.pathname === "/add-exercise"}>
-            <SystemUpdate /> Wstaw zadanie
+            <IconSystemUpdate /> Wstaw zadanie
           </IconText>
         </Link>
 
         <Link href="/cart">
           <IconText isActive={router.pathname === "/cart"}>
-            <ShoppingCart />
+            <IconShoppingCart />
             Koszyk
           </IconText>
         </Link>
@@ -43,13 +42,13 @@ export const NavigationList = () => {
       <LinkContainer>
         <Link href="/settings">
           <IconText isActive={router.pathname === "/settings"}>
-            <Settings /> Ustawienia
+            <IconSettings /> Ustawienia
           </IconText>
         </Link>
 
         <Link href="/">
           <IconText isActive={router.pathname === "/"}>
-            <ExitApp /> Wyloguj
+            <IconExitApp /> Wyloguj
           </IconText>
         </Link>
       </LinkContainer>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { IconClose } from "../../public/icons/close";
-import { IconMenu } from "../../public/icons/menu";
+import { IconClose } from "../../public/icons/iconClose";
+import { IconMenu } from "../../public/icons/iconMenu";
 
 export const MobileLabel: React.FC<{
   toggleMenu: () => void;
