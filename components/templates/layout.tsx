@@ -1,22 +1,20 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "../../Styles/global";
-import { ThemeMode } from "../../utils/enums";
-import { lightTheme, darkTheme } from "../../Styles/themeColors";
-import { Typography } from "../../Styles/themeFonts";
+import Head from "next/head";
 
-export const Layout = ({ children, theme, fontSize }: any) => {
-  let themeObj = {
-    fonts: Typography,
-    colors: theme === ThemeMode.light ? lightTheme : darkTheme,
-  };
-  themeObj.fonts.fontSize = fontSize;
-
+export const Layout: React.FC<{ children: any }> = ({ children }) => {
   return (
-    <ThemeProvider theme={themeObj}>
-      <GlobalStyle />
-      {/* {fontSize} */}
+    <>
+      <Head>
+        <title>Atem</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+
       {children}
-    </ThemeProvider>
+    </>
   );
 };

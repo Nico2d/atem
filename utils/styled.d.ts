@@ -13,10 +13,13 @@ declare module "styled-components" {
     fontColor: string;
     green: string;
     red: string;
+    sidebar: string;
+    white: string;
+    sidebarHighlight: string;
   }
 
   export interface Fonts {
     family: string;
-    fontSize: string;
+    fontSize: number;
   }
 }

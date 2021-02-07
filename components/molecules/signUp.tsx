@@ -5,10 +5,10 @@ import { SignUpForm } from "../../Types";
 import { inputTypes } from "../../utils/enums";
 import { Button } from "../atoms/button";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
-import { CheckboxField } from "../molecules/checkboxField";
+import { CheckboxField } from "./checkboxField";
 import { ErrorMessage } from "@hookform/error-message";
 import { device } from "../../Styles/breakpoints";
-import { InputField } from "../molecules/inputField";
+import { InputField } from "./inputField";
 
 export const SignUp = () => {
   const { register, errors, handleSubmit, watch } = useForm<SignUpForm>({
