@@ -4,7 +4,10 @@ import { useMediaQuery } from "../../Hooks/useMediaQuery";
 import { Button } from "../atoms/button";
 import { device } from "../../Styles/breakpoints";
 
-export const SigningHeader = ({ btnClicked, isSignIn }: signingHeaderProps) => {
+export const HeroSectionHeader = ({
+  btnClicked,
+  isSignIn,
+}: HeroSectionHeaderProps) => {
   const isDesktop = useMediaQuery(device.tablet);
 
   return (
@@ -25,7 +28,7 @@ export const SigningHeader = ({ btnClicked, isSignIn }: signingHeaderProps) => {
   );
 };
 
-type signingHeaderProps = {
+type HeroSectionHeaderProps = {
   btnClicked: () => void;
   isSignIn: boolean;
 };
