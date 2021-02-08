@@ -100,7 +100,7 @@ const CardDesc = styled.p`
   margin: 0 0 2rem;
 `;
 
-const CardField = styled.p`
+const CardField = styled.div`
   font-size: ${({ theme }) => theme.fonts.fontSize * 0.9}rem;
   margin-top: 2rem;
   display: flex;

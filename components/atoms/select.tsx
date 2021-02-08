@@ -97,6 +97,7 @@ const Options = styled.ul<{ isHidden: boolean }>`
   top: 9px;
   width: 100%;
   padding: 0;
+  z-index: 99;
 
   > li {
     border-bottom: 1px solid ${({ theme }) => theme.colors.linesColor};
