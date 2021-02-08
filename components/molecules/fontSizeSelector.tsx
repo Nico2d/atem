@@ -1,11 +1,27 @@
 import { FontSizeMode } from "../../Styles/themeFonts";
+import { Select } from "../atoms/select";
 
 export const FontSizeSelector = ({ fontSize, fontController }) => {
+  const Array = [
+    {
+      name: "małe",
+      value: FontSizeMode.fontSizeS,
+    },
+    {
+      name: "normalne",
+      value: FontSizeMode.fontSizeM,
+    },
+    {
+      name: "duże",
+      value: FontSizeMode.fontSizeL,
+    },
+  ];
+
   return (
-    <select value={fontSize} onChange={(e) => fontController(e.target.value)}>
-      <option value={FontSizeMode.fontSizeS}>mała</option>
-      <option value={FontSizeMode.fontSizeM}>normalna</option>
-      <option value={FontSizeMode.fontSizeL}>duża</option>
-    </select>
+    <Select
+      optionList={Array}
+      method={fontController}
+      defaultValue={Array[1]}
+    />
   );
 };

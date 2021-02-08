@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 type SwitchProps = {
@@ -14,6 +13,7 @@ export const Switch: React.FC<SwitchProps> = ({ value = false, method }) => {
     </SwitchWrapper>
   );
 };
+
 const Ball = styled.span`
   width: 19px;
   height: 19px;
