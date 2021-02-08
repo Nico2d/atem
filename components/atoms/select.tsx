@@ -29,6 +29,7 @@ export const Select: React.FC<SelectTypes> = ({
   const selectOption = (item: Option) => {
     setValue(item);
     method(item.value);
+    setIsHidden(true);
   };
 
   return (
