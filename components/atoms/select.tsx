@@ -10,14 +10,14 @@ interface Option {
 
 type SelectTypes = {
   optionList: Array<Option>;
-  method: (e: number) => void;
+  method: (e: any) => void;
   defaultValue?: Option;
 };
 
 export const Select: React.FC<SelectTypes> = ({
   optionList,
   method,
-  defaultValue,
+  defaultValue = optionList[0],
 }) => {
   const [value, setValue] = useState<Option>(defaultValue);
   const [isHidden, setIsHidden] = useState<boolean>(true);
@@ -57,9 +57,14 @@ export const Select: React.FC<SelectTypes> = ({
   );
 };
 
-const SelectedValue = styled.p`
+const Container = styled.div`
+  position: relative;
+  cursor: pointer;
   position: relative;
   width: 110px;
+`;
+
+const SelectedValue = styled.p`
   margin: 0;
   padding-left: 10px;
 
@@ -82,17 +87,13 @@ const SelectedValue = styled.p`
   }
 `;
 
-const Container = styled.div`
-  position: relative;
-`;
-
 const Options = styled.ul<{ isHidden: boolean }>`
   position: absolute;
   list-style: none;
   background-color: ${({ theme }) => theme.colors.background};
   display: ${({ isHidden }) => (isHidden ? "none" : "flex")};
   flex-flow: column;
-  right: 0;
+  left: 0;
   top: 9px;
   width: 100%;
   padding: 0;

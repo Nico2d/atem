@@ -4,15 +4,15 @@ import { Select } from "../atoms/select";
 export const FontSizeSelector = ({ fontSize, fontController }) => {
   const Array = [
     {
-      name: "małe",
+      name: "Małe",
       value: FontSizeMode.fontSizeS,
     },
     {
-      name: "normalne",
+      name: "Normalne",
       value: FontSizeMode.fontSizeM,
     },
     {
-      name: "duże",
+      name: "Duże",
       value: FontSizeMode.fontSizeL,
     },
   ];

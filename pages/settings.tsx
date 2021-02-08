@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { CardContainer } from "../components/atoms/cardContainer";
 import { PageHeading } from "../components/atoms/pageHeading";
+import { Select } from "../components/atoms/select";
 import { FontSizeSelector } from "../components/molecules/fontSizeSelector";
 import { ThemeToggler } from "../components/molecules/themeToggler";
 import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
@@ -69,7 +70,18 @@ const Settings = () => {
               fontController={fontController}
             />
           </CardField>
-          <CardField>Język</CardField>
+          <CardField>
+            Język
+            <Select
+              optionList={[
+                { name: "Polski", value: "polish" },
+                { name: "Angielski", value: "english" },
+              ]}
+              method={(value) => {
+                console.log("zmiana jezyka na:", value);
+              }}
+            />
+          </CardField>
         </CardContainer>
       </CardWrapper>
     </TemplateWithSidebar>
