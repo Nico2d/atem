@@ -1,9 +1,13 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { CardContainer } from "../components/atoms/cardContainer";
 import { PageHeading } from "../components/atoms/pageHeading";
 import { Select } from "../components/atoms/select";
 import { FontSizeSelector } from "../components/molecules/fontSizeSelector";
 import { ThemeToggler } from "../components/molecules/themeToggler";
+import { ChangePassword } from "../components/organisms/changePassword";
+import { ChangeUsername } from "../components/organisms/changeUsername";
+import { TemplateMobileSettings } from "../components/templates/templateMobileSettings";
 import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
 import { useDarkMode } from "../Hooks/useDarkMode";
 import { useFontSizeSelector } from "../Hooks/useFontSizeSelector";
@@ -16,9 +20,31 @@ const Settings = () => {
   const [fontSize, fontController] = useFontSizeSelector();
   const isDesktop = useMediaQuery(device.tablet);
 
+  const [isChangePassword, setChangePassword] = useState(false);
+  const [isChangeUsername, setChangeUsername] = useState(false);
+
   const onClickHandler = () => {
     console.log("click");
   };
+
+  if (isChangePassword)
+    return (
+      <TemplateMobileSettings
+        title="Zmiana hasła"
+        backToSettings={setChangePassword}
+      >
+        <ChangePassword />
+      </TemplateMobileSettings>
+    );
+  if (isChangeUsername)
+    return (
+      <TemplateMobileSettings
+        title="Zmień Nazwe użytkownika"
+        backToSettings={setChangeUsername}
+      >
+        <ChangeUsername />
+      </TemplateMobileSettings>
+    );
 
   return (
     <TemplateWithSidebar>
@@ -29,10 +55,10 @@ const Settings = () => {
             <CardHeading>Konto</CardHeading>
             <CardDesc>Personalne informacje</CardDesc>
 
-            <CardField onClick={onClickHandler}>
-              Zmiana konta użytkownika <IconKeyboardArrowRight />
+            <CardField onClick={() => setChangeUsername(true)}>
+              Zmiana nazwy użytkownika <IconKeyboardArrowRight />
             </CardField>
-            <CardField onClick={onClickHandler}>
+            <CardField onClick={() => setChangePassword(true)}>
               Zmiana hasła <IconKeyboardArrowRight />
             </CardField>
             <CardField onClick={onClickHandler}>
@@ -51,8 +77,12 @@ const Settings = () => {
             Wybierz rodzaj powiadomień, które chcesz otrzymywać
           </CardDesc>
 
-          <CardField>sprzedanych pliki</CardField>
-          <CardField>otrzymane opinie</CardField>
+          <CardField>
+            sprzedanych pliki <IconKeyboardArrowRight />
+          </CardField>
+          <CardField>
+            otrzymane opinie <IconKeyboardArrowRight />
+          </CardField>
         </CardContainer>
 
         <CardContainer height="300px" width="450px">
