@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { IconKeyboardArrowRight } from "../../public/icons/iconKeyboardArrowRight";
+import { device } from "../../Styles/breakpoints";
 import { PageHeading } from "../atoms/pageHeading";
 import { TemplateWithSidebar } from "./TemplateWithSidebar";
 
@@ -26,6 +27,10 @@ const HeaderContainer = styled.div`
 
   > h3 {
     font-size: ${({ theme }) => theme.fonts.fontSize * 1.2}rem;
+  }
+
+  @media ${device.tablet} {
+    width: 300px;
   }
 `;
 

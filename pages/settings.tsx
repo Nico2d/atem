@@ -27,7 +27,7 @@ type FormType = {
 const Settings = () => {
   const [theme, themeToggler] = useDarkMode();
   const [fontSize, fontController] = useFontSizeSelector();
-  const isDesktop = useMediaQuery(device.tablet);
+  const isDesktop = useMediaQuery(device.laptopM);
   const [isClose, setIsClose] = useState<FormType>(null);
 
   const formsArray: FormType[] = [
@@ -53,20 +53,20 @@ const Settings = () => {
   return (
     <TemplateWithSidebar>
       <PageHeading title="Ustawienia" />
-      <CardContainer height="300px" width="932px">
+      <CardContainer height="300px" width={!isDesktop ? "450px" : "932px"}>
         <AccoutSection>
           <div>
             <CardHeading>Konto</CardHeading>
             <CardDesc>Personalne informacje</CardDesc>
 
             <CardField onClick={() => setIsClose(formsArray[0])}>
-              {formsArray[0].name} <IconKeyboardArrowRight />
+              {formsArray[0].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
             <CardField onClick={() => setIsClose(formsArray[1])}>
-              {formsArray[1].name} <IconKeyboardArrowRight />
+              {formsArray[1].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
             <CardField onClick={() => setIsClose(formsArray[2])}>
-              {formsArray[2].name} <IconKeyboardArrowRight />
+              {formsArray[2].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
 
             <DeleteAccount onClick={() => setIsClose(formsArray[3])}>
@@ -85,10 +85,10 @@ const Settings = () => {
           </CardDesc>
 
           <CardField onClick={() => setIsClose(formsArray[4])}>
-            {formsArray[4].name} <IconKeyboardArrowRight />
+            {formsArray[4].name} {!isDesktop && <IconKeyboardArrowRight />}
           </CardField>
           <CardField onClick={() => setIsClose(formsArray[5])}>
-            {formsArray[5].name} <IconKeyboardArrowRight />
+            {formsArray[5].name} {!isDesktop && <IconKeyboardArrowRight />}
           </CardField>
         </CardContainer>
 
@@ -148,7 +148,7 @@ const CardWrapper = styled.div`
   display: flex;
   flex-flow: column;
 
-  @media ${device.laptop} {
+  @media ${device.laptopM} {
     flex-flow: row;
   }
 `;
@@ -161,7 +161,7 @@ const AccoutSection = styled.div`
   height: 100%;
   flex-flow: column;
 
-  @media ${device.tablet} {
+  @media ${device.laptopM} {
     flex-flow: row;
 
     ::after {

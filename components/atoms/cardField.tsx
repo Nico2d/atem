@@ -6,9 +6,10 @@ export const CardField = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  font-weight: 400;
 
   > svg {
-    fill: ${({ theme }) => theme.colors.white};
+    fill: ${({ theme }) => theme.colors.fontColor};
     float: right;
   }
 `;
