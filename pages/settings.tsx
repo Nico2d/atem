@@ -39,7 +39,7 @@ const Settings = () => {
     { name: "Otrzymane opinie", form: <NotificationForm /> },
   ];
 
-  if (isClose) {
+  if (isClose && !isDesktop) {
     return (
       <TemplateMobileSettings
         title={isClose.name}
@@ -55,7 +55,7 @@ const Settings = () => {
       <PageHeading title="Ustawienia" />
       <CardContainer height="300px" width={!isDesktop ? "450px" : "932px"}>
         <AccoutSection>
-          <div>
+          <div style={{ flex: "50%" }}>
             <CardHeading>Konto</CardHeading>
             <CardDesc>Personalne informacje</CardDesc>
 
@@ -74,7 +74,7 @@ const Settings = () => {
             </DeleteAccount>
           </div>
 
-          {isDesktop && <div>Druga sekcja</div>}
+          {isDesktop && <StyledScene>{isClose && isClose.form}</StyledScene>}
         </AccoutSection>
       </CardContainer>
       <CardWrapper>
@@ -126,6 +126,15 @@ const Settings = () => {
 };
 
 export default Settings;
+
+const StyledScene = styled.div`
+  /* background: rgba(255, 0, 0, 0.6); */
+  flex: 50%;
+
+  div {
+    margin-bottom: 1rem;
+  }
+`;
 
 const CardHeading = styled.h3`
   font-size: ${({ theme }) => theme.fonts.fontSize * 1.2}rem;

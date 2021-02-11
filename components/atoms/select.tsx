@@ -40,9 +40,10 @@ export const Select: React.FC<SelectTypes> = ({
         </SelectedValue>
 
         <Options isHidden={isHidden}>
-          {optionList.map((item) => {
+          {optionList.map((item, index) => {
             return (
               <li
+                key={index}
                 value={item.value}
                 onClick={() => {
                   selectOption(item);

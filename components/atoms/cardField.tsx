@@ -7,6 +7,7 @@ export const CardField = styled.div`
   justify-content: space-between;
   width: 100%;
   font-weight: 400;
+  cursor: pointer;
 
   > svg {
     fill: ${({ theme }) => theme.colors.fontColor};
