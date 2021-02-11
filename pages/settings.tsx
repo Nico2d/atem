@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { CardContainer } from "../components/atoms/cardContainer";
+import { CardField } from "../components/atoms/cardField";
 import { PageHeading } from "../components/atoms/pageHeading";
 import { Select } from "../components/atoms/select";
 import { FontSizeSelector } from "../components/molecules/fontSizeSelector";
@@ -9,6 +10,7 @@ import { ChangeDefaultSettingsForm } from "../components/organisms/changeDefault
 import { ChangePasswordForm } from "../components/organisms/changePasswordForm";
 import { ChangeUsernameForm } from "../components/organisms/changeUsernameForm";
 import { DeleteAccountForm } from "../components/organisms/deleteAccountForm";
+import { NotificationForm } from "../components/organisms/notificationForm";
 import { TemplateMobileSettings } from "../components/templates/templateMobileSettings";
 import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
 import { useDarkMode } from "../Hooks/useDarkMode";
@@ -30,9 +32,11 @@ const Settings = () => {
 
   const formsArray: FormType[] = [
     { name: "Zmiena hasła", form: <ChangePasswordForm /> },
-    { name: "Zmień Nazwe użytkownika", form: <ChangeUsernameForm /> },
+    { name: "Zmień nazwe użytkownika", form: <ChangeUsernameForm /> },
     { name: "Domyślne ustawienia", form: <ChangeDefaultSettingsForm /> },
     { name: "Usuń konto", form: <DeleteAccountForm /> },
+    { name: "Sprzedane pliki", form: <NotificationForm /> },
+    { name: "Otrzymane opinie", form: <NotificationForm /> },
   ];
 
   if (isClose) {
@@ -80,11 +84,11 @@ const Settings = () => {
             Wybierz rodzaj powiadomień, które chcesz otrzymywać
           </CardDesc>
 
-          <CardField>
-            sprzedanych pliki <IconKeyboardArrowRight />
+          <CardField onClick={() => setIsClose(formsArray[4])}>
+            {formsArray[4].name} <IconKeyboardArrowRight />
           </CardField>
-          <CardField>
-            otrzymane opinie <IconKeyboardArrowRight />
+          <CardField onClick={() => setIsClose(formsArray[5])}>
+            {formsArray[5].name} <IconKeyboardArrowRight />
           </CardField>
         </CardContainer>
 
@@ -131,18 +135,6 @@ const CardHeading = styled.h3`
 const CardDesc = styled.p`
   font-size: ${({ theme }) => theme.fonts.fontSize * 0.8}rem;
   margin: 0 0 2rem;
-`;
-
-const CardField = styled.div`
-  font-size: ${({ theme }) => theme.fonts.fontSize * 0.9}rem;
-  margin-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-
-  > svg {
-    fill: ${({ theme }) => theme.colors.white};
-    float: right;
-  }
 `;
 
 const DeleteAccount = styled(CardField)`
