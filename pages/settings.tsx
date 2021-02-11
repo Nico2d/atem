@@ -50,6 +50,7 @@ const Settings = () => {
     );
   }
 
+  console.log(isClose.name == formsArray[2].name);
   return (
     <TemplateWithSidebar>
       <PageHeading title="Ustawienia" />
@@ -59,17 +60,29 @@ const Settings = () => {
             <CardHeading>Konto</CardHeading>
             <CardDesc>Personalne informacje</CardDesc>
 
-            <CardField onClick={() => setIsClose(formsArray[0])}>
+            <CardField
+              onClick={() => setIsClose(formsArray[0])}
+              isActive={isClose.name == formsArray[0].name}
+            >
               {formsArray[0].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
-            <CardField onClick={() => setIsClose(formsArray[1])}>
+            <CardField
+              onClick={() => setIsClose(formsArray[1])}
+              isActive={isClose.name == formsArray[1].name}
+            >
               {formsArray[1].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
-            <CardField onClick={() => setIsClose(formsArray[2])}>
+            <CardField
+              onClick={() => setIsClose(formsArray[2])}
+              isActive={isClose.name == formsArray[2].name}
+            >
               {formsArray[2].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
 
-            <DeleteAccount onClick={() => setIsClose(formsArray[3])}>
+            <DeleteAccount
+              onClick={() => setIsClose(formsArray[3])}
+              isActive={isClose.name == formsArray[3].name}
+            >
               {formsArray[3].name}
             </DeleteAccount>
           </div>
@@ -128,11 +141,14 @@ const Settings = () => {
 export default Settings;
 
 const StyledScene = styled.div`
-  /* background: rgba(255, 0, 0, 0.6); */
   flex: 50%;
 
   div {
     margin-bottom: 1rem;
+  }
+
+  button {
+    margin-top: 1rem;
   }
 `;
 
@@ -148,7 +164,6 @@ const CardDesc = styled.p`
 
 const DeleteAccount = styled(CardField)`
   color: ${({ theme }) => theme.colors.red};
-  font-weight: 400;
   position: absolute;
   bottom: 0;
 `;
