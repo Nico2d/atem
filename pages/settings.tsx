@@ -1,3 +1,4 @@
+import { type } from "os";
 import { useState } from "react";
 import styled from "styled-components";
 import { CardContainer } from "../components/atoms/cardContainer";
@@ -5,9 +6,9 @@ import { PageHeading } from "../components/atoms/pageHeading";
 import { Select } from "../components/atoms/select";
 import { FontSizeSelector } from "../components/molecules/fontSizeSelector";
 import { ThemeToggler } from "../components/molecules/themeToggler";
-import { ChangeDefaultSettings } from "../components/organisms/changeDefaultSettings";
-import { ChangePassword } from "../components/organisms/changePassword";
-import { ChangeUsername } from "../components/organisms/changeUsername";
+import { ChangeDefaultSettingsForm } from "../components/organisms/changeDefaultSettingsForm";
+import { ChangePasswordForm } from "../components/organisms/changePasswordForm";
+import { ChangeUsernameForm } from "../components/organisms/changeUsernameForm";
 import { TemplateMobileSettings } from "../components/templates/templateMobileSettings";
 import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
 import { useDarkMode } from "../Hooks/useDarkMode";
@@ -16,48 +17,34 @@ import { useMediaQuery } from "../Hooks/useMediaQuery";
 import { IconKeyboardArrowRight } from "../public/icons/iconKeyboardArrowRight";
 import { device } from "../Styles/breakpoints";
 
+type FormType = {
+  name: string;
+  form: JSX.Element;
+};
+
 const Settings = () => {
   const [theme, themeToggler] = useDarkMode();
   const [fontSize, fontController] = useFontSizeSelector();
   const isDesktop = useMediaQuery(device.tablet);
+  const [isClose, setIsClose] = useState<FormType>(null);
 
-  const [isChangePassword, setChangePassword] = useState(false);
-  const [isChangeUsername, setChangeUsername] = useState(false);
-  const [isDefaultSettings, setDefaultSettings] = useState(false);
+  const formsArray: FormType[] = [
+    { name: "Zmiena hasła", form: <ChangePasswordForm /> },
+    { name: "Zmień Nazwe użytkownika", form: <ChangeUsernameForm /> },
+    { name: "Domyślne ustawienia", form: <ChangeDefaultSettingsForm /> },
+    { name: "Usuń konto", form: <ChangeDefaultSettingsForm /> },
+  ];
 
-  const onClickHandler = () => {
-    console.log("click");
-  };
-
-  if (isChangePassword)
+  if (isClose) {
     return (
       <TemplateMobileSettings
-        title="Zmiana hasła"
-        backToSettings={setChangePassword}
+        title={isClose.name}
+        backToSettings={() => setIsClose(null)}
       >
-        <ChangePassword />
+        {isClose.form}
       </TemplateMobileSettings>
     );
-
-  if (isChangeUsername)
-    return (
-      <TemplateMobileSettings
-        title="Zmień Nazwe użytkownika"
-        backToSettings={setChangeUsername}
-      >
-        <ChangeUsername />
-      </TemplateMobileSettings>
-    );
-
-  if (isDefaultSettings)
-    return (
-      <TemplateMobileSettings
-        title="Domyślne ustawienia"
-        backToSettings={setDefaultSettings}
-      >
-        <ChangeDefaultSettings />
-      </TemplateMobileSettings>
-    );
+  }
 
   return (
     <TemplateWithSidebar>
@@ -68,16 +55,19 @@ const Settings = () => {
             <CardHeading>Konto</CardHeading>
             <CardDesc>Personalne informacje</CardDesc>
 
-            <CardField onClick={() => setChangeUsername(true)}>
-              Zmiana nazwy użytkownika <IconKeyboardArrowRight />
+            <CardField onClick={() => setIsClose(formsArray[0])}>
+              {formsArray[0].name} <IconKeyboardArrowRight />
             </CardField>
-            <CardField onClick={() => setChangePassword(true)}>
-              Zmiana hasła <IconKeyboardArrowRight />
+            <CardField onClick={() => setIsClose(formsArray[1])}>
+              {formsArray[1].name} <IconKeyboardArrowRight />
             </CardField>
-            <CardField onClick={() => setDefaultSettings(true)}>
-              Domyślne ustawienia <IconKeyboardArrowRight />
+            <CardField onClick={() => setIsClose(formsArray[2])}>
+              {formsArray[2].name} <IconKeyboardArrowRight />
             </CardField>
-            <DeleteAccount onClick={onClickHandler}>Usuń konto</DeleteAccount>
+
+            <DeleteAccount onClick={() => setIsClose(formsArray[3])}>
+              {formsArray[3].name}
+            </DeleteAccount>
           </div>
 
           {isDesktop && <div>Druga sekcja</div>}
