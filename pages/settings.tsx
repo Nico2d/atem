@@ -1,4 +1,3 @@
-import { type } from "os";
 import { useState } from "react";
 import styled from "styled-components";
 import { CardContainer } from "../components/atoms/cardContainer";
@@ -9,6 +8,7 @@ import { ThemeToggler } from "../components/molecules/themeToggler";
 import { ChangeDefaultSettingsForm } from "../components/organisms/changeDefaultSettingsForm";
 import { ChangePasswordForm } from "../components/organisms/changePasswordForm";
 import { ChangeUsernameForm } from "../components/organisms/changeUsernameForm";
+import { DeleteAccountForm } from "../components/organisms/deleteAccountForm";
 import { TemplateMobileSettings } from "../components/templates/templateMobileSettings";
 import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
 import { useDarkMode } from "../Hooks/useDarkMode";
@@ -32,7 +32,7 @@ const Settings = () => {
     { name: "Zmiena hasła", form: <ChangePasswordForm /> },
     { name: "Zmień Nazwe użytkownika", form: <ChangeUsernameForm /> },
     { name: "Domyślne ustawienia", form: <ChangeDefaultSettingsForm /> },
-    { name: "Usuń konto", form: <ChangeDefaultSettingsForm /> },
+    { name: "Usuń konto", form: <DeleteAccountForm /> },
   ];
 
   if (isClose) {
