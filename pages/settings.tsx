@@ -5,6 +5,7 @@ import { PageHeading } from "../components/atoms/pageHeading";
 import { Select } from "../components/atoms/select";
 import { FontSizeSelector } from "../components/molecules/fontSizeSelector";
 import { ThemeToggler } from "../components/molecules/themeToggler";
+import { ChangeDefaultSettings } from "../components/organisms/changeDefaultSettings";
 import { ChangePassword } from "../components/organisms/changePassword";
 import { ChangeUsername } from "../components/organisms/changeUsername";
 import { TemplateMobileSettings } from "../components/templates/templateMobileSettings";
@@ -22,6 +23,7 @@ const Settings = () => {
 
   const [isChangePassword, setChangePassword] = useState(false);
   const [isChangeUsername, setChangeUsername] = useState(false);
+  const [isDefaultSettings, setDefaultSettings] = useState(false);
 
   const onClickHandler = () => {
     console.log("click");
@@ -36,6 +38,7 @@ const Settings = () => {
         <ChangePassword />
       </TemplateMobileSettings>
     );
+
   if (isChangeUsername)
     return (
       <TemplateMobileSettings
@@ -43,6 +46,16 @@ const Settings = () => {
         backToSettings={setChangeUsername}
       >
         <ChangeUsername />
+      </TemplateMobileSettings>
+    );
+
+  if (isDefaultSettings)
+    return (
+      <TemplateMobileSettings
+        title="Domyślne ustawienia"
+        backToSettings={setDefaultSettings}
+      >
+        <ChangeDefaultSettings />
       </TemplateMobileSettings>
     );
 
@@ -61,7 +74,7 @@ const Settings = () => {
             <CardField onClick={() => setChangePassword(true)}>
               Zmiana hasła <IconKeyboardArrowRight />
             </CardField>
-            <CardField onClick={onClickHandler}>
+            <CardField onClick={() => setDefaultSettings(true)}>
               Domyślne ustawienia <IconKeyboardArrowRight />
             </CardField>
             <DeleteAccount onClick={onClickHandler}>Usuń konto</DeleteAccount>
