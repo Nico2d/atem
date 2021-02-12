@@ -63,7 +63,7 @@ const Container = styled.div`
   position: relative;
   cursor: pointer;
   position: relative;
-  width: 110px;
+  width: 130px;
 `;
 
 const SelectedValue = styled.p`

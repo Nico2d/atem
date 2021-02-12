@@ -96,12 +96,20 @@ const Settings = () => {
             Wybierz rodzaj powiadomień, które chcesz otrzymywać
           </CardDesc>
 
-          <CardField onClick={() => setIsClose(formsArray[4])}>
-            {formsArray[4].name} {!isDesktop && <IconKeyboardArrowRight />}
-          </CardField>
-          <CardField onClick={() => setIsClose(formsArray[5])}>
-            {formsArray[5].name} {!isDesktop && <IconKeyboardArrowRight />}
-          </CardField>
+          <StyledCollapse
+            onClick={() =>
+              !isDesktop ? setIsClose(formsArray[4]) : console.log("rozwiń")
+            }
+          >
+            {formsArray[4].name} <IconKeyboardArrowRight />
+          </StyledCollapse>
+          <StyledCollapse
+            onClick={() =>
+              !isDesktop ? setIsClose(formsArray[5]) : console.log("rozwiń")
+            }
+          >
+            {formsArray[5].name} <IconKeyboardArrowRight />
+          </StyledCollapse>
         </CardContainer>
 
         <CardContainer height="300px" width="450px">
@@ -138,6 +146,14 @@ const Settings = () => {
 };
 
 export default Settings;
+
+const StyledCollapse = styled(CardField)`
+  @media ${device.laptopM} {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+`;
 
 const StyledScene = styled.div`
   flex: 50%;
