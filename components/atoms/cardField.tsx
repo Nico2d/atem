@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../Styles/breakpoints";
 
 export const CardField = styled.div<{ isActive?: boolean }>`
   font-size: ${({ theme, isActive }) =>
@@ -13,5 +14,9 @@ export const CardField = styled.div<{ isActive?: boolean }>`
   > svg {
     fill: ${({ theme }) => theme.colors.fontColor};
     float: right;
+  }
+
+  @media ${device.laptopM} {
+    font-size: ${({ theme }) => theme.fonts.fontSize * 1.1}rem;
   }
 `;

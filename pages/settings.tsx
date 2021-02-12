@@ -50,7 +50,6 @@ const Settings = () => {
     );
   }
 
-  console.log(isClose.name == formsArray[2].name);
   return (
     <TemplateWithSidebar>
       <PageHeading title="Ustawienia" />
@@ -62,26 +61,26 @@ const Settings = () => {
 
             <CardField
               onClick={() => setIsClose(formsArray[0])}
-              isActive={isClose.name == formsArray[0].name}
+              isActive={isClose && isClose.name == formsArray[0].name}
             >
               {formsArray[0].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
             <CardField
               onClick={() => setIsClose(formsArray[1])}
-              isActive={isClose.name == formsArray[1].name}
+              isActive={isClose && isClose.name == formsArray[1].name}
             >
               {formsArray[1].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
             <CardField
               onClick={() => setIsClose(formsArray[2])}
-              isActive={isClose.name == formsArray[2].name}
+              isActive={isClose && isClose.name == formsArray[2].name}
             >
               {formsArray[2].name} {!isDesktop && <IconKeyboardArrowRight />}
             </CardField>
 
             <DeleteAccount
               onClick={() => setIsClose(formsArray[3])}
-              isActive={isClose.name == formsArray[3].name}
+              isActive={isClose && isClose.name == formsArray[3].name}
             >
               {formsArray[3].name}
             </DeleteAccount>
@@ -155,6 +154,10 @@ const StyledScene = styled.div`
 const CardHeading = styled.h3`
   font-size: ${({ theme }) => theme.fonts.fontSize * 1.2}rem;
   font-weight: 400;
+
+  @media ${device.laptopM} {
+    font-size: ${({ theme }) => theme.fonts.fontSize * 1.5}rem;
+  }
 `;
 
 const CardDesc = styled.p`
@@ -166,6 +169,10 @@ const DeleteAccount = styled(CardField)`
   color: ${({ theme }) => theme.colors.red};
   position: absolute;
   bottom: 0;
+
+  @media ${device.laptopM} {
+    font-size: ${({ theme }) => theme.fonts.fontSize * 1.1}rem;
+  }
 `;
 
 const CardWrapper = styled.div`

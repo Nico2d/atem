@@ -33,8 +33,8 @@ export const Select: React.FC<SelectTypes> = ({
   };
 
   return (
-    <Container>
-      <OutsideMethod method={hideOptions} isActive={isHidden}>
+    <OutsideMethod method={hideOptions} isActive={isHidden}>
+      <Container>
         <SelectedValue onClick={hideOptions}>
           {value.name} <IconDropdown />
         </SelectedValue>
@@ -54,8 +54,8 @@ export const Select: React.FC<SelectTypes> = ({
             );
           })}
         </Options>
-      </OutsideMethod>
-    </Container>
+      </Container>
+    </OutsideMethod>
   );
 };
 
