@@ -23,8 +23,6 @@ export const NotificationForm = () => {
         typu push
         <Switch value={push} method={() => setPush(!push)} />
       </CardField>
-
-      <Button text="Zapisz" styleType="secondary" />
     </StyledConatiner>
   );
 };

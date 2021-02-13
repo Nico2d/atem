@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { CardContainer } from "../components/atoms/cardContainer";
 import { CardField } from "../components/atoms/cardField";
+import { CollapseContainer } from "../components/atoms/collapseContainer";
 import { PageHeading } from "../components/atoms/pageHeading";
 import { Select } from "../components/atoms/select";
 import { FontSizeSelector } from "../components/molecules/fontSizeSelector";
@@ -38,6 +39,9 @@ const Settings = () => {
     { name: "Sprzedane pliki", form: <NotificationForm /> },
     { name: "Otrzymane opinie", form: <NotificationForm /> },
   ];
+
+  const [notification1, setNotification1] = useState<boolean>(false);
+  const [notification2, setNotification2] = useState<boolean>(false);
 
   if (isClose && !isDesktop) {
     return (
@@ -96,20 +100,39 @@ const Settings = () => {
             Wybierz rodzaj powiadomień, które chcesz otrzymywać
           </CardDesc>
 
-          <StyledCollapse
-            onClick={() =>
-              !isDesktop ? setIsClose(formsArray[4]) : console.log("rozwiń")
-            }
-          >
-            {formsArray[4].name} <IconKeyboardArrowRight />
-          </StyledCollapse>
-          <StyledCollapse
-            onClick={() =>
-              !isDesktop ? setIsClose(formsArray[5]) : console.log("rozwiń")
-            }
-          >
-            {formsArray[5].name} <IconKeyboardArrowRight />
-          </StyledCollapse>
+          {isDesktop ? (
+            <CollapseContainer
+              value={notification1}
+              method={() => {
+                setNotification1(!notification1);
+                !notification1 && setNotification2(false);
+              }}
+              title={[formsArray[4].name, <IconKeyboardArrowRight />]}
+            >
+              {formsArray[4].form}
+            </CollapseContainer>
+          ) : (
+            <CardField onClick={() => setIsClose(formsArray[4])}>
+              {formsArray[4].name} <IconKeyboardArrowRight />
+            </CardField>
+          )}
+
+          {isDesktop ? (
+            <CollapseContainer
+              value={notification2}
+              method={() => {
+                setNotification2(!notification2);
+                !notification2 && setNotification1(false);
+              }}
+              title={[formsArray[5].name, <IconKeyboardArrowRight />]}
+            >
+              {formsArray[5].form}
+            </CollapseContainer>
+          ) : (
+            <CardField onClick={() => setIsClose(formsArray[5])}>
+              {formsArray[5].name} <IconKeyboardArrowRight />
+            </CardField>
+          )}
         </CardContainer>
 
         <CardContainer height="300px" width="450px">
@@ -146,14 +169,6 @@ const Settings = () => {
 };
 
 export default Settings;
-
-const StyledCollapse = styled(CardField)`
-  @media ${device.laptopM} {
-    svg {
-      transform: rotate(90deg);
-    }
-  }
-`;
 
 const StyledScene = styled.div`
   flex: 50%;
