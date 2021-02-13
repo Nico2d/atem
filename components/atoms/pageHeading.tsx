@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const PageHeading: React.FC<{ title: string }> = ({ title }) => {
+type PageHeadingType = {
+  title: string;
+};
+
+export const PageHeading: React.FC<PageHeadingType> = ({ title }) => {
   return <Heading>{title}</Heading>;
 };
 

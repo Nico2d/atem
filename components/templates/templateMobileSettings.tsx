@@ -5,7 +5,17 @@ import { device } from "../../Styles/breakpoints";
 import { PageHeading } from "../atoms/pageHeading";
 import { TemplateWithSidebar } from "./TemplateWithSidebar";
 
-export const TemplateMobileSettings = ({ title, children, backToSettings }) => {
+type TemplateMobileSettingsTypes = {
+  title: string;
+  children: JSX.Element;
+  backToSettings: (x: boolean) => void;
+};
+
+export const TemplateMobileSettings: React.FC<TemplateMobileSettingsTypes> = ({
+  title,
+  children,
+  backToSettings,
+}) => {
   return (
     <TemplateWithSidebar>
       <HeaderContainer>
@@ -44,7 +54,7 @@ const ReturnButton = styled.button`
     transform: scale(-1, 1) translateY(-50%);
     position: absolute;
     top: 50%;
-    fill: ${({ theme }) => theme.colors.white};
+    fill: ${({ theme }) => theme.colors.fontColor};
     width: auto;
     height: 30px;
   }

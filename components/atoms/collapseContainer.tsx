@@ -3,7 +3,19 @@ import styled from "styled-components";
 import { device } from "../../Styles/breakpoints";
 import { CardField } from "./card/cardField";
 
-export const CollapseContainer = ({ children, title, value, method }) => {
+type ColapseType = {
+  children: JSX.Element;
+  title: Array<string | JSX.Element>;
+  value: boolean;
+  method: () => void;
+};
+
+export const CollapseContainer: React.FC<ColapseType> = ({
+  children,
+  title,
+  value,
+  method,
+}) => {
   return (
     <>
       <StyledCollapse isActive={value} onClick={method}>

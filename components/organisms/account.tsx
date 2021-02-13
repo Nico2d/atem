@@ -13,11 +13,16 @@ import { ChangePasswordForm } from "../molecules/forms/changePasswordForm";
 import { ChangeUsernameForm } from "../molecules/forms/changeUsernameForm";
 import { DeleteAccountForm } from "../molecules/forms/deleteAccountForm";
 
-export const Account = ({ isClose, setIsClose }) => {
+type AccountTypes = {
+  setIsClose: (value: FormType) => void;
+  isClose: FormType;
+};
+
+export const Account: React.FC<AccountTypes> = ({ isClose, setIsClose }) => {
   const isDesktop = useMediaQuery(device.laptopM);
 
   const formsArray: FormType[] = [
-    { name: "Zmiena hasła", form: <ChangePasswordForm /> },
+    { name: "Zmiana hasła", form: <ChangePasswordForm /> },
     { name: "Zmień nazwe użytkownika", form: <ChangeUsernameForm /> },
     { name: "Domyślne ustawienia", form: <ChangeDefaultSettingsForm /> },
     { name: "Usuń konto", form: <DeleteAccountForm /> },
@@ -28,7 +33,7 @@ export const Account = ({ isClose, setIsClose }) => {
       <AccoutSection>
         <div style={{ flex: "50%" }}>
           <CardHeading>Konto</CardHeading>
-          <CardDesc>Personalne informacje</CardDesc>
+          <CardDesc>Informacje personalne</CardDesc>
 
           {formsArray.map((item, index) => {
             return (

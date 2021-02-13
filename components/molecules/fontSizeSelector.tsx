@@ -17,11 +17,17 @@ export const FontSizeSelector = ({ fontSize, fontController }) => {
     },
   ];
 
+  const loadValue = () => {
+    return Array.filter((item) => {
+      return item.value === fontSize;
+    });
+  };
+
   return (
     <Select
       optionList={Array}
       method={fontController}
-      defaultValue={Array[1]}
+      defaultValue={loadValue()[0]}
     />
   );
 };

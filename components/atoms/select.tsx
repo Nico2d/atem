@@ -5,12 +5,12 @@ import { OutsideMethod } from "./OutsideMethod";
 
 interface Option {
   name: string;
-  value: any;
+  value: string | number;
 }
 
 type SelectTypes = {
   optionList: Array<Option>;
-  method: (e: any) => void;
+  method: (e: string | number) => void;
   defaultValue?: Option;
 };
 

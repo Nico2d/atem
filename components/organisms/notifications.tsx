@@ -10,12 +10,16 @@ import { CardHeading } from "../atoms/card/cardHeading";
 import { CollapseContainer } from "../atoms/collapseContainer";
 import { NotificationForm } from "../molecules/forms/notificationForm";
 
-export const Notification = ({ setIsClose }) => {
+type NotificationTypes = {
+  setIsClose: (value: FormType) => void;
+};
+
+export const Notification: React.FC<NotificationTypes> = ({ setIsClose }) => {
   const isDesktop = useMediaQuery(device.laptopM);
   const [notification1, setNotification1] = useState<boolean>(false);
   const [notification2, setNotification2] = useState<boolean>(false);
 
-  const formsArray: FormType[] = [
+  const formsArray: Array<FormType> = [
     { name: "Sprzedane pliki", form: <NotificationForm /> },
     { name: "Otrzymane opinie", form: <NotificationForm /> },
   ];
