@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../Styles/breakpoints";
+import { device } from "../../../Styles/breakpoints";
 
 type CardContainer = {
   height?: string;
@@ -18,7 +18,7 @@ export const CardContainer: React.FC<CardContainer> = ({
   );
 };
 
-const StyledDiv = styled.div<CardContainer>`
+const StyledDiv = styled.section<CardContainer>`
   background: ${({ theme }) => theme.colors.cardColor};
   padding: 1rem;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));

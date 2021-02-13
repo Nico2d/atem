@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../Styles/breakpoints";
+import { device } from "../../../Styles/breakpoints";
 
 export const CardField = styled.div<{ isActive?: boolean }>`
   font-size: ${({ theme, isActive }) =>

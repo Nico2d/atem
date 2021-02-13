@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { SignInForm } from "../../../Types";
-import { CardField } from "../../atoms/cardField";
+import { CardField } from "../../atoms/card/cardField";
 import { Switch } from "../../atoms/swtich";
 
 export const NotificationForm = () => {

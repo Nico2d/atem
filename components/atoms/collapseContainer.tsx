@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { device } from "../../Styles/breakpoints";
-import { CardField } from "./cardField";
+import { CardField } from "./card/cardField";
 
 export const CollapseContainer = ({ children, title, value, method }) => {
   return (

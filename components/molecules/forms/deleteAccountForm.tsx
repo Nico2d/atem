@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { SignInForm } from "../../../Types";
 import { inputTypes } from "../../../utils/enums";
 import { Button } from "../../atoms/button";
-import { CardField } from "../../atoms/cardField";
+import { CardField } from "../../atoms/card/cardField";
 import { Switch } from "../../atoms/swtich";
 import { InputField } from "../inputField";
 
