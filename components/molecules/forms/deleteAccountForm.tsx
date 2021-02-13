@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { SignInForm } from "../../Types";
-import { inputTypes } from "../../utils/enums";
-import { Button } from "../atoms/button";
-import { CardField } from "../atoms/cardField";
-import { Switch } from "../atoms/swtich";
-import { InputField } from "../molecules/inputField";
+import { SignInForm } from "../../../Types";
+import { inputTypes } from "../../../utils/enums";
+import { Button } from "../../atoms/button";
+import { CardField } from "../../atoms/cardField";
+import { Switch } from "../../atoms/swtich";
+import { InputField } from "../inputField";
 
 export const DeleteAccountForm = () => {
   const { register, handleSubmit } = useForm<SignInForm>();

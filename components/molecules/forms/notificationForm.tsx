@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { SignInForm } from "../../Types";
-import { Button } from "../atoms/button";
-import { CardField } from "../atoms/cardField";
-import { Switch } from "../atoms/swtich";
+import { SignInForm } from "../../../Types";
+import { CardField } from "../../atoms/cardField";
+import { Switch } from "../../atoms/swtich";
 
 export const NotificationForm = () => {
   const { register, handleSubmit } = useForm<SignInForm>();

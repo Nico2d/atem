@@ -1,10 +1,10 @@
+import React from "react";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
-import { SignInForm } from "../../Types";
-import { inputTypes } from "../../utils/enums";
-import { Button } from "../atoms/button";
-import { StyledForm } from "../atoms/styledForm";
-import { InputField } from "../molecules/inputField";
+import { SignInForm } from "../../../Types";
+import { inputTypes } from "../../../utils/enums";
+import { Button } from "../../atoms/button";
+import { StyledForm } from "../../atoms/styledForm";
+import { InputField } from "../inputField";
 
 export const ChangePasswordForm = () => {
   const { register, handleSubmit } = useForm<SignInForm>();

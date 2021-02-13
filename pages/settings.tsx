@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { CardContainer } from "../components/atoms/cardContainer";
 import { CardField } from "../components/atoms/cardField";
@@ -7,11 +7,7 @@ import { PageHeading } from "../components/atoms/pageHeading";
 import { Select } from "../components/atoms/select";
 import { FontSizeSelector } from "../components/molecules/fontSizeSelector";
 import { ThemeToggler } from "../components/molecules/themeToggler";
-import { ChangeDefaultSettingsForm } from "../components/organisms/changeDefaultSettingsForm";
-import { ChangePasswordForm } from "../components/organisms/changePasswordForm";
-import { ChangeUsernameForm } from "../components/organisms/changeUsernameForm";
-import { DeleteAccountForm } from "../components/organisms/deleteAccountForm";
-import { NotificationForm } from "../components/organisms/notificationForm";
+import { ChangeDefaultSettingsForm } from "../components/molecules/forms/changeDefaultSettingsForm";
 import { TemplateMobileSettings } from "../components/templates/templateMobileSettings";
 import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
 import { useDarkMode } from "../Hooks/useDarkMode";
@@ -19,6 +15,10 @@ import { useFontSizeSelector } from "../Hooks/useFontSizeSelector";
 import { useMediaQuery } from "../Hooks/useMediaQuery";
 import { IconKeyboardArrowRight } from "../public/icons/iconKeyboardArrowRight";
 import { device } from "../Styles/breakpoints";
+import { ChangePasswordForm } from "../components/molecules/forms/changePasswordForm";
+import { ChangeUsernameForm } from "../components/molecules/forms/changeUsernameForm";
+import { DeleteAccountForm } from "../components/molecules/forms/deleteAccountForm";
+import { NotificationForm } from "../components/molecules/forms/notificationForm";
 
 type FormType = {
   name: string;
