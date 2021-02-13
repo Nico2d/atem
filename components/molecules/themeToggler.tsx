@@ -7,6 +7,9 @@ type ThemeToggler = {
   toggleTheme: () => void;
 };
 
-export const ThemeToggler = ({ theme, toggleTheme }) => {
+export const ThemeToggler: React.FC<ThemeToggler> = ({
+  theme,
+  toggleTheme,
+}) => {
   return <Switch value={theme === ThemeMode.dark} method={toggleTheme} />;
 };
