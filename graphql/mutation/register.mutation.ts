@@ -16,9 +16,3 @@ export const registerMutation = gql`
     }
   }
 `;
-
-export const registerVariables = {
-  username: "",
-  password: "",
-  email: "",
-};
