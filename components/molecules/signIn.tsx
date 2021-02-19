@@ -8,12 +8,25 @@ import { SignInForm } from "../../Types";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
 import { ErrorMessage } from "@hookform/error-message";
 import { InputField } from "../molecules/inputField";
+import { sendRequest } from "../../graphql/sendRequest";
+import { registerMutation } from "../../graphql/mutation/register.mutation";
+import { meQuery } from "../../graphql/query/me.query";
+import { User } from "../../Types/User";
 
 export const SignIn = () => {
   const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
     mode: "onChange",
   });
-  const onSubmit = (data: SignInForm) => console.log(data);
+  const onSubmit = async (data: SignInForm) => {
+    const parameters = {
+      username: "bob",
+      password: "bob",
+      email: "bob",
+    };
+
+    const temp = await sendRequest<User>(registerMutation, parameters);
+    console.log(temp);
+  };
 
   return (
     <StyledSignIn>
