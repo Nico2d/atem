@@ -8,7 +8,7 @@ import { device } from "../Styles/breakpoints";
 import { Personalization } from "../components/organisms/personalization";
 import { Notification } from "../components/organisms/notifications";
 import { Account } from "../components/organisms/account";
-import { FormType } from "../Types/form";
+import { FormType } from "../Types/formType";
 
 const Settings = () => {
   const isDesktop = useMediaQuery(device.laptopM);
@@ -18,8 +18,7 @@ const Settings = () => {
     return (
       <TemplateMobileSettings
         title={isClose.name}
-        backToSettings={() => setIsClose(null)}
-      >
+        backToSettings={() => setIsClose(null)}>
         {isClose.form}
       </TemplateMobileSettings>
     );

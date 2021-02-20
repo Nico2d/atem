@@ -11,7 +11,7 @@ import { InputField } from "../molecules/inputField";
 import { sendRequest } from "../../graphql/sendRequest";
 import { registerMutation } from "../../graphql/mutation/register.mutation";
 import { meQuery } from "../../graphql/query/me.query";
-import { User } from "../../Types/User";
+import { UserDto } from "../../Types/user/UserDto";
 
 export const SignIn = () => {
   const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
@@ -24,7 +24,7 @@ export const SignIn = () => {
       email: "bob",
     };
 
-    const temp = await sendRequest<User>(registerMutation, parameters);
+    const temp = await sendRequest<UserDto>(registerMutation, parameters);
     console.log(temp);
   };
 

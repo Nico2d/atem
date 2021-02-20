@@ -1,6 +1,6 @@
 import { StringDecoder } from "string_decoder";
 
-export interface User {
+export interface UserDto {
   id: number;
   createdAt: string;
   updatedAt: string;
