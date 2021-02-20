@@ -1,3 +1,4 @@
+import { loginMutation } from "./../../graphql/mutation/login-mutation";
 import { AppThunk } from "../configureStore";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -10,10 +11,12 @@ import { UserDto } from "./../../Types/user/UserDto";
 
 //QUERIES
 import { meQuery } from "./../../graphql/query/me.query";
+import { SignInForm } from "../../Types";
 
 interface UserState {
   data: ResponseDto<UserDto>;
   loading: boolean;
+  signIn: boolean;
 }
 
 const initialState: UserState = {
@@ -28,6 +31,7 @@ const initialState: UserState = {
     errors: [],
   },
   loading: true,
+  signIn: false,
 };
 
 const user = createSlice({
@@ -44,10 +48,24 @@ const user = createSlice({
     getUserFail(state) {
       state.loading = false;
     },
+    userSignOut(state) {
+      state.signIn = false;
+    },
+    userSignIn(state) {
+      state.signIn = true;
+    },
+    userSignUp(state, action) {},
   },
 });
 
-export const { getUserStart, getUserSuccess, getUserFail } = user.actions;
+export const {
+  getUserStart,
+  getUserSuccess,
+  getUserFail,
+  userSignOut,
+  userSignIn,
+  userSignUp,
+} = user.actions;
 
 export default user.reducer;
 
@@ -59,4 +77,18 @@ export const fetchUser = (): AppThunk => async (dispatch) => {
   } catch (err) {
     dispatch(getUserFail());
   }
+};
+
+export const registerUser = (): AppThunk => async (dispatch) => {
+  try {
+  } catch {}
+};
+
+export const signInUser = (variables: SignInForm): AppThunk => async (
+  dispatch
+) => {
+  try {
+    const userRes = await sendRequest(loginMutation, variables);
+    if (userRes) dispatch(userSignIn());
+  } catch {}
 };

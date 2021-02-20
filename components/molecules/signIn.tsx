@@ -8,23 +8,19 @@ import { SignInForm } from "../../Types";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
 import { ErrorMessage } from "@hookform/error-message";
 import { InputField } from "../molecules/inputField";
-import { sendRequest } from "../../graphql/sendRequest";
-import { registerMutation } from "../../graphql/mutation/register.mutation";
-import { UserDto } from "../../Types/user/UserDto";
+import { useDispatch } from "react-redux";
+import { signInUser } from "../../store/slices/userSlice";
 
 export const SignIn = () => {
   const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
     mode: "onChange",
   });
-  const onSubmit = async (data: SignInForm) => {
-    const parameters = {
-      username: "bob",
-      password: "bob",
-      email: "bob",
-    };
 
-    const temp = await sendRequest<UserDto>(registerMutation, parameters);
-    console.log(temp);
+  const dispatch = useDispatch();
+
+  const onSubmit = async (data: SignInForm) => {
+    console.log(data);
+    dispatch(signInUser(data));
   };
 
   return (
