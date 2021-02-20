@@ -10,7 +10,6 @@ import { ErrorMessage } from "@hookform/error-message";
 import { InputField } from "../molecules/inputField";
 import { sendRequest } from "../../graphql/sendRequest";
 import { registerMutation } from "../../graphql/mutation/register.mutation";
-import { meQuery } from "../../graphql/query/me.query";
 import { UserDto } from "../../Types/user/UserDto";
 
 export const SignIn = () => {
