@@ -1,5 +1,3 @@
-import { StringDecoder } from "string_decoder";
-
 export interface UserDto {
   id: number;
   createdAt: string;
