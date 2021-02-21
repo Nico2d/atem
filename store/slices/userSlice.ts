@@ -1,3 +1,5 @@
+import { ErrorDto } from "./../../Types/ErrorDto";
+import { UserDto } from "./../../Types/user/UserDto";
 import { loginMutation } from "./../../graphql/mutation/login-mutation";
 import { AppThunk } from "../configureStore";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -13,22 +15,21 @@ import { meQuery } from "./../../graphql/query/me.query";
 import { SignInForm } from "../../Types";
 
 interface UserState {
-  data: UserResponseDto;
+  user: UserDto;
+  errors: ErrorDto[];
   loading: boolean;
   signIn: boolean;
 }
 
 const initialState: UserState = {
-  data: {
-    user: {
-      id: 0,
-      createdAt: "",
-      updatedAt: "",
-      email: "",
-      username: "",
-    },
-    errors: [],
+  user: {
+    id: 0,
+    createdAt: "",
+    updatedAt: "",
+    email: "",
+    username: "",
   },
+  errors: [],
   loading: true,
   signIn: false,
 };
@@ -41,7 +42,8 @@ const user = createSlice({
       state.loading = true;
     },
     getUserSuccess(state, action: PayloadAction<UserResponseDto>) {
-      state.data = action.payload;
+      state.user = action.payload.user as UserDto;
+      state.errors = action.payload.errors;
       state.loading = false;
     },
     getUserFail(state) {
@@ -52,8 +54,8 @@ const user = createSlice({
     },
     userSignIn(state, action: PayloadAction<UserResponseDto>) {
       state.signIn = true;
-      state.data.errors = action.payload.errors;
-      state.data.user = action.payload.user;
+      state.errors = action.payload.errors;
+      state.user = action.payload.user as UserDto;
     },
     userSignUp(state, action) {},
   },
