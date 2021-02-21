@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { SignUpForm } from "../../Types";
+import { ErrorDto, SignUpForm } from "../../Types";
 import { inputTypes } from "../../utils/enums";
 import { Button } from "../atoms/button";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
@@ -9,16 +9,24 @@ import { CheckboxField } from "./checkboxField";
 import { ErrorMessage } from "@hookform/error-message";
 import { device } from "../../Styles/breakpoints";
 import { InputField } from "./inputField";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../store/slices/userSlice";
+import { RootState } from "../../store/rootReducer";
 
 export const SignUp = () => {
   const { register, errors, handleSubmit, watch } = useForm<SignUpForm>({
     mode: "onChange",
   });
 
+  const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+
   const password = useRef({});
   password.current = watch("password", "");
 
-  const onSubmit = (data: SignUpForm) => console.log(data);
+  const onSubmit = (data: SignUpForm) => {
+    dispatch(registerUser(data));
+  };
 
   return (
     <StyledSignIn>
@@ -89,6 +97,10 @@ export const SignUp = () => {
         name="acceptedTermsOfService"
         render={({ message }) => <InputErrorMessage error={message} />}
       />
+      {user.errors.length > 0 &&
+        user.errors.map((error: ErrorDto) => (
+          <InputErrorMessage error={error.message} />
+        ))}
       <Button
         styleType="primary"
         text="Zarejestruj"
