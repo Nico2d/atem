@@ -23,14 +23,14 @@ export const SignUp = () => {
   return (
     <StyledSignIn>
       <InputField
-        name="login"
-        placeholder="Login"
+        name="username"
+        placeholder="Nazwa użytkownika"
         type={inputTypes.text}
-        register={register({ required: "Login jest wymagany" })}
+        register={register({ required: "Nazwa użytkownika jest wymagana" })}
       />
       <ErrorMessage
         errors={errors}
-        name="login"
+        name="username"
         render={({ message }) => <InputErrorMessage error={message} />}
       />
       <InputField
