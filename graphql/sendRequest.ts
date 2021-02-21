@@ -11,6 +11,7 @@ export const sendRequest = async <T extends unknown>(
   });
 
   const data = await graphQLClient.request<T>(schema, variables);
+  const keys = Object.keys(data);
 
-  return data;
+  return data[keys[0]];
 };

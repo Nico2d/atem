@@ -1,6 +1,5 @@
 import { ErrorDto } from "./ErrorDto";
 
-export interface ResponseDto<T extends unknown> {
+export interface ResponseDto {
   errors?: ErrorDto[];
-  res?: T;
 }

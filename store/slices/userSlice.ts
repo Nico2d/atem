@@ -6,22 +6,21 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { sendRequest } from "../../graphql/sendRequest";
 
 //TYPES
-import { ResponseDto } from "./../../Types/ResponseDto";
-import { UserDto } from "./../../Types/user/UserDto";
+import { UserResponseDto } from "../../Types/user/UserResponseDto";
 
 //QUERIES
 import { meQuery } from "./../../graphql/query/me.query";
 import { SignInForm } from "../../Types";
 
 interface UserState {
-  data: ResponseDto<UserDto>;
+  data: UserResponseDto;
   loading: boolean;
   signIn: boolean;
 }
 
 const initialState: UserState = {
   data: {
-    res: {
+    user: {
       id: 0,
       createdAt: "",
       updatedAt: "",
@@ -41,7 +40,7 @@ const user = createSlice({
     getUserStart(state) {
       state.loading = true;
     },
-    getUserSuccess(state, action: PayloadAction<ResponseDto<UserDto>>) {
+    getUserSuccess(state, action: PayloadAction<UserResponseDto>) {
       state.data = action.payload;
       state.loading = false;
     },
@@ -51,8 +50,10 @@ const user = createSlice({
     userSignOut(state) {
       state.signIn = false;
     },
-    userSignIn(state) {
+    userSignIn(state, action: PayloadAction<UserResponseDto>) {
       state.signIn = true;
+      state.data.errors = action.payload.errors;
+      state.data.user = action.payload.user;
     },
     userSignUp(state, action) {},
   },
@@ -72,7 +73,7 @@ export default user.reducer;
 export const fetchUser = (): AppThunk => async (dispatch) => {
   try {
     dispatch(getUserStart());
-    const user = await sendRequest<ResponseDto<UserDto>>(meQuery);
+    const user = await sendRequest<UserResponseDto>(meQuery);
     dispatch(getUserSuccess(user));
   } catch (err) {
     dispatch(getUserFail());
@@ -88,7 +89,10 @@ export const signInUser = (variables: SignInForm): AppThunk => async (
   dispatch
 ) => {
   try {
-    const userRes = await sendRequest(loginMutation, variables);
-    if (userRes) dispatch(userSignIn());
+    const userRes = await sendRequest<UserResponseDto>(
+      loginMutation,
+      variables
+    );
+    dispatch(userSignIn(userRes));
   } catch {}
 };
