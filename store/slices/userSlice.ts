@@ -1,3 +1,5 @@
+import { registerMutation } from "./../../graphql/mutation/register.mutation";
+import { SignUpForm } from "./../../Types/forms/SignUpForm";
 import { ErrorDto } from "./../../Types/ErrorDto";
 import { UserDto } from "./../../Types/user/UserDto";
 import { loginMutation } from "./../../graphql/mutation/login-mutation";
@@ -57,7 +59,10 @@ const user = createSlice({
       state.errors = action.payload.errors;
       state.user = action.payload.user as UserDto;
     },
-    userSignUp(state, action) {},
+    userSignUp(state, action: PayloadAction<UserResponseDto>) {
+      state.errors = action.payload.errors;
+      state.user = action.payload.user as UserDto;
+    },
   },
 });
 
@@ -82,8 +87,15 @@ export const fetchUser = (): AppThunk => async (dispatch) => {
   }
 };
 
-export const registerUser = (): AppThunk => async (dispatch) => {
+export const registerUser = (variables: SignUpForm): AppThunk => async (
+  dispatch
+) => {
   try {
+    const userRes = await sendRequest<UserResponseDto>(
+      registerMutation,
+      variables
+    );
+    dispatch(userSignUp(userRes));
   } catch {}
 };
 
