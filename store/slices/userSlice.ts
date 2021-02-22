@@ -21,6 +21,7 @@ interface UserState {
   errors: ErrorDto[];
   loading: boolean;
   signIn: boolean;
+  userSignUpSuccess?: boolean;
 }
 
 const initialState: UserState = {
@@ -34,6 +35,7 @@ const initialState: UserState = {
   errors: [],
   loading: true,
   signIn: false,
+  userSignUpSuccess: undefined,
 };
 
 const user = createSlice({
@@ -59,9 +61,13 @@ const user = createSlice({
       state.errors = action.payload.errors;
       state.user = action.payload.user as UserDto;
     },
-    userSignUp(state, action: PayloadAction<UserResponseDto>) {
-      state.errors = action.payload.errors;
-      state.user = action.payload.user as UserDto;
+    userSignUpSuccess(state, action: PayloadAction<UserDto>) {
+      state.user = action.payload;
+      state.userSignUpSuccess = true;
+    },
+    userSignUpFail(state, action: PayloadAction<ErrorDto[]>) {
+      state.errors = action.payload;
+      state.userSignUpSuccess = false;
     },
   },
 });
@@ -72,7 +78,8 @@ export const {
   getUserFail,
   userSignOut,
   userSignIn,
-  userSignUp,
+  userSignUpSuccess,
+  userSignUpFail,
 } = user.actions;
 
 export default user.reducer;
@@ -95,7 +102,9 @@ export const registerUser = (variables: SignUpForm): AppThunk => async (
       registerMutation,
       variables
     );
-    dispatch(userSignUp(userRes));
+
+    if (userRes.user) dispatch(userSignUpSuccess(userRes.user as UserDto));
+    else dispatch(userSignUpFail(userRes.errors));
   } catch {}
 };
 
