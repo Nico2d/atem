@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ErrorDto, SignUpForm } from "../../Types";
 import { inputTypes } from "../../utils/enums";
 import { Button } from "../atoms/button";
-import { InputErrorMessage } from "../atoms/inputErrorMessage";
+import { Message } from "../atoms/message";
 import { CheckboxField } from "./checkboxField";
 import { ErrorMessage } from "@hookform/error-message";
 import { device } from "../../Styles/breakpoints";
@@ -12,6 +12,7 @@ import { InputField } from "./inputField";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../store/slices/userSlice";
 import { RootState } from "../../store/rootReducer";
+import { MessageType } from "../../Types/MessageType";
 
 export const SignUp = () => {
   const { register, errors, handleSubmit, watch } = useForm<SignUpForm>({
@@ -39,7 +40,9 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="username"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <InputField
         name="email"
@@ -56,7 +59,9 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="email"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <InputField
         name="password"
@@ -67,7 +72,9 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="password"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <InputField
         name="confirmPassword"
@@ -82,7 +89,9 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="confirmPassword"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <TermsOfServiceWrapper>
         <CheckboxField
@@ -95,12 +104,20 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="acceptedTermsOfService"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
-      {user.errors.length > 0 &&
+      {!user.userSignUpSuccess &&
+        user.errors.length > 0 &&
         user.errors.map((error: ErrorDto) => (
-          <InputErrorMessage error={error.message} />
+          <Message message={error.message} messageType={MessageType.error} />
         ))}
+      {user.userSignUpSuccess && (
+        <UserSignUpSuccess>
+          Twoje konto zostało utworzone. Możesz się teraz zalogować.
+        </UserSignUpSuccess>
+      )}
       <Button
         styleType="primary"
         text="Zarejestruj"
@@ -143,3 +160,5 @@ const StyledSignIn = styled.div`
     margin-top: 2.5rem;
   }
 `;
+
+const UserSignUpSuccess = styled.h4``;

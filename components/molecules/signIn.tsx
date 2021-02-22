@@ -5,11 +5,12 @@ import { CheckboxField } from "../molecules/checkboxField";
 import { useForm } from "react-hook-form";
 import { Button } from "../atoms/button";
 import { SignInForm } from "../../Types";
-import { InputErrorMessage } from "../atoms/inputErrorMessage";
+import { Message } from "../atoms/message";
 import { ErrorMessage } from "@hookform/error-message";
 import { InputField } from "../molecules/inputField";
 import { useDispatch } from "react-redux";
 import { signInUser } from "../../store/slices/userSlice";
+import { MessageType } from "../../Types/MessageType";
 
 export const SignIn = () => {
   const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
@@ -34,7 +35,9 @@ export const SignIn = () => {
       <ErrorMessage
         errors={errors}
         name="login"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <InputField
         name="password"
@@ -45,7 +48,9 @@ export const SignIn = () => {
       <ErrorMessage
         errors={errors}
         name="password"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <CheckboxField
         text="Pozostań zalogowany"
