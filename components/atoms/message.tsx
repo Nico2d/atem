@@ -12,6 +12,11 @@ type inputErrorMessageProps = {
 };
 
 const StyledMessage = styled.h4<{ messageType: MessageType }>`
-  color: ${({ theme }) => theme.colors?.red};
+  color: ${({ theme, messageType }) =>
+    messageType === MessageType.error
+      ? theme.colors?.red
+      : messageType === MessageType.success
+      ? theme.colors?.green
+      : null};
   font-size: 0.9rem;
 `;

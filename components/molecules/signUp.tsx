@@ -114,9 +114,10 @@ export const SignUp = () => {
           <Message message={error.message} messageType={MessageType.error} />
         ))}
       {user.userSignUpSuccess && (
-        <UserSignUpSuccess>
-          Twoje konto zostało utworzone. Możesz się teraz zalogować.
-        </UserSignUpSuccess>
+        <Message
+          message="Rejestracja przebiegła pomyślnie. Możesz się teraz zalogować"
+          messageType={MessageType.success}
+        />
       )}
       <Button
         styleType="primary"
@@ -160,5 +161,3 @@ const StyledSignIn = styled.div`
     margin-top: 2.5rem;
   }
 `;
-
-const UserSignUpSuccess = styled.h4``;
