@@ -1,8 +1,4 @@
 import { registerMutation } from "./../../graphql/mutation/register.mutation";
-import { SignUpForm } from "./../../Types/forms/SignUpForm";
-import { ErrorDto } from "./../../Types/ErrorDto";
-import { UserDto } from "./../../Types/user/UserDto";
-import { loginMutation } from "./../../graphql/mutation/login-mutation";
 import { AppThunk } from "../configureStore";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -10,11 +6,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { sendRequest } from "../../graphql/sendRequest";
 
 //TYPES
+import { SignUpForm } from "./../../Types/forms/SignUpForm";
+import { ErrorDto } from "./../../Types/ErrorDto";
 import { UserResponseDto } from "../../Types/user/UserResponseDto";
+import { UserDto } from "./../../Types/user/UserDto";
 
 //QUERIES
 import { meQuery } from "./../../graphql/query/me.query";
 import { SignInForm } from "../../Types";
+
+//MUTATIONS
+import { loginMutation } from "./../../graphql/mutation/login-mutation";
 
 interface UserState {
   user: UserDto;

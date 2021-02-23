@@ -8,19 +8,20 @@ import { SignInForm } from "../../Types";
 import { Message } from "../atoms/message";
 import { ErrorMessage } from "@hookform/error-message";
 import { InputField } from "../molecules/inputField";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signInUser } from "../../store/slices/userSlice";
 import { MessageType } from "../../Types/MessageType";
+import { RootState } from "../../store/rootReducer";
 
 export const SignIn = () => {
-  const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
+  const { register, errors, handleSubmit } = useForm<SignInForm>({
     mode: "onChange",
   });
 
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const onSubmit = async (data: SignInForm) => {
-    console.log(data);
     dispatch(signInUser(data));
   };
 
@@ -57,6 +58,10 @@ export const SignIn = () => {
         name="staySignIn"
         register={register}
       />
+      {user.errors.length > 0 &&
+        user.errors.map((error) => (
+          <Message message={error.message} messageType={MessageType.error} />
+        ))}
       <Button
         styleType="primary"
         text="Zaloguj"
