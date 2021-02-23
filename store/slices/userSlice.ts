@@ -58,10 +58,13 @@ const user = createSlice({
     userSignOut(state) {
       state.signIn = false;
     },
-    userSignIn(state, action: PayloadAction<UserResponseDto>) {
+    userSignInSuccess(state, action: PayloadAction<UserDto>) {
       state.signIn = true;
-      state.errors = action.payload.errors;
-      state.user = action.payload.user as UserDto;
+      state.user = action.payload;
+    },
+    userSignInFail(state, action: PayloadAction<ErrorDto[]>) {
+      state.signIn = false;
+      state.errors = action.payload;
     },
     userSignUpSuccess(state, action: PayloadAction<UserDto>) {
       state.user = action.payload;
@@ -79,7 +82,8 @@ export const {
   getUserSuccess,
   getUserFail,
   userSignOut,
-  userSignIn,
+  userSignInSuccess,
+  userSignInFail,
   userSignUpSuccess,
   userSignUpFail,
 } = user.actions;
@@ -118,6 +122,8 @@ export const signInUser = (variables: SignInForm): AppThunk => async (
       loginMutation,
       variables
     );
-    dispatch(userSignIn(userRes));
+
+    if (userRes.user) dispatch(userSignInSuccess(userRes.user as UserDto));
+    else dispatch(userSignInFail(userRes.errors));
   } catch {}
 };
