@@ -108,8 +108,7 @@ export const SignUp = () => {
           <Message message={message} messageType={MessageType.error} />
         )}
       />
-      {!user.userSignUpSuccess &&
-        user.errors.length > 0 &&
+      {user.errors.length > 0 &&
         user.errors.map((error: ErrorDto) => (
           <Message message={error.message} messageType={MessageType.error} />
         ))}

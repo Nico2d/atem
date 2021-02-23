@@ -52,9 +52,6 @@ const user = createSlice({
       state.errors = action.payload.errors;
       state.loading = false;
     },
-    getUserFail(state) {
-      state.loading = false;
-    },
     userSignOut(state) {
       state.signIn = false;
     },
@@ -62,17 +59,13 @@ const user = createSlice({
       state.signIn = true;
       state.user = action.payload;
     },
-    userSignInFail(state, action: PayloadAction<ErrorDto[]>) {
-      state.signIn = false;
-      state.errors = action.payload;
-    },
     userSignUpSuccess(state, action: PayloadAction<UserDto>) {
       state.user = action.payload;
       state.userSignUpSuccess = true;
     },
-    userSignUpFail(state, action: PayloadAction<ErrorDto[]>) {
+    userFail(state, action: PayloadAction<ErrorDto[]>) {
+      state.loading = false;
       state.errors = action.payload;
-      state.userSignUpSuccess = false;
     },
   },
 });
@@ -80,12 +73,10 @@ const user = createSlice({
 export const {
   getUserStart,
   getUserSuccess,
-  getUserFail,
+  userFail,
   userSignOut,
   userSignInSuccess,
-  userSignInFail,
   userSignUpSuccess,
-  userSignUpFail,
 } = user.actions;
 
 export default user.reducer;
@@ -96,7 +87,7 @@ export const fetchUser = (): AppThunk => async (dispatch) => {
     const user = await sendRequest<UserResponseDto>(meQuery);
     dispatch(getUserSuccess(user));
   } catch (err) {
-    dispatch(getUserFail());
+    dispatch(userFail());
   }
 };
 
@@ -110,7 +101,7 @@ export const registerUser = (variables: SignUpForm): AppThunk => async (
     );
 
     if (userRes.user) dispatch(userSignUpSuccess(userRes.user as UserDto));
-    else dispatch(userSignUpFail(userRes.errors));
+    else dispatch(userFail(userRes.errors));
   } catch {}
 };
 
@@ -124,6 +115,6 @@ export const signInUser = (variables: SignInForm): AppThunk => async (
     );
 
     if (userRes.user) dispatch(userSignInSuccess(userRes.user as UserDto));
-    else dispatch(userSignInFail(userRes.errors));
+    else dispatch(userFail(userRes.errors));
   } catch {}
 };
