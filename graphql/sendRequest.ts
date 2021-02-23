@@ -8,6 +8,7 @@ export const sendRequest = async <T extends unknown>(
 ): Promise<T | undefined> => {
   const graphQLClient = new GraphQLClient(ENDPOINT, {
     mode: "cors",
+    credentials: "include",
   });
 
   const data = await graphQLClient.request<T>(schema, variables);
