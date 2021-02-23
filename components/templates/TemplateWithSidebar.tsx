@@ -6,7 +6,7 @@ import { Navigation } from "../organisms/navigation";
 import { Layout } from "./layout";
 
 export const TemplateWithSidebar = ({ children }) => {
-  const isAuth = useIsAuth("/");
+  const isAuth = useIsAuth(undefined, "/");
 
   if (!isAuth) return null;
 

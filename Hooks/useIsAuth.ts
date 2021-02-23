@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import Router from "next/router";
 
-export const useIsAuth = (redirectTo: string): boolean => {
+export const useIsAuth = (
+  redirectTo?: string,
+  redirectIfNotFound?: string
+): boolean => {
   if (typeof window === "undefined") return false;
 
   const cookies = document.cookie;
@@ -15,9 +18,8 @@ export const useIsAuth = (redirectTo: string): boolean => {
     );
 
   useEffect(() => {
-    if (!isUserAuth) {
-      Router.push(redirectTo);
-    }
+    if (isUserAuth && redirectTo) Router.push(redirectTo);
+    else if (!isUserAuth && redirectIfNotFound) Router.push(redirectIfNotFound);
   }, []);
 
   return isUserAuth;

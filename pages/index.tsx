@@ -3,10 +3,13 @@ import styled from "styled-components";
 import { HeroSectionHeader } from "../components/molecules/heroSectionHeader";
 import { Signing } from "../components/organisms/signing";
 import { Layout } from "../components/templates/layout";
+import { useIsAuth } from "../Hooks/useIsAuth";
 import { device } from "../Styles/breakpoints";
 
 const Home = () => {
   const [showSignInForm, setShowSignInForm] = useState(true);
+
+  useIsAuth("/dashboard", undefined);
 
   return (
     <Layout>
