@@ -6,10 +6,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { sendRequest } from "../../graphql/sendRequest";
 
 //TYPES
-import { SignUpForm } from "./../../Types/forms/SignUpForm";
-import { ErrorDto } from "./../../Types/ErrorDto";
-import { UserResponseDto } from "../../Types/user/UserResponseDto";
-import { UserDto } from "./../../Types/user/UserDto";
+import { SignUpForm, ErrorDto, UserResponseDto, UserDto } from "./../../Types";
 
 //QUERIES
 import { meQuery } from "./../../graphql/query/me.query";

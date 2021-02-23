@@ -4,3 +4,4 @@ export type { UserDto } from "./user/UserDto";
 export type { ErrorDto } from "./ErrorDto";
 export type { ResponseDto } from "./ResponseDto";
 export { MessageType } from "./MessageType";
+export type { UserResponseDto } from "./user/UserResponseDto";
