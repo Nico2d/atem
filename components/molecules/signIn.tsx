@@ -1,16 +1,23 @@
 import React from "react";
-import { inputTypes } from "../../utils/enums";
 import styled from "styled-components";
-import { CheckboxField } from "../molecules/checkboxField";
 import { useForm } from "react-hook-form";
-import { Button } from "../atoms/button";
-import { SignInForm } from "../../Types";
-import { Message } from "../atoms/message";
 import { ErrorMessage } from "@hookform/error-message";
+
+//ATOMS
+import { Message } from "../atoms/message";
+import { Button } from "../atoms/button";
+
+//MOLECULES
 import { InputField } from "../molecules/inputField";
+import { CheckboxField } from "../molecules/checkboxField";
+
+//TYPES
+import { inputTypes } from "../../utils/enums";
+import { SignInForm, MessageType } from "../../Types";
+
+//REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { signInUser } from "../../store/slices/userSlice";
-import { MessageType } from "../../Types/MessageType";
 import { RootState } from "../../store/rootReducer";
 
 export const SignIn = () => {
