@@ -44,17 +44,17 @@ const Slogan = styled.h2`
   font-weight: 300;
   max-width: 650px;
   margin-bottom: 2rem;
-  font-size: ${({ theme }) => theme.fonts.fontSize * 2}rem;
+  font-size: ${({ theme }) => theme.fonts?.fontSize * 2}rem;
 
   span {
     font-weight: 700;
   }
 
   @media ${device.tablet} {
-    font-size: ${({ theme }) => theme.fonts.fontSize * 2.5}rem;
+    font-size: ${({ theme }) => theme.fonts?.fontSize * 2.5}rem;
   }
 
   @media ${device.laptop} {
-    font-size: ${({ theme }) => theme.fonts.fontSize * 3.5}rem;
+    font-size: ${({ theme }) => theme.fonts?.fontSize * 3.5}rem;
   }
 `;

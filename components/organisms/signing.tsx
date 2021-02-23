@@ -3,21 +3,49 @@ import styled from "styled-components";
 import { SignUp } from "../molecules/signUp";
 import { device } from "../../Styles/breakpoints";
 import { SignIn } from "../molecules/signIn";
+import { HeroSectionHeader } from "../molecules/heroSectionHeader";
 
-export const Signing = ({ isSignIn, setIsSignIn }) => {
+export const Signing = () => {
+  const [showSignInForm, setShowSignInForm] = useState(true);
+
   return (
-    <StyledSigningBox>
-      <SigningTitle>{isSignIn ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
-      {isSignIn ? <SignIn /> : <SignUp />}
-      <StyledCreateAccountText>
-        <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
-        <h4 onClick={() => setIsSignIn(!isSignIn)}>
-          {isSignIn ? "Załóż konto" : "Zaloguj się"}
-        </h4>
-      </StyledCreateAccountText>
-    </StyledSigningBox>
+    <HeroSection>
+      <HeroSectionHeader
+        btnClicked={() => setShowSignInForm(!showSignInForm)}
+        isSignIn={showSignInForm}
+      />
+      <StyledSigningBox>
+        <SigningTitle>
+          {showSignInForm ? "Zaloguj" : "Zarejestruj"}
+        </SigningTitle>
+        {showSignInForm ? <SignIn /> : <SignUp />}
+        <StyledCreateAccountText>
+          <h3>{showSignInForm ? "Nie masz konta?" : "Masz konto?"}</h3>
+          <h4 onClick={() => setShowSignInForm(!showSignInForm)}>
+            {showSignInForm ? "Załóż konto" : "Zaloguj się"}
+          </h4>
+        </StyledCreateAccountText>
+      </StyledSigningBox>
+    </HeroSection>
   );
 };
+
+const HeroSection = styled.div`
+  background: url("/signing_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+`;
 
 const StyledSigningBox = styled.div`
   display: flex;
