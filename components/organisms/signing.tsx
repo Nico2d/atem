@@ -1,51 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { SignUp } from "../molecules/signUp";
 import { device } from "../../Styles/breakpoints";
 import { SignIn } from "../molecules/signIn";
-import { HeroSectionHeader } from "../molecules/heroSectionHeader";
 
-export const Signing = () => {
-  const [showSignInForm, setShowSignInForm] = useState(true);
-
+export const Signing = ({ showSignInForm, sigInFormHandler }: signingProps) => {
   return (
-    <HeroSection>
-      <HeroSectionHeader
-        btnClicked={() => setShowSignInForm(!showSignInForm)}
-        isSignIn={showSignInForm}
-      />
-      <StyledSigningBox>
-        <SigningTitle>
-          {showSignInForm ? "Zaloguj" : "Zarejestruj"}
-        </SigningTitle>
-        {showSignInForm ? <SignIn /> : <SignUp />}
-        <StyledCreateAccountText>
-          <h3>{showSignInForm ? "Nie masz konta?" : "Masz konto?"}</h3>
-          <h4 onClick={() => setShowSignInForm(!showSignInForm)}>
-            {showSignInForm ? "Załóż konto" : "Zaloguj się"}
-          </h4>
-        </StyledCreateAccountText>
-      </StyledSigningBox>
-    </HeroSection>
+    <StyledSigningBox>
+      <SigningTitle>{showSignInForm ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
+      {showSignInForm ? <SignIn /> : <SignUp />}
+      <StyledCreateAccountText>
+        <h3>{showSignInForm ? "Nie masz konta?" : "Masz konto?"}</h3>
+        <h4 onClick={() => sigInFormHandler(!showSignInForm)}>
+          {showSignInForm ? "Załóż konto" : "Zaloguj się"}
+        </h4>
+      </StyledCreateAccountText>
+    </StyledSigningBox>
   );
 };
 
-const HeroSection = styled.div`
-  background: url("/signing_bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 100%;
-
-  @media ${device.tablet} {
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-  }
-`;
+type signingProps = {
+  showSignInForm: boolean;
+  sigInFormHandler: (value: boolean) => void;
+};
 
 const StyledSigningBox = styled.div`
   display: flex;
