@@ -81,6 +81,7 @@ export const SignIn = () => {
 const StyledSignIn = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   > * {
     margin-bottom: 1rem;
