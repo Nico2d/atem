@@ -51,8 +51,8 @@ const user = createSlice({
     },
     getUserSuccess(state, action: PayloadAction<UserResponseDto>) {
       state.user = action.payload.user as UserDto;
-      state.errors = action.payload.errors;
       state.loading = false;
+      state.errors = [];
     },
     userSignOut(state) {
       state.signIn = false;
@@ -60,10 +60,12 @@ const user = createSlice({
     userSignInSuccess(state, action: PayloadAction<UserDto>) {
       state.signIn = true;
       state.user = action.payload;
+      state.errors = [];
     },
     userSignUpSuccess(state, action: PayloadAction<UserDto>) {
       state.user = action.payload;
       state.userSignUpSuccess = true;
+      state.errors = [];
     },
     userFail(state, action: PayloadAction<ErrorDto[]>) {
       state.loading = false;
