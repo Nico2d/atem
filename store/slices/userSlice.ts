@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { registerMutation } from "./../../graphql/mutation/register.mutation";
 import { AppThunk } from "../configureStore";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -19,7 +20,6 @@ import { meQuery } from "./../../graphql/query/me.query";
 
 //MUTATIONS
 import { loginMutation } from "./../../graphql/mutation/login-mutation";
-import Router from "next/router";
 
 interface UserState {
   user: UserDto;
