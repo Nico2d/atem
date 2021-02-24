@@ -21,7 +21,7 @@ const Home = () => {
           />
           <Signing
             showSignInForm={showSignInForm}
-            sigInFormHandler={(value: boolean) => setShowSignInForm(value)}
+            signInFormHandler={(value: boolean) => setShowSignInForm(value)}
           />
         </HeroSection>
       </main>
