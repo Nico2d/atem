@@ -1,4 +1,4 @@
-import { GraphQLClient, request } from "graphql-request";
+import { GraphQLClient } from "graphql-request";
 
 const ENDPOINT = "http://localhost:4000/graphql";
 
