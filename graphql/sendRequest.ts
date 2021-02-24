@@ -1,12 +1,10 @@
 import { GraphQLClient } from "graphql-request";
 
-const ENDPOINT = "http://localhost:4000/graphql";
-
 export const sendRequest = async <T extends unknown>(
   schema: string,
   variables?: any
 ): Promise<T | undefined> => {
-  const graphQLClient = new GraphQLClient(ENDPOINT, {
+  const graphQLClient = new GraphQLClient(process.env.APIURL, {
     mode: "cors",
     credentials: "include",
   });
