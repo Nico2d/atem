@@ -18,5 +18,5 @@ const StyledMessage = styled.h4<{ messageType: MessageType }>`
       : messageType === MessageType.success
       ? theme.colors?.green
       : null};
-  font-size: 0.9rem;
+  font-size: ${({ theme }) => theme.fonts.fontSize * 0.9}rem;
 `;
