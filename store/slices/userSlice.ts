@@ -19,6 +19,7 @@ import { meQuery } from "./../../graphql/query/me.query";
 
 //MUTATIONS
 import { loginMutation } from "./../../graphql/mutation/login-mutation";
+import Router from "next/router";
 
 interface UserState {
   user: UserDto;
@@ -61,6 +62,7 @@ const user = createSlice({
       state.signIn = true;
       state.user = action.payload;
       state.errors = [];
+      Router.push("dashboard");
     },
     userSignUpSuccess(state, action: PayloadAction<UserDto>) {
       state.user = action.payload;
