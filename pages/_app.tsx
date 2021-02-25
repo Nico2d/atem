@@ -7,6 +7,8 @@ import { lightTheme, darkTheme } from "../Styles/themeColors";
 import { Typography } from "../Styles/themeFonts";
 import { useDarkMode } from "../Hooks/useDarkMode";
 import { useFontSizeSelector } from "../Hooks/useFontSizeSelector";
+import { Provider } from "react-redux";
+import { store } from "../store/configureStore";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme] = useDarkMode();
@@ -30,10 +32,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [theme, fontSize]);
 
   return (
-    <ThemeProvider theme={themeObj}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={themeObj}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Provider>
   );
 }
 

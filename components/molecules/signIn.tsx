@@ -8,12 +8,20 @@ import { SignInForm } from "../../Types";
 import { InputErrorMessage } from "../atoms/inputErrorMessage";
 import { ErrorMessage } from "@hookform/error-message";
 import { InputField } from "../molecules/inputField";
+import { useDispatch } from "react-redux";
+import { signInUser } from "../../store/slices/userSlice";
 
 export const SignIn = () => {
   const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
     mode: "onChange",
   });
-  const onSubmit = (data: SignInForm) => console.log(data);
+
+  const dispatch = useDispatch();
+
+  const onSubmit = async (data: SignInForm) => {
+    console.log(data);
+    dispatch(signInUser(data));
+  };
 
   return (
     <StyledSignIn>

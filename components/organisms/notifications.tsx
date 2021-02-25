@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMediaQuery } from "../../Hooks/useMediaQuery";
 import { IconKeyboardArrowRight } from "../../public/icons/iconKeyboardArrowRight";
 import { device } from "../../Styles/breakpoints";
-import { FormType } from "../../Types/form";
+import { FormType } from "../../Types/formType";
 import { CardContainer } from "../atoms/card/cardContainer";
 import { CardDesc } from "../atoms/card/cardDesc";
 import { CardField } from "../atoms/card/cardField";
@@ -36,8 +36,7 @@ export const Notification: React.FC<NotificationTypes> = ({ setIsClose }) => {
             setNotification1(!notification1);
             !notification1 && setNotification2(false);
           }}
-          title={[formsArray[0].name, <IconKeyboardArrowRight />]}
-        >
+          title={[formsArray[0].name, <IconKeyboardArrowRight />]}>
           {formsArray[0].form}
         </CollapseContainer>
       ) : (
@@ -53,8 +52,7 @@ export const Notification: React.FC<NotificationTypes> = ({ setIsClose }) => {
             setNotification2(!notification2);
             !notification2 && setNotification1(false);
           }}
-          title={[formsArray[1].name, <IconKeyboardArrowRight />]}
-        >
+          title={[formsArray[1].name, <IconKeyboardArrowRight />]}>
           {formsArray[1].form}
         </CollapseContainer>
       ) : (
