@@ -1,6 +1,5 @@
-import { ErrorDto } from "./../../Types/ErrorDto";
-import { UserDto } from "./../../Types/user/UserDto";
-import { loginMutation } from "./../../graphql/mutation/login-mutation";
+import Router from "next/router";
+import { registerMutation } from "./../../graphql/mutation/register.mutation";
 import { AppThunk } from "../configureStore";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -8,17 +7,26 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { sendRequest } from "../../graphql/sendRequest";
 
 //TYPES
-import { UserResponseDto } from "../../Types/user/UserResponseDto";
+import {
+  SignUpForm,
+  SignInForm,
+  ErrorDto,
+  UserResponseDto,
+  UserDto,
+} from "./../../Types";
 
 //QUERIES
 import { meQuery } from "./../../graphql/query/me.query";
-import { SignInForm } from "../../Types";
+
+//MUTATIONS
+import { loginMutation } from "./../../graphql/mutation/login-mutation";
 
 interface UserState {
   user: UserDto;
   errors: ErrorDto[];
   loading: boolean;
   signIn: boolean;
+  userSignUpSuccess?: boolean;
 }
 
 const initialState: UserState = {
@@ -32,6 +40,7 @@ const initialState: UserState = {
   errors: [],
   loading: true,
   signIn: false,
+  userSignUpSuccess: undefined,
 };
 
 const user = createSlice({
@@ -43,31 +52,37 @@ const user = createSlice({
     },
     getUserSuccess(state, action: PayloadAction<UserResponseDto>) {
       state.user = action.payload.user as UserDto;
-      state.errors = action.payload.errors;
       state.loading = false;
-    },
-    getUserFail(state) {
-      state.loading = false;
+      state.errors = [];
     },
     userSignOut(state) {
       state.signIn = false;
     },
-    userSignIn(state, action: PayloadAction<UserResponseDto>) {
+    userSignInSuccess(state, action: PayloadAction<UserDto>) {
       state.signIn = true;
-      state.errors = action.payload.errors;
-      state.user = action.payload.user as UserDto;
+      state.user = action.payload;
+      state.errors = [];
+      Router.push("dashboard");
     },
-    userSignUp(state, action) {},
+    userSignUpSuccess(state, action: PayloadAction<UserDto>) {
+      state.user = action.payload;
+      state.userSignUpSuccess = true;
+      state.errors = [];
+    },
+    userFail(state, action: PayloadAction<ErrorDto[]>) {
+      state.loading = false;
+      state.errors = action.payload;
+    },
   },
 });
 
 export const {
   getUserStart,
   getUserSuccess,
-  getUserFail,
+  userFail,
   userSignOut,
-  userSignIn,
-  userSignUp,
+  userSignInSuccess,
+  userSignUpSuccess,
 } = user.actions;
 
 export default user.reducer;
@@ -78,12 +93,21 @@ export const fetchUser = (): AppThunk => async (dispatch) => {
     const user = await sendRequest<UserResponseDto>(meQuery);
     dispatch(getUserSuccess(user));
   } catch (err) {
-    dispatch(getUserFail());
+    dispatch(userFail());
   }
 };
 
-export const registerUser = (): AppThunk => async (dispatch) => {
+export const registerUser = (variables: SignUpForm): AppThunk => async (
+  dispatch
+) => {
   try {
+    const userRes = await sendRequest<UserResponseDto>(
+      registerMutation,
+      variables
+    );
+
+    if (userRes.user) dispatch(userSignUpSuccess(userRes.user as UserDto));
+    else dispatch(userFail(userRes.errors));
   } catch {}
 };
 
@@ -95,6 +119,8 @@ export const signInUser = (variables: SignInForm): AppThunk => async (
       loginMutation,
       variables
     );
-    dispatch(userSignIn(userRes));
+
+    if (userRes.user) dispatch(userSignInSuccess(userRes.user as UserDto));
+    else dispatch(userFail(userRes.errors));
   } catch {}
 };

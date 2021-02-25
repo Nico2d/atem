@@ -1,23 +1,28 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { HeroSectionHeader } from "../components/molecules/heroSectionHeader";
 import { Signing } from "../components/organisms/signing";
 import { Layout } from "../components/templates/layout";
+import { useIsAuth } from "../Hooks/useIsAuth";
 import { device } from "../Styles/breakpoints";
 
 const Home = () => {
-  const [isSignIn, setIsSignIn] = useState(true);
+  const [showSignInForm, setShowSignInForm] = useState(true);
+
+  useIsAuth("/dashboard", undefined);
 
   return (
     <Layout>
       <main style={{ width: "100%", height: "100vh" }}>
         <HeroSection>
           <HeroSectionHeader
-            btnClicked={() => setIsSignIn(!isSignIn)}
-            isSignIn={isSignIn}
+            btnClicked={() => setShowSignInForm(!showSignInForm)}
+            isSignIn={showSignInForm}
           />
-
-          <Signing isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
+          <Signing
+            showSignInForm={showSignInForm}
+            signInFormHandler={(value: boolean) => setShowSignInForm(value)}
+          />
         </HeroSection>
       </main>
     </Layout>

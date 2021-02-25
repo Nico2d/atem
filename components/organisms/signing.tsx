@@ -1,22 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { SignUp } from "../molecules/signUp";
 import { device } from "../../Styles/breakpoints";
 import { SignIn } from "../molecules/signIn";
 
-export const Signing = ({ isSignIn, setIsSignIn }) => {
+export const Signing = ({
+  showSignInForm,
+  signInFormHandler: signInFormHandler,
+}: signingProps) => {
   return (
     <StyledSigningBox>
-      <SigningTitle>{isSignIn ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
-      {isSignIn ? <SignIn /> : <SignUp />}
+      <SigningTitle>{showSignInForm ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
+      {showSignInForm ? <SignIn /> : <SignUp />}
       <StyledCreateAccountText>
-        <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
-        <h4 onClick={() => setIsSignIn(!isSignIn)}>
-          {isSignIn ? "Załóż konto" : "Zaloguj się"}
+        <h3>{showSignInForm ? "Nie masz konta?" : "Masz konto?"}</h3>
+        <h4 onClick={() => signInFormHandler(!showSignInForm)}>
+          {showSignInForm ? "Załóż konto" : "Zaloguj się"}
         </h4>
       </StyledCreateAccountText>
     </StyledSigningBox>
   );
+};
+
+type signingProps = {
+  showSignInForm: boolean;
+  signInFormHandler: (value: boolean) => void;
 };
 
 const StyledSigningBox = styled.div`

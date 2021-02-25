@@ -32,6 +32,7 @@ type inputFieldProps = {
 const Container = styled.div`
   position: relative;
   padding: 0.8rem 0 0;
+  width: 100%;
 `;
 
 const Label = styled.label`

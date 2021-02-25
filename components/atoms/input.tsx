@@ -31,6 +31,7 @@ const StyledInput = styled.input`
   padding-left: 0.7rem;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors?.fontColor};
+  width: 100%;
 
   &::placeholder {
     color: transparent;

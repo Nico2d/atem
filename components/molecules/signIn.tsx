@@ -1,25 +1,34 @@
 import React from "react";
-import { inputTypes } from "../../utils/enums";
 import styled from "styled-components";
-import { CheckboxField } from "../molecules/checkboxField";
 import { useForm } from "react-hook-form";
-import { Button } from "../atoms/button";
-import { SignInForm } from "../../Types";
-import { InputErrorMessage } from "../atoms/inputErrorMessage";
 import { ErrorMessage } from "@hookform/error-message";
+
+//ATOMS
+import { Message } from "../atoms/message";
+import { Button } from "../atoms/button";
+
+//MOLECULES
 import { InputField } from "../molecules/inputField";
-import { useDispatch } from "react-redux";
+import { CheckboxField } from "../molecules/checkboxField";
+
+//TYPES
+import { inputTypes } from "../../utils/enums";
+import { SignInForm, MessageType } from "../../Types";
+
+//REDUX
+import { useDispatch, useSelector } from "react-redux";
 import { signInUser } from "../../store/slices/userSlice";
+import { RootState } from "../../store/rootReducer";
 
 export const SignIn = () => {
-  const { register, errors, handleSubmit, unregister } = useForm<SignInForm>({
+  const { register, errors, handleSubmit } = useForm<SignInForm>({
     mode: "onChange",
   });
 
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const onSubmit = async (data: SignInForm) => {
-    console.log(data);
     dispatch(signInUser(data));
   };
 
@@ -34,7 +43,9 @@ export const SignIn = () => {
       <ErrorMessage
         errors={errors}
         name="login"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <InputField
         name="password"
@@ -45,13 +56,19 @@ export const SignIn = () => {
       <ErrorMessage
         errors={errors}
         name="password"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <CheckboxField
         text="Pozostań zalogowany"
         name="staySignIn"
         register={register}
       />
+      {user.errors.length > 0 &&
+        user.errors.map((error) => (
+          <Message message={error.message} messageType={MessageType.error} />
+        ))}
       <Button
         styleType="primary"
         text="Zaloguj"
@@ -64,6 +81,7 @@ export const SignIn = () => {
 const StyledSignIn = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   > * {
     margin-bottom: 1rem;

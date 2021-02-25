@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import { useIsAuth } from "../../Hooks/useIsAuth";
 import { device } from "../../Styles/breakpoints";
 import { Sidebar } from "../molecules/sidebar";
 import { Navigation } from "../organisms/navigation";
 import { Layout } from "./layout";
 
 export const TemplateWithSidebar = ({ children }) => {
+  const isAuth = useIsAuth(undefined, "/");
+
+  if (!isAuth) return null;
+
   return (
     <Layout>
       <Navigation>
