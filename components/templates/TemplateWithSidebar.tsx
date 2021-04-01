@@ -7,10 +7,7 @@ import { Layout } from "./layout";
 
 export const TemplateWithSidebar = ({ children }) => {
   // const isAuth = useIsAuth(undefined, "/");
-
   // if (!isAuth) return null;
-
-  console.log("render");
 
   return (
     <Layout>

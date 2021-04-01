@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
 
 const Dashboard = () => {
   return (
