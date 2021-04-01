@@ -3,13 +3,13 @@ import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar
 
 const Dashboard = () => {
   return (
-    <TemplateWithSidebar>
+    <>
       <p>Dashboard</p>
 
       <TestBlock />
       <TestBlock />
       <TestBlock />
-    </TemplateWithSidebar>
+    </>
   );
 };
 

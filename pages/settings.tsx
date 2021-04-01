@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { PageHeading } from "../components/atoms/pageHeading";
 import { TemplateMobileSettings } from "../components/templates/templateMobileSettings";
-import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
 import { useMediaQuery } from "../Hooks/useMediaQuery";
 import { device } from "../Styles/breakpoints";
 import { Personalization } from "../components/organisms/personalization";
@@ -18,14 +17,15 @@ const Settings = () => {
     return (
       <TemplateMobileSettings
         title={isClose.name}
-        backToSettings={() => setIsClose(null)}>
+        backToSettings={() => setIsClose(null)}
+      >
         {isClose.form}
       </TemplateMobileSettings>
     );
   }
 
   return (
-    <TemplateWithSidebar>
+    <>
       <PageHeading title="Ustawienia" />
 
       <Account isClose={isClose} setIsClose={setIsClose} />
@@ -34,7 +34,7 @@ const Settings = () => {
         <Notification setIsClose={setIsClose} />
         <Personalization />
       </CardWrapper>
-    </TemplateWithSidebar>
+    </>
   );
 };
 
