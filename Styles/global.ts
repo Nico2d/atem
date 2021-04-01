@@ -10,9 +10,9 @@ body {
   color: ${({ theme }) => theme.colors.fontColor};
   font-size: ${({ theme }) => theme.fonts.fontSize}rem;
   font-weight: 300;
-  transition-property: background, color;
+  /* transition-property: background, color;
   transition-duration: 1s ;
-  transition-timing-function:ease ;
+  transition-timing-function:ease ; */
 }
 
 a {
