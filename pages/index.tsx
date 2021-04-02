@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <main style={{ width: "100%", height: "100vh" }}>
+      <HeroWrapper>
         <HeroSection>
           <HeroSectionHeader
             btnClicked={() => setShowSignInForm(!showSignInForm)}
@@ -24,12 +24,19 @@ const Home = () => {
             signInFormHandler={(value: boolean) => setShowSignInForm(value)}
           />
         </HeroSection>
-      </main>
+      </HeroWrapper>
     </Layout>
   );
 };
 
 export default Home;
+
+const HeroWrapper = styled.main`
+  @media ${device.tablet} {
+    width: 100%;
+    height: 100vh;
+  }
+`;
 
 const HeroSection = styled.div`
   background: url("/signing_bg.png");

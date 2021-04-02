@@ -31,10 +31,12 @@ const StyledSigningBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors?.cardColor};
+  background: ${({ theme }) => theme.colors?.cardColor};
   border-radius: 1rem;
   padding: 2rem;
   width: 300px;
+  margin: 3rem 0;
+  margin-top: 1rem;
 
   @media ${device.mobileL} {
     min-width: 380px;

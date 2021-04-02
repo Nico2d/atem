@@ -16,7 +16,7 @@ export default Dashboard;
 
 const TestBlock = styled.div`
   height: 300px;
-  width: 300px;
+  width: 200px;
   background: red;
   margin: 2rem;
 `;

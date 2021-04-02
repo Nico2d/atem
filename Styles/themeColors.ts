@@ -1,7 +1,9 @@
-import { Colors, DefaultTheme } from "styled-components";
+import { Colors } from "styled-components";
 
 export const lightTheme: Colors = {
   primary: "#0065FF",
+  gradient:
+    "linear-gradient(to right top, #1378ff, #106bf0, #0c5fe0, #0653d1, #0047c2)",
   background: "#E5E5E5",
   cardColor: "#FFFFFF",
   linesColor: "#C9C9C9",
@@ -15,6 +17,8 @@ export const lightTheme: Colors = {
 
 export const darkTheme: Colors = {
   primary: "#1378FF",
+  gradient:
+    "linear-gradient(to right top, #1378ff, #106bf0, #0c5fe0, #0653d1, #0047c2)",
   background: "#121212",
   cardColor: "#202020",
   linesColor: "#3F3F3F",
