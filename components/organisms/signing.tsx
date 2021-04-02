@@ -37,6 +37,7 @@ const StyledSigningBox = styled.div`
   width: 300px;
   margin: 3rem 0;
   margin-top: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   @media ${device.mobileL} {
     min-width: 380px;
