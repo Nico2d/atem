@@ -39,7 +39,7 @@ const HeroWrapper = styled.main`
 `;
 
 const HeroSection = styled.div`
-  background: url("/signing_bg.png");
+  background: url("/home-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;

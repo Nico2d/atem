@@ -2,8 +2,7 @@ import { Colors } from "styled-components";
 
 export const lightTheme: Colors = {
   primary: "#0065FF",
-  gradient:
-    "linear-gradient(to right top, #1378ff, #106bf0, #0c5fe0, #0653d1, #0047c2)",
+  gradient: "#0065FF",
   background: "#E5E5E5",
   cardColor: "#FFFFFF",
   linesColor: "#C9C9C9",
