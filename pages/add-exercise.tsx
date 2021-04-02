@@ -1,7 +1,5 @@
-import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
-
 const AddExercise = () => {
-  return <TemplateWithSidebar>AddExercise</TemplateWithSidebar>;
+  return <div>AddExercise</div>;
 };
 
 export default AddExercise;

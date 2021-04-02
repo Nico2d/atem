@@ -3,39 +3,41 @@ import styled from "styled-components";
 type Props = {
   text: string;
   styleType: string;
-  [x: string]: any;
   clicked?: () => void;
-  type?: string;
 };
 
 export const Button: React.FC<Props> = ({
   text,
-  type,
   clicked,
-  ...props
+  styleType = "primary",
 }: Props) => {
   return (
-    <StyledButton onClick={clicked} {...props}>
+    <StyledButton
+      as={styleType === "primary" ? ButtonExtendSolid : ButtonExtendBlank}
+      onClick={clicked}
+    >
       {text}
     </StyledButton>
   );
 };
 
-const StyledButton = styled.button<Props>`
-  color: ${({ theme }) => theme.colors?.fontColor};
+const StyledButton = styled.button`
   outline: none;
-  background-color: ${({ theme, styleType }) =>
-    styleType === "primary"
-      ? theme.colors?.primary
-      : styleType === "secondary"
-      ? "transparent"
-      : theme.colors?.primary};
   padding: 1rem 4rem;
-  border: ${({ theme, styleType }) =>
-    styleType === "secondary"
-      ? `1px solid ${theme.colors?.linesColor}`
-      : "none"};
   border-radius: 2rem;
   cursor: pointer;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`;
+
+export const ButtonExtendBlank = styled(StyledButton)`
+  color: ${({ theme }) => theme.colors.fontColor};
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.linesColor};
+`;
+
+export const ButtonExtendSolid = styled(StyledButton)`
+  color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.gradient};
+  border: none;
+  font-size: ${({ theme }) => theme.fonts.fontSize}rem;
 `;

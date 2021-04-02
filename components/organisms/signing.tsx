@@ -31,10 +31,13 @@ const StyledSigningBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors?.cardColor};
+  background: ${({ theme }) => theme.colors?.cardColor};
   border-radius: 1rem;
   padding: 2rem;
   width: 300px;
+  margin: 3rem 0;
+  margin-top: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   @media ${device.mobileL} {
     min-width: 380px;
@@ -42,7 +45,7 @@ const StyledSigningBox = styled.div`
 `;
 
 const SigningTitle = styled.h2`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledCreateAccountText = styled.div`
@@ -53,7 +56,6 @@ const StyledCreateAccountText = styled.div`
 
   h3 {
     margin-top: 1.4rem;
-    font-weight: normal;
   }
 
   h4 {
@@ -61,6 +63,7 @@ const StyledCreateAccountText = styled.div`
     cursor: pointer;
     margin-top: 0.5rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors?.primary};
+    font-weight: 500;
   }
 
   @media ${device.tablet} {
@@ -69,7 +72,7 @@ const StyledCreateAccountText = styled.div`
     justify-content: center;
 
     h3 {
-      margin-right: 1rem;
+      margin-right: 0.3rem;
       margin-top: 0;
     }
 

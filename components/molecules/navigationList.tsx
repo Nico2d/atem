@@ -15,25 +15,34 @@ export const NavigationList = () => {
     <StyledNav>
       <LinkContainer>
         <Link href="/dashboard">
-          <IconText isActive={router.pathname === "/dashboard"}>
+          <IconText
+            isActive={router.pathname === "/dashboard"}
+            title="Dashboard"
+          >
             <IconDashboard /> Dashboard
           </IconText>
         </Link>
 
         <Link href="/search">
-          <IconText isActive={router.pathname === "/search"}>
+          <IconText
+            isActive={router.pathname === "/search"}
+            title="Wyszukiwarka"
+          >
             <IconSearch /> Wyszukiwarka
           </IconText>
         </Link>
 
         <Link href="/add-exercise">
-          <IconText isActive={router.pathname === "/add-exercise"}>
+          <IconText
+            isActive={router.pathname === "/add-exercise"}
+            title="Wstaw zadanie"
+          >
             <IconSystemUpdate /> Wstaw zadanie
           </IconText>
         </Link>
 
         <Link href="/cart">
-          <IconText isActive={router.pathname === "/cart"}>
+          <IconText isActive={router.pathname === "/cart"} title="Koszyk">
             <IconShoppingCart />
             Koszyk
           </IconText>
@@ -41,13 +50,16 @@ export const NavigationList = () => {
       </LinkContainer>
       <LinkContainer>
         <Link href="/settings">
-          <IconText isActive={router.pathname === "/settings"}>
+          <IconText
+            isActive={router.pathname === "/settings"}
+            title="Ustawienia"
+          >
             <IconSettings /> Ustawienia
           </IconText>
         </Link>
 
         <Link href="/">
-          <IconText isActive={router.pathname === "/"}>
+          <IconText isActive={router.pathname === "/"} title="Wyloguj">
             <IconExitApp /> Wyloguj
           </IconText>
         </Link>
@@ -70,9 +82,19 @@ const IconText = styled.a<{ isActive?: boolean }>`
   margin-bottom: 16px;
   padding-left: 2.5rem;
   font-size: ${({ theme }) => theme.fonts.fontSize * 1.3}rem;
-  color: ${(props) =>
-    props.isActive ? props.theme.colors.sidebarHighlight : "inherit"};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.sidebarHighlight : "inherit"};
   font-weight: ${(props) => (props.isActive ? "500" : "inherit")};
+
+  ::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 1px;
+    color: transparent;
+    overflow: hidden;
+    visibility: hidden;
+  }
 
   svg {
     width: 25px;

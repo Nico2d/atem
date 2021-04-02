@@ -85,14 +85,14 @@ const SelectedValue = styled.p`
     right: 0;
     height: 1px;
     width: 100%;
-    background-color: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.white};
   }
 `;
 
 const Options = styled.ul<{ isHidden: boolean }>`
   position: absolute;
   list-style: none;
-  background-color: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.background};
   display: ${({ isHidden }) => (isHidden ? "none" : "flex")};
   flex-flow: column;
   left: 0;
