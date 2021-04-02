@@ -17,7 +17,7 @@ export const InputField = ({
         type={type}
         register={register}
       />
-      <Label htmlFor={name}>{placeholder}</Label>
+      <StyledLabel htmlFor={name}>{placeholder}</StyledLabel>
     </Container>
   );
 };
@@ -33,12 +33,13 @@ const Container = styled.div`
   position: relative;
   padding: 0.8rem 0 0;
   width: 100%;
+  margin-top: .5rem;
 `;
 
-const Label = styled.label`
+const StyledLabel = styled.label`
   position: absolute;
-  top: -0.2rem;
-  padding-left: 0.4rem;
+  top: -0.7rem;
   display: block;
   transition: 0.2s;
+  opacity: 0.7;
 `;

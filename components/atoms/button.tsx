@@ -4,12 +4,10 @@ type Props = {
   text: string;
   styleType: string;
   clicked?: () => void;
-  type?: string;
 };
 
 export const Button: React.FC<Props> = ({
   text,
-  type,
   clicked,
   styleType = "primary",
 }: Props) => {
@@ -25,7 +23,6 @@ export const Button: React.FC<Props> = ({
 
 const StyledButton = styled.button`
   outline: none;
-  border: none;
   padding: 1rem 4rem;
   border-radius: 2rem;
   cursor: pointer;
@@ -41,4 +38,6 @@ export const ButtonExtendBlank = styled(StyledButton)`
 export const ButtonExtendSolid = styled(StyledButton)`
   color: ${({ theme }) => theme.colors.white};
   background: ${({ theme }) => theme.colors.gradient};
+  border: none;
+  font-size: ${({ theme }) => theme.fonts.fontSize}rem;
 `;

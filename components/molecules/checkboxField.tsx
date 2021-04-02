@@ -12,7 +12,7 @@ export const CheckboxField = ({ text, name, register }: checkboxFieldProps) => {
   };
 
   return (
-    <label>
+    <StyledLabel>
       <Checkbox
         name={name}
         register={register}
@@ -21,8 +21,8 @@ export const CheckboxField = ({ text, name, register }: checkboxFieldProps) => {
           checkboxChangedHandler(event)
         }
       />
-      <StyledSpan style={{ marginLeft: "0.4rem" }}>{text}</StyledSpan>
-    </label>
+      <span style={{ marginLeft: "0.4rem" }}>{text}</span>
+    </StyledLabel>
   );
 };
 
@@ -32,6 +32,7 @@ type checkboxFieldProps = {
   register?: any;
 };
 
-const StyledSpan = styled.span`
+const StyledLabel = styled.label`
   cursor: pointer;
+  user-select: none;
 `;

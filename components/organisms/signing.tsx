@@ -45,7 +45,7 @@ const StyledSigningBox = styled.div`
 `;
 
 const SigningTitle = styled.h2`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledCreateAccountText = styled.div`
@@ -56,7 +56,6 @@ const StyledCreateAccountText = styled.div`
 
   h3 {
     margin-top: 1.4rem;
-    font-weight: normal;
   }
 
   h4 {
@@ -64,6 +63,7 @@ const StyledCreateAccountText = styled.div`
     cursor: pointer;
     margin-top: 0.5rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors?.primary};
+    font-weight: 500;
   }
 
   @media ${device.tablet} {
@@ -72,7 +72,7 @@ const StyledCreateAccountText = styled.div`
     justify-content: center;
 
     h3 {
-      margin-right: 1rem;
+      margin-right: 0.3rem;
       margin-top: 0;
     }
 
