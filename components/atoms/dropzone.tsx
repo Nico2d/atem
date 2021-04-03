@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
+import { ImFileEmpty } from "@react-icons/all-files/im/ImFileEmpty";
+import { File } from "./File";
 
 export const DragAndDrop = (props) => {
   const [files, setFiles] = useState([]);
+
+  // zdjęcia, wordy i paczki rar i zwnykły (Im icons)
 
   const {
     getRootProps,
@@ -22,30 +26,29 @@ export const DragAndDrop = (props) => {
     setFiles(files.filter((item) => item.name !== name));
   };
 
-  const displayFileList = files.map((file, index) => (
-    <FileList key={index}>
-      {file.name} - {(file.size / 1024).toFixed(2)} mb
-      <span onClick={() => removeFile(file.name)}>X</span>
-    </FileList>
-  ));
-
   return (
     <section>
       <Container
         {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
       >
         <input {...getInputProps()} />
-        <p>Przeciągnij i upuść</p>
-        <ul>{displayFileList}</ul>
+        {files.length === 0 && <p>Przeciągnij i upuść</p>}
+
+        <FileList>
+          {files.map((file, index) => (
+            <File key={index} file={file} />
+          ))}
+        </FileList>
       </Container>
     </section>
   );
 };
 
-const FileList = styled.li`
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
+const FileList = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 10px;
 
   > span {
     color: red;

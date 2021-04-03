@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 type Props = {
   text: string;
-  styleType: string;
+  styleType?: string;
   clicked?: () => void;
 };
 
@@ -11,11 +11,17 @@ export const Button: React.FC<Props> = ({
   clicked,
   styleType = "primary",
 }: Props) => {
+  const getButtonStyle = () => {
+    switch (styleType) {
+      case "primary":
+        return ButtonExtendSolid;
+      case "secondary":
+        return ButtonExtendBlank;
+    }
+  };
+
   return (
-    <StyledButton
-      as={styleType === "primary" ? ButtonExtendSolid : ButtonExtendBlank}
-      onClick={clicked}
-    >
+    <StyledButton as={getButtonStyle()} onClick={clicked}>
       {text}
     </StyledButton>
   );
