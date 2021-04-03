@@ -3,12 +3,17 @@ import { PageHeading } from "../components/atoms/pageHeading";
 import React from "react";
 import { DragAndDrop } from "../components/atoms/dropzone";
 import { Button } from "../components/atoms/button";
-import { Steps } from "../components/molecules/Steps";
+import { StepsCounter } from "../components/molecules/Steps/StepsCounter";
 import styled from "styled-components";
 import { Whitespace } from "../components/atoms/Whitespace";
 import { useDropzone } from "react-dropzone";
 import { File } from "../components/atoms/File";
 import { FileList } from "../components/molecules/FileList";
+import { Step1 } from "../components/molecules/Steps/Step1";
+import { Step2 } from "../components/molecules/Steps/Step2";
+import { Step3 } from "../components/molecules/Steps/Step3";
+import { Step4 } from "../components/molecules/Steps/Step4";
+import { Step5 } from "../components/molecules/Steps/Step5";
 
 const AddExercise = () => {
   const [files, setFiles] = useState([]);
@@ -37,7 +42,7 @@ const AddExercise = () => {
   };
 
   const prevStep = () => {
-    if (currentStep > 0) setCurrentStep((currentStep) => currentStep - 1);
+    if (currentStep > 1) setCurrentStep((currentStep) => currentStep - 1);
   };
 
   return (
@@ -49,31 +54,15 @@ const AddExercise = () => {
 
       {/* Mobile */}
       <StyledContainer>
-        <Steps currentStep={currentStep} />
+        <StepsCounter currentStep={currentStep} />
 
-        {/* FIRST STEP */}
-        <div>
-          <Description>
-            *Pamiętaj aby usunąć wszystkie wrażliwe dane przez dodaniem pliku
-          </Description>
+        <Step1 fileList={files} open={open} isActive={currentStep === 1} />
+        <Step2 isActive={currentStep === 2} />
+        <Step3 isActive={currentStep === 3} />
+        <Step4 isActive={currentStep === 4} />
+        <Step5 isActive={currentStep === 5} />
 
-          <Whitespace height={1} />
-
-          <Button
-            text="Dodaj plik z dysku"
-            styleType="secondary"
-            clicked={open}
-          />
-          <Whitespace height={1} />
-          {/* File list */}
-
-          <FileList fileList={files} variant="list" />
-
-          <Whitespace height={1} />
-        </div>
-
-        {/* SECOND STEP */}
-
+        <Whitespace height={1} />
         <StepNavigation>
           <Button text="Wstecz" styleType="secondary" clicked={prevStep} />
           <Button text="Dodaj" clicked={nextStep} />
@@ -86,11 +75,6 @@ const AddExercise = () => {
 };
 
 export default AddExercise;
-
-const Description = styled.p`
-  color: gray;
-  font-size: ${({ theme }) => theme.fonts.fontSize * 0.9}rem;
-`;
 
 const StepNavigation = styled.div`
   display: inline-flex;

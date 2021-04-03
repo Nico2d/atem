@@ -1,11 +1,12 @@
-import { useState } from "react";
 import styled from "styled-components";
 
-type StepsProps = {
+type StepsCounterProps = {
   currentStep?: number;
 };
 
-export const Steps: React.FC<StepsProps> = ({ currentStep = 1 }) => {
+export const StepsCounter: React.FC<StepsCounterProps> = ({
+  currentStep = 1,
+}) => {
   return (
     <div>
       <p>Step {currentStep}/5</p>
@@ -20,9 +21,8 @@ export const Steps: React.FC<StepsProps> = ({ currentStep = 1 }) => {
 };
 
 const StepsContainer = styled.div`
-  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `;
 
 const SingleStep = styled.div<{ isActive }>`

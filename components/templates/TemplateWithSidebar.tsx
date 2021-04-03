@@ -36,8 +36,10 @@ const StyledMain = styled.main`
 const StyledWrapper = styled.div`
   display: inherit;
   flex-flow: column;
+  width: 100%;
 
   @media ${device.tablet} {
     display: block;
+    width: fit-content;
   }
 `;
