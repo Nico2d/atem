@@ -7,8 +7,6 @@ import { File } from "./File";
 export const DragAndDrop = (props) => {
   const [files, setFiles] = useState([]);
 
-  // zdjęcia, wordy i paczki rar i zwnykły (Im icons)
-
   const {
     getRootProps,
     getInputProps,

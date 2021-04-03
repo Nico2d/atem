@@ -7,17 +7,38 @@ import { Steps } from "../components/molecules/Steps";
 import styled from "styled-components";
 import { Whitespace } from "../components/atoms/Whitespace";
 import { useDropzone } from "react-dropzone";
+import { File } from "../components/atoms/File";
+import { FileList } from "../components/molecules/FileList";
 
 const AddExercise = () => {
-  const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
+  const [files, setFiles] = useState([]);
+
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject,
+    open,
+  } = useDropzone({
+    onDrop: (acceptedFiles) => {
+      setFiles((props) => [...props, ...acceptedFiles]);
+    },
     noClick: true,
-    noKeyboard: true,
   });
+
+  const removeFile = (name) => {
+    setFiles(files.filter((item) => item.name !== name));
+  };
+
+  console.log(files);
 
   return (
     <>
+      <input {...getInputProps()} />
       <PageHeading title="Dodaj zadanie" />
       {/* <DragAndDrop /> */}
+      {/* Dropzone */}
 
       {/* Mobile */}
       <StyledContainer>
@@ -29,14 +50,18 @@ const AddExercise = () => {
         </Description>
 
         <Whitespace height={1} />
+
         <Button
           text="Dodaj plik z dysku"
           styleType="secondary"
           clicked={open}
         />
+        <Whitespace height={1} />
+        {/* File list */}
 
-        <input type="file" />
-        <Whitespace height={3} />
+        <FileList fileList={files} variant="list" />
+
+        <Whitespace height={1} />
 
         {/* SECOND STEP */}
 
@@ -44,6 +69,8 @@ const AddExercise = () => {
           <Button text="Wstecz" styleType="secondary" />
           <Button text="Dodaj" />
         </StepNavigation>
+
+        <Whitespace height={3} />
       </StyledContainer>
     </>
   );
@@ -66,3 +93,16 @@ const StyledContainer = styled.div`
   padding: 0 1rem;
   text-align: center;
 `;
+
+const getColor = (props) => {
+  if (props.isDragAccept) {
+    return "#00e676";
+  }
+  if (props.isDragReject) {
+    return "#ff1744";
+  }
+  if (props.isDragActive) {
+    return "#2196f3";
+  }
+  return "#eeeeee";
+};
