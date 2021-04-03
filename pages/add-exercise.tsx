@@ -2,7 +2,7 @@ import { useState } from "react";
 import { PageHeading } from "../components/atoms/pageHeading";
 import React from "react";
 import { DragAndDrop } from "../components/atoms/dropzone";
-import { Button } from "../components/atoms/button";
+import { Button } from "../components/atoms/Button";
 import { StepsCounter } from "../components/molecules/Steps/StepsCounter";
 import styled from "styled-components";
 import { Whitespace } from "../components/atoms/Whitespace";
@@ -33,39 +33,38 @@ const AddExercise = () => {
     noClick: true,
   });
 
-  const removeFile = (name) => {
-    setFiles(files.filter((item) => item.name !== name));
-  };
-
-  const nextStep = () => {
-    if (currentStep < 5) setCurrentStep((currentStep) => currentStep + 1);
-  };
-
-  const prevStep = () => {
-    if (currentStep > 1) setCurrentStep((currentStep) => currentStep - 1);
-  };
-
   return (
     <>
-      <input {...getInputProps()} />
       <PageHeading title="Dodaj zadanie" />
-      {/* <DragAndDrop /> */}
-      {/* Dropzone */}
 
-      {/* Mobile */}
       <StyledContainer>
         <StepsCounter currentStep={currentStep} />
 
+        <input {...getInputProps()} />
         <Step1 fileList={files} open={open} isActive={currentStep === 1} />
         <Step2 isActive={currentStep === 2} />
         <Step3 isActive={currentStep === 3} />
         <Step4 isActive={currentStep === 4} />
         <Step5 isActive={currentStep === 5} />
 
-        <Whitespace height={1} />
+        <Whitespace height={2} />
         <StepNavigation>
-          <Button text="Wstecz" styleType="secondary" clicked={prevStep} />
-          <Button text="Dodaj" clicked={nextStep} />
+          {currentStep > 1 && (
+            <Button
+              text="Wstecz"
+              styleType="secondary"
+              clicked={() => setCurrentStep((currentStep) => currentStep - 1)}
+            />
+          )}
+
+          {currentStep < 5 ? (
+            <Button
+              text="Dalej"
+              clicked={() => setCurrentStep((currentStep) => currentStep + 1)}
+            />
+          ) : (
+            <Button text="Prześlij" />
+          )}
         </StepNavigation>
 
         <Whitespace height={3} />
@@ -80,9 +79,12 @@ const StepNavigation = styled.div`
   display: inline-flex;
   width: 100%;
   justify-content: space-between;
+
+  button:only-child {
+    margin-left: auto;
+  }
 `;
 
 const StyledContainer = styled.div`
   padding: 0 1rem;
-  text-align: center;
 `;

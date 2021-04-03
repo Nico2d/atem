@@ -33,7 +33,7 @@ const StyledButton = styled.button`
   border-radius: 2rem;
   cursor: pointer;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
 
   @media ${device.tablet} {
     padding: 1rem 4rem;

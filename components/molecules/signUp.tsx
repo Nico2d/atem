@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { ErrorDto, SignUpForm } from "../../Types";
 import { inputTypes } from "../../utils/enums";
-import { Button } from "../atoms/button";
+import { Button } from "../atoms/Button";
 import { Message } from "../atoms/message";
 import { CheckboxField } from "./checkboxField";
 import { ErrorMessage } from "@hookform/error-message";
