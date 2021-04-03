@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { PageHeading } from "../components/atoms/pageHeading";
 import { TemplateMobileSettings } from "../components/templates/templateMobileSettings";
-import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
 import { useMediaQuery } from "../Hooks/useMediaQuery";
 import { device } from "../Styles/breakpoints";
 import { Personalization } from "../components/organisms/personalization";
 import { Notification } from "../components/organisms/notifications";
 import { Account } from "../components/organisms/account";
-import { FormType } from "../Types/form";
+import { FormType } from "../Types/formType";
 
 const Settings = () => {
   const isDesktop = useMediaQuery(device.laptopM);
@@ -26,7 +25,7 @@ const Settings = () => {
   }
 
   return (
-    <TemplateWithSidebar>
+    <>
       <PageHeading title="Ustawienia" />
 
       <Account isClose={isClose} setIsClose={setIsClose} />
@@ -35,7 +34,7 @@ const Settings = () => {
         <Notification setIsClose={setIsClose} />
         <Personalization />
       </CardWrapper>
-    </TemplateWithSidebar>
+    </>
   );
 };
 

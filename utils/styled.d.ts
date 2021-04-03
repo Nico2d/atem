@@ -16,6 +16,7 @@ declare module "styled-components" {
     sidebar: string;
     white: string;
     sidebarHighlight: string;
+    gradient: string;
   }
 
   export interface Fonts {

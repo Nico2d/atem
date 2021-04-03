@@ -17,7 +17,7 @@ export const Switch: React.FC<SwitchProps> = ({ value = false, method }) => {
 const Ball = styled.span`
   width: 19px;
   height: 19px;
-  background-color: ${({ theme }) => theme.colors.cardColor};
+  background: ${({ theme }) => theme.colors.cardColor};
   border-radius: 50%;
   display: inline-block;
   position: absolute;
@@ -36,7 +36,7 @@ const SwitchWrapper = styled.div<{ isActive: boolean }>`
   background: ${({ theme, isActive }) =>
     isActive ? theme.colors.primary : theme.colors.linesColor};
   cursor: pointer;
-  transition: background-color 0.4s ease-in-out;
+  transition: background 0.4s ease-in-out;
   cursor: pointer;
 
   ${Ball} {

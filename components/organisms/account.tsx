@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useMediaQuery } from "../../Hooks/useMediaQuery";
 import { IconKeyboardArrowRight } from "../../public/icons/iconKeyboardArrowRight";
 import { device } from "../../Styles/breakpoints";
-import { FormType } from "../../Types/form";
+import { FormType } from "../../Types/formType";
 import { CardContainer } from "../atoms/card/cardContainer";
 import { CardDesc } from "../atoms/card/cardDesc";
 import { CardField } from "../atoms/card/cardField";
@@ -40,8 +40,7 @@ export const Account: React.FC<AccountTypes> = ({ isClose, setIsClose }) => {
               <AccountFields
                 key={index}
                 onClick={() => setIsClose(item)}
-                isActive={isClose && isClose.name == item.name}
-              >
+                isActive={isClose && isClose.name == item.name}>
                 {item.name} {!isDesktop && <IconKeyboardArrowRight />}
               </AccountFields>
             );

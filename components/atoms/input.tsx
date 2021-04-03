@@ -25,12 +25,13 @@ type inputProps = {
 
 const StyledInput = styled.input`
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.colors?.fontColor};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.linesColor};
   background: transparent;
   outline: none;
   padding-left: 0.7rem;
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors?.fontColor};
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.colors.fontColor};
+  width: 100%;
 
   &::placeholder {
     color: transparent;
@@ -38,15 +39,26 @@ const StyledInput = styled.input`
 
   &:placeholder-shown ~ label {
     cursor: text;
-    top: 1.2rem;
+    top: 1rem;
+    opacity: 0.9;
+    left: 0.7rem;
   }
 
   &:focus {
     ~ label {
       position: absolute;
-      top: -0.2rem;
+      top: -0.7rem;
+      left: 0;
       display: block;
       transition: 0.2s;
     }
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.fontColor};
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 `;

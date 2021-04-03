@@ -7,10 +7,15 @@ import { lightTheme, darkTheme } from "../Styles/themeColors";
 import { Typography } from "../Styles/themeFonts";
 import { useDarkMode } from "../Hooks/useDarkMode";
 import { useFontSizeSelector } from "../Hooks/useFontSizeSelector";
+import { Provider } from "react-redux";
+import { store } from "../store/configureStore";
+import { TemplateWithSidebar } from "../components/templates/TemplateWithSidebar";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme] = useDarkMode();
   const [fontSize] = useFontSizeSelector();
+  const router = useRouter();
   const [themeObj, setThemeObj] = useState({
     fonts: {
       family: Typography.family,
@@ -30,10 +35,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [theme, fontSize]);
 
   return (
-    <ThemeProvider theme={themeObj}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={themeObj}>
+        <GlobalStyle />
+        {router.pathname !== "/" ? (
+          <TemplateWithSidebar>
+            <Component {...pageProps} />
+          </TemplateWithSidebar>
+        ) : (
+          <Component {...pageProps} />
+        )}
+      </ThemeProvider>
+    </Provider>
   );
 }
 

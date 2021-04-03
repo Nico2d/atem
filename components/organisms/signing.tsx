@@ -1,32 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { SignUp } from "../molecules/signUp";
 import { device } from "../../Styles/breakpoints";
 import { SignIn } from "../molecules/signIn";
 
-export const Signing = ({ isSignIn, setIsSignIn }) => {
+export const Signing = ({
+  showSignInForm,
+  signInFormHandler: signInFormHandler,
+}: signingProps) => {
   return (
     <StyledSigningBox>
-      <SigningTitle>{isSignIn ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
-      {isSignIn ? <SignIn /> : <SignUp />}
+      <SigningTitle>{showSignInForm ? "Zaloguj" : "Zarejestruj"}</SigningTitle>
+      {showSignInForm ? <SignIn /> : <SignUp />}
       <StyledCreateAccountText>
-        <h3>{isSignIn ? "Nie masz konta?" : "Masz konto?"}</h3>
-        <h4 onClick={() => setIsSignIn(!isSignIn)}>
-          {isSignIn ? "Załóż konto" : "Zaloguj się"}
+        <h3>{showSignInForm ? "Nie masz konta?" : "Masz konto?"}</h3>
+        <h4 onClick={() => signInFormHandler(!showSignInForm)}>
+          {showSignInForm ? "Załóż konto" : "Zaloguj się"}
         </h4>
       </StyledCreateAccountText>
     </StyledSigningBox>
   );
 };
 
+type signingProps = {
+  showSignInForm: boolean;
+  signInFormHandler: (value: boolean) => void;
+};
+
 const StyledSigningBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors?.cardColor};
+  background: ${({ theme }) => theme.colors?.cardColor};
   border-radius: 1rem;
   padding: 2rem;
   width: 300px;
+  margin: 3rem 0;
+  margin-top: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   @media ${device.mobileL} {
     min-width: 380px;
@@ -34,7 +45,7 @@ const StyledSigningBox = styled.div`
 `;
 
 const SigningTitle = styled.h2`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledCreateAccountText = styled.div`
@@ -45,7 +56,6 @@ const StyledCreateAccountText = styled.div`
 
   h3 {
     margin-top: 1.4rem;
-    font-weight: normal;
   }
 
   h4 {
@@ -53,6 +63,7 @@ const StyledCreateAccountText = styled.div`
     cursor: pointer;
     margin-top: 0.5rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors?.primary};
+    font-weight: 500;
   }
 
   @media ${device.tablet} {
@@ -61,7 +72,7 @@ const StyledCreateAccountText = styled.div`
     justify-content: center;
 
     h3 {
-      margin-right: 1rem;
+      margin-right: 0.3rem;
       margin-top: 0;
     }
 

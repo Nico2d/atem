@@ -1,37 +1,48 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { SignUpForm } from "../../Types";
+import { ErrorDto, SignUpForm } from "../../Types";
 import { inputTypes } from "../../utils/enums";
 import { Button } from "../atoms/button";
-import { InputErrorMessage } from "../atoms/inputErrorMessage";
+import { Message } from "../atoms/message";
 import { CheckboxField } from "./checkboxField";
 import { ErrorMessage } from "@hookform/error-message";
 import { device } from "../../Styles/breakpoints";
 import { InputField } from "./inputField";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../store/slices/userSlice";
+import { RootState } from "../../store/rootReducer";
+import { MessageType } from "../../Types/MessageType";
 
 export const SignUp = () => {
   const { register, errors, handleSubmit, watch } = useForm<SignUpForm>({
     mode: "onChange",
   });
 
+  const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+
   const password = useRef({});
   password.current = watch("password", "");
 
-  const onSubmit = (data: SignUpForm) => console.log(data);
+  const onSubmit = (data: SignUpForm) => {
+    dispatch(registerUser(data));
+  };
 
   return (
     <StyledSignIn>
       <InputField
-        name="login"
-        placeholder="Login"
+        name="username"
+        placeholder="Nazwa użytkownika"
         type={inputTypes.text}
-        register={register({ required: "Login jest wymagany" })}
+        register={register({ required: "Nazwa użytkownika jest wymagana" })}
       />
       <ErrorMessage
         errors={errors}
-        name="login"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        name="username"
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <InputField
         name="email"
@@ -48,7 +59,9 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="email"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <InputField
         name="password"
@@ -59,7 +72,9 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="password"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <InputField
         name="confirmPassword"
@@ -74,7 +89,9 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="confirmPassword"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
       <TermsOfServiceWrapper>
         <CheckboxField
@@ -87,8 +104,20 @@ export const SignUp = () => {
       <ErrorMessage
         errors={errors}
         name="acceptedTermsOfService"
-        render={({ message }) => <InputErrorMessage error={message} />}
+        render={({ message }) => (
+          <Message message={message} messageType={MessageType.error} />
+        )}
       />
+      {user.errors.length > 0 &&
+        user.errors.map((error: ErrorDto) => (
+          <Message message={error.message} messageType={MessageType.error} />
+        ))}
+      {user.userSignUpSuccess && (
+        <Message
+          message="Rejestracja przebiegła pomyślnie. Możesz się teraz zalogować"
+          messageType={MessageType.success}
+        />
+      )}
       <Button
         styleType="primary"
         text="Zarejestruj"
@@ -122,6 +151,7 @@ const TermsOfService = styled.span`
 const StyledSignIn = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   > * {
     margin-bottom: 1rem;
