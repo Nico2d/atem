@@ -22,12 +22,12 @@ export const StepsCounter: React.FC<StepsCounterProps> = ({
 
 const StepsContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `;
 
 const SingleStep = styled.div<{ isActive }>`
   height: 2px;
-  width: 50px;
+  width: 18%;
   background: ${({ theme, isActive }) =>
     isActive ? theme.colors.primary : theme.colors.fontColor};
 `;
