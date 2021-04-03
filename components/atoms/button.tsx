@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../Styles/breakpoints";
 
 type Props = {
   text: string;
@@ -29,10 +30,14 @@ export const Button: React.FC<Props> = ({
 
 const StyledButton = styled.button`
   outline: none;
-  padding: 1rem 4rem;
   border-radius: 2rem;
   cursor: pointer;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: .5rem 2rem;
+
+  @media ${device.tablet} {
+    padding: 1rem 4rem;
+  }
 `;
 
 export const ButtonExtendBlank = styled(StyledButton)`
@@ -45,5 +50,4 @@ export const ButtonExtendSolid = styled(StyledButton)`
   color: ${({ theme }) => theme.colors.white};
   background: ${({ theme }) => theme.colors.gradient};
   border: none;
-  font-size: ${({ theme }) => theme.fonts.fontSize}rem;
 `;
