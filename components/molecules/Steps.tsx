@@ -2,12 +2,10 @@ import { useState } from "react";
 import styled from "styled-components";
 
 type StepsProps = {
-  maxSteps?: number;
+  currentStep?: number;
 };
 
-export const Steps: React.FC<StepsProps> = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-
+export const Steps: React.FC<StepsProps> = ({ currentStep = 1 }) => {
   return (
     <div>
       <p>Step {currentStep}/5</p>

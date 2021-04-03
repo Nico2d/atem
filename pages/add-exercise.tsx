@@ -12,6 +12,7 @@ import { FileList } from "../components/molecules/FileList";
 
 const AddExercise = () => {
   const [files, setFiles] = useState([]);
+  const [currentStep, setCurrentStep] = useState(1);
 
   const {
     getRootProps,
@@ -31,7 +32,13 @@ const AddExercise = () => {
     setFiles(files.filter((item) => item.name !== name));
   };
 
-  console.log(files);
+  const nextStep = () => {
+    if (currentStep < 5) setCurrentStep((currentStep) => currentStep + 1);
+  };
+
+  const prevStep = () => {
+    if (currentStep > 0) setCurrentStep((currentStep) => currentStep - 1);
+  };
 
   return (
     <>
@@ -42,32 +49,34 @@ const AddExercise = () => {
 
       {/* Mobile */}
       <StyledContainer>
-        <Steps />
+        <Steps currentStep={currentStep} />
 
         {/* FIRST STEP */}
-        <Description>
-          *Pamiętaj aby usunąć wszystkie wrażliwe dane przez dodaniem pliku
-        </Description>
+        <div>
+          <Description>
+            *Pamiętaj aby usunąć wszystkie wrażliwe dane przez dodaniem pliku
+          </Description>
 
-        <Whitespace height={1} />
+          <Whitespace height={1} />
 
-        <Button
-          text="Dodaj plik z dysku"
-          styleType="secondary"
-          clicked={open}
-        />
-        <Whitespace height={1} />
-        {/* File list */}
+          <Button
+            text="Dodaj plik z dysku"
+            styleType="secondary"
+            clicked={open}
+          />
+          <Whitespace height={1} />
+          {/* File list */}
 
-        <FileList fileList={files} variant="list" />
+          <FileList fileList={files} variant="list" />
 
-        <Whitespace height={1} />
+          <Whitespace height={1} />
+        </div>
 
         {/* SECOND STEP */}
 
         <StepNavigation>
-          <Button text="Wstecz" styleType="secondary" />
-          <Button text="Dodaj" />
+          <Button text="Wstecz" styleType="secondary" clicked={prevStep} />
+          <Button text="Dodaj" clicked={nextStep} />
         </StepNavigation>
 
         <Whitespace height={3} />
@@ -93,16 +102,3 @@ const StyledContainer = styled.div`
   padding: 0 1rem;
   text-align: center;
 `;
-
-const getColor = (props) => {
-  if (props.isDragAccept) {
-    return "#00e676";
-  }
-  if (props.isDragReject) {
-    return "#ff1744";
-  }
-  if (props.isDragActive) {
-    return "#2196f3";
-  }
-  return "#eeeeee";
-};
