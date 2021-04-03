@@ -1,35 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { File } from "./File";
+import { FileList } from "../molecules/FileList";
 
-export const DragAndDrop = ({ dropzoneProps, fileList }) => {
+export const DragAndDrop = ({ dropzone, fileList }) => {
   return (
     <section>
-      <Container {...dropzoneProps}>
+      <Container {...dropzone}>
         {fileList.length === 0 && <p>Przeciągnij i upuść</p>}
-
-        <FileList>
-          {fileList.map((file, index) => (
-            <File key={index} file={file} />
-          ))}
-        </FileList>
+        <FileList fileList={fileList} variant="grid" />
       </Container>
     </section>
   );
 };
-
-const FileList = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-gap: 10px;
-
-  > span {
-    color: red;
-    cursor: pointer;
-    z-index: 20;
-  }
-`;
 
 const getColor = (props) => {
   if (props.isDragAccept) {
@@ -46,7 +28,7 @@ const getColor = (props) => {
 
 const Container = styled.div`
   width: 900px;
-  height: 300px;
+  min-height: 300px;
   flex: 1;
   display: flex;
   flex-direction: column;

@@ -14,10 +14,10 @@ export const FileList = ({ fileList, variant }) => {
   return (
     <Wrapper as={setStyleVariant()}>
       {fileList.map((file) => (
-        <p key={file.path}>
+        <div key={file.path}>
           <ImFileEmpty />
           {file.path}
-        </p>
+        </div>
       ))}
     </Wrapper>
   );
@@ -28,18 +28,29 @@ const Wrapper = styled.div``;
 const ListVariantGrid = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, 100px);
   grid-gap: 10px;
 
-  > span {
-    color: red;
-    cursor: pointer;
-    z-index: 20;
+  > div {
+    display: flex;
+    flex-flow: column;
+    width: 100px;
+    margin: 0 auto;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
   }
 `;
 
 const ListVariantList = styled.div`
   text-align: left;
+
+  > div {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
 
   svg {
     margin-right: 5px;

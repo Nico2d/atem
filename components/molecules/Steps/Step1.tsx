@@ -44,7 +44,7 @@ export const Step1 = ({ isActive }) => {
       <input {...getInputProps()} />
 
       {isDesktop ? (
-        <DragAndDrop dropzoneProps={dropzoneProps} fileList={files} />
+        <DragAndDrop dropzone={dropzoneProps} fileList={files} />
       ) : (
         <>
           <CenterWrapper>
