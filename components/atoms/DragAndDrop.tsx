@@ -1,39 +1,15 @@
-import React, { useState } from "react";
-import { useDropzone } from "react-dropzone";
+import React from "react";
 import styled from "styled-components";
-import { ImFileEmpty } from "@react-icons/all-files/im/ImFileEmpty";
 import { File } from "./File";
 
-export const DragAndDrop = (props) => {
-  const [files, setFiles] = useState([]);
-
-  const {
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject,
-  } = useDropzone({
-    onDrop: (acceptedFiles) => {
-      setFiles((props) => [...props, ...acceptedFiles]);
-    },
-    noClick: true,
-  });
-
-  const removeFile = (name) => {
-    setFiles(files.filter((item) => item.name !== name));
-  };
-
+export const DragAndDrop = ({ dropzoneProps, fileList }) => {
   return (
     <section>
-      <Container
-        {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
-      >
-        <input {...getInputProps()} />
-        {files.length === 0 && <p>Przeciągnij i upuść</p>}
+      <Container {...dropzoneProps}>
+        {fileList.length === 0 && <p>Przeciągnij i upuść</p>}
 
         <FileList>
-          {files.map((file, index) => (
+          {fileList.map((file, index) => (
             <File key={index} file={file} />
           ))}
         </FileList>
@@ -70,15 +46,14 @@ const getColor = (props) => {
 
 const Container = styled.div`
   width: 900px;
+  height: 300px;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  border-width: 2px;
   border-radius: 1rem;
-  border-color: ${(props) => getColor(props)};
-  border-style: dashed;
+  border: 2px dashed ${(props) => getColor(props)};
   color: #bdbdbd;
   outline: none;
   transition: border 0.24s ease-in-out;
