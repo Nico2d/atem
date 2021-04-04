@@ -6,7 +6,9 @@ export const DragAndDrop = ({ dropzone, fileList }) => {
   return (
     <section>
       <Container {...dropzone}>
-        {fileList.length === 0 && <p>Przeciągnij i upuść</p>}
+        {fileList.length === 0 && (
+          <InformationWrapper>Przeciągnij i upuść</InformationWrapper>
+        )}
         <FileList fileList={fileList} variant="grid" />
       </Container>
     </section>
@@ -26,13 +28,17 @@ const getColor = (props) => {
   return "#eeeeee";
 };
 
+const InformationWrapper = styled.p`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 const Container = styled.div`
+  position: relative;
   width: 900px;
   min-height: 300px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 20px;
   border-radius: 1rem;
   border: 2px dashed ${(props) => getColor(props)};
