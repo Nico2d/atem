@@ -23,7 +23,7 @@ export const Account: React.FC<AccountTypes> = ({ isClose, setIsClose }) => {
 
   const formsArray: FormType[] = [
     { name: "Zmiana hasła", form: <ChangePasswordForm /> },
-    { name: "Zmień nazwe użytkownika", form: <ChangeUsernameForm /> },
+    { name: "Zmień nazwę użytkownika", form: <ChangeUsernameForm /> },
     { name: "Domyślne ustawienia", form: <ChangeDefaultSettingsForm /> },
     { name: "Usuń konto", form: <DeleteAccountForm /> },
   ];

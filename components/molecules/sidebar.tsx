@@ -39,7 +39,7 @@ const UserName = styled.p`
   }
 `;
 
-const Container = styled.div`
+const Container = styled.aside`
   width: 300px;
   background: ${({ theme }) => theme.colors.sidebar};
   color: ${({ theme }) => theme.colors.white};

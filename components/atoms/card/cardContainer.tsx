@@ -33,6 +33,6 @@ const StyledDiv = styled.section<CardContainer>`
 
   @media ${device.tablet} {
     width: ${({ width }) => width};
-    margin: 1rem;
+    margin: 1rem 0;
   }
 `;
