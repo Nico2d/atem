@@ -71,7 +71,7 @@ export default AddExercise;
 
 const Container = styled.div`
   @media ${device.laptop} {
-    min-width: 900px;
+    min-width: 932px;
   }
 `;
 

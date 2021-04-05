@@ -30,7 +30,7 @@ export const Account: React.FC<AccountTypes> = ({ isClose, setIsClose }) => {
 
   return (
     <CardContainer height="300px" width={!isDesktop ? "450px" : "932px"}>
-      <AccoutSection>
+      <AccountSection>
         <div style={{ flex: "50%" }}>
           <CardHeading>Konto</CardHeading>
           <CardDesc>Informacje personalne</CardDesc>
@@ -40,7 +40,8 @@ export const Account: React.FC<AccountTypes> = ({ isClose, setIsClose }) => {
               <AccountFields
                 key={index}
                 onClick={() => setIsClose(item)}
-                isActive={isClose && isClose.name == item.name}>
+                isActive={isClose && isClose.name == item.name}
+              >
                 {item.name} {!isDesktop && <IconKeyboardArrowRight />}
               </AccountFields>
             );
@@ -48,7 +49,7 @@ export const Account: React.FC<AccountTypes> = ({ isClose, setIsClose }) => {
         </div>
 
         {isDesktop && <StyledScene>{isClose && isClose.form}</StyledScene>}
-      </AccoutSection>
+      </AccountSection>
     </CardContainer>
   );
 };
@@ -63,7 +64,7 @@ const AccountFields = styled(CardField)`
   }
 `;
 
-const AccoutSection = styled.div`
+const AccountSection = styled.div`
   display: flex;
   flex-flow: row;
   justify-content: space-between;
