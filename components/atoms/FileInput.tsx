@@ -7,6 +7,7 @@ import { device } from "../../Styles/breakpoints";
 import { FileList } from "../molecules/FileList";
 import { Button } from "./Button";
 import { Whitespace } from "./Whitespace";
+import { MdSystemUpdateAlt } from "@react-icons/all-files/md/MdSystemUpdateAlt";
 
 const FileInput = (props) => {
   const { name, label = name, mode = "update" } = props;
@@ -57,11 +58,14 @@ const FileInput = (props) => {
       <input {...props} id={name} {...getInputProps()} />
 
       {isDesktop ? (
-        <Container {...getRootProps()}>
+        <Container {...getRootProps()} isDragActive={isDragActive}>
           {!!files?.length ? (
             <FileList fileList={files} variant="grid" />
           ) : (
-            <InformationWrapper>Przeciągnij i upuść</InformationWrapper>
+            <InformationWrapper>
+              <MdSystemUpdateAlt />
+              <p>Przeciągnij i upuść</p>
+            </InformationWrapper>
           )}
         </Container>
       ) : (
@@ -88,29 +92,27 @@ const InformationWrapper = styled.p`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+  }
 `;
 
-const getColor = (props) => {
-  if (props.isDragAccept) {
-    return "#00e676";
-  }
-  if (props.isDragReject) {
-    return "#ff1744";
-  }
-  if (props.isDragActive) {
-    return "#2196f3";
-  }
-  return "#eeeeee";
-};
-
-const Container = styled.div`
+const Container = styled.div<{ isDragActive: boolean }>`
   position: relative;
   width: 100%;
   min-height: 300px;
   padding: 20px;
   border-radius: 1rem;
-  border: 2px dashed ${(props) => getColor(props)};
-  color: #bdbdbd;
+  border: 2px dashed
+    ${({ theme, isDragActive }) =>
+      isDragActive ? theme.colors.fontColor : `${theme.colors.fontColor}90`};
+  background: ${({ theme, isDragActive }) =>
+    isDragActive ? `${theme.colors.primary}60` : "transparent"};
+  color: ${({ theme, isDragActive }) =>
+    isDragActive ? theme.colors.fontColor : `${theme.colors.fontColor}90`};
   outline: none;
   transition: border 0.24s ease-in-out;
 `;

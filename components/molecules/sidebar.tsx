@@ -8,7 +8,7 @@ export const Sidebar = () => {
   return (
     <Container>
       <UserWrapper>
-        <Avatar imageUrl="https://johannesippen.com/img/blog/humans-not-users/header.jpg" />
+        <Avatar imageUrl="https://www.travelcontinuously.com/wp-content/uploads/2018/04/empty-avatar.png" />
         <UserName>Jan Kowalski</UserName>
       </UserWrapper>
 
