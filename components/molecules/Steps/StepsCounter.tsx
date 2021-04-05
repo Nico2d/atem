@@ -13,7 +13,7 @@ export const StepsCounter: React.FC<StepsCounterProps> = ({
 
       <StepsContainer>
         {[1, 2, 3, 4, 5].map((item) => (
-          <SingleStep isActive={item <= currentStep} />
+          <SingleStep isActive={item <= currentStep} key={item} />
         ))}
       </StepsContainer>
     </div>
