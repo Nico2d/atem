@@ -13,7 +13,7 @@ export const FileList = ({ fileList, variant }) => {
 
   return (
     <Wrapper as={setStyleVariant()}>
-      {fileList.map((file) => (
+      {fileList?.map((file) => (
         <div key={file.path}>
           <ImFileEmpty />
           {file.path}

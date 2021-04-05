@@ -1,38 +1,10 @@
-import React, { useState } from "react";
-import { useDropzone } from "react-dropzone";
+import React from "react";
 import styled from "styled-components";
-import { useMediaQuery } from "../../../Hooks/useMediaQuery";
-import { device } from "../../../Styles/breakpoints";
-import { Button } from "../../atoms/Button";
-import { DragAndDrop } from "../../atoms/DragAndDrop";
+import FileInput from "../../atoms/FileInput";
 import { Whitespace } from "../../atoms/Whitespace";
-import { FileList } from "../FileList";
 import { StepContentWrapper } from "./StepContentWrapper.style";
 
 export const Step1 = ({ isActive }) => {
-  const isDesktop = useMediaQuery(device.tablet);
-  const [files, setFiles] = useState([]);
-
-  const {
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject,
-    open,
-  } = useDropzone({
-    onDrop: (acceptedFiles) => {
-      setFiles((props) => [...props, ...acceptedFiles]);
-    },
-    noClick: true,
-  });
-
-  const dropzoneProps = getRootProps({
-    isDragActive,
-    isDragAccept,
-    isDragReject,
-  });
-
   return (
     <StepContentWrapper isActive={isActive}>
       <Description>
@@ -41,23 +13,7 @@ export const Step1 = ({ isActive }) => {
 
       <Whitespace height={1} />
 
-      <input {...getInputProps()} />
-
-      {isDesktop ? (
-        <DragAndDrop dropzone={dropzoneProps} fileList={files} />
-      ) : (
-        <>
-          <CenterWrapper>
-            <Button
-              text="Dodaj plik z dysku"
-              styleType="secondary"
-              clicked={open}
-            />
-          </CenterWrapper>
-          <Whitespace height={1} />
-          <FileList fileList={files} variant="list" />
-        </>
-      )}
+      <FileInput multiple name="pictures" mode="append" />
     </StepContentWrapper>
   );
 };
@@ -65,8 +21,4 @@ export const Step1 = ({ isActive }) => {
 export const Description = styled.p`
   color: gray;
   font-size: ${({ theme }) => theme.fonts.fontSize * 0.9}rem;
-`;
-
-const CenterWrapper = styled.div`
-  text-align: center;
 `;
