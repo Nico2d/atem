@@ -70,7 +70,7 @@ export const SignIn = () => {
           <Message message={error.message} messageType={MessageType.error} />
         ))}
       <Button
-        styleType="primary"
+        variant="primary"
         text="Zaloguj"
         clicked={handleSubmit(onSubmit)}
       />

@@ -19,9 +19,7 @@ const AddExercise = () => {
     mode: "onChange",
   });
 
-  console.log(methods.watch());
-
-  const onSubmit = (data) => console.log("onSubmit: ", data);
+  const onSubmit = (data) => console.log("onSubmit(dodanie zadania): ", data);
 
   return (
     <Container>
@@ -42,7 +40,7 @@ const AddExercise = () => {
               {currentStep > 1 && (
                 <Button
                   text="Wstecz"
-                  styleType="secondary"
+                  variant="secondary"
                   clicked={() =>
                     setCurrentStep((currentStep) => currentStep - 1)
                   }
@@ -57,7 +55,7 @@ const AddExercise = () => {
                   }
                 />
               ) : (
-                <Button text="Prześlij" />
+                <Button type="submit" text="Prześlij" />
               )}
             </StepNavigation>
           </form>
@@ -72,8 +70,6 @@ const AddExercise = () => {
 export default AddExercise;
 
 const Container = styled.div`
-  padding: 0 1rem;
-
   @media ${device.laptop} {
     min-width: 900px;
   }

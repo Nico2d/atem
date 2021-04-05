@@ -27,7 +27,7 @@ export const ChangeDefaultSettingsForm = () => {
 
       <Button
         text="Zapisz"
-        styleType="secondary"
+        variant="secondary"
         clicked={handleSubmit(onSubmit)}
       />
     </StyledForm>

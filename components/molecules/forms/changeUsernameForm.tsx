@@ -21,7 +21,7 @@ export const ChangeUsernameForm = () => {
 
       <Button
         text="Sprawdź"
-        styleType="secondary"
+        variant="secondary"
         clicked={handleSubmit(onSubmit)}
       />
     </StyledForm>

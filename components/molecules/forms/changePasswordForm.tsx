@@ -33,7 +33,7 @@ export const ChangePasswordForm = () => {
 
       <Button
         text="Zapisz"
-        styleType="secondary"
+        variant="secondary"
         clicked={handleSubmit(onSubmit)}
       />
     </StyledForm>

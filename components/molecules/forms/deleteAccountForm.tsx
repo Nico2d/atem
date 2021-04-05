@@ -35,7 +35,7 @@ export const DeleteAccountForm = () => {
 
       <Button
         text="Usuń konto"
-        styleType="secondary"
+        variant="secondary"
         clicked={handleSubmit(onSubmit)}
       />
     </StyledContainer>

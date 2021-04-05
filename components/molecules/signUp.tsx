@@ -119,7 +119,7 @@ export const SignUp = () => {
         />
       )}
       <Button
-        styleType="primary"
+        variant="primary"
         text="Zarejestruj"
         clicked={handleSubmit(onSubmit)}
       />

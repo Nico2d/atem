@@ -3,17 +3,19 @@ import { device } from "../../Styles/breakpoints";
 
 type Props = {
   text: string;
-  styleType?: string;
+  variant?: string;
   clicked?: () => void;
+  type?: string;
 };
 
 export const Button: React.FC<Props> = ({
   text,
   clicked,
-  styleType = "primary",
+  variant = "primary",
+  type = "button",
 }: Props) => {
   const getButtonStyle = () => {
-    switch (styleType) {
+    switch (variant) {
       case "primary":
         return ButtonExtendSolid;
       case "secondary":
@@ -22,7 +24,7 @@ export const Button: React.FC<Props> = ({
   };
 
   return (
-    <StyledButton as={getButtonStyle()} onClick={clicked}>
+    <StyledButton as={getButtonStyle()} onClick={clicked} type={type}>
       {text}
     </StyledButton>
   );

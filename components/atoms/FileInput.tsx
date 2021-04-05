@@ -52,7 +52,6 @@ const FileInput = (props) => {
     };
   }, [register, unregister, name]);
 
-  console.log("files: ", files);
   return (
     <>
       <input {...props} id={name} {...getInputProps()} />
@@ -70,7 +69,7 @@ const FileInput = (props) => {
           <CenterWrapper>
             <Button
               text="Dodaj plik z dysku"
-              styleType="secondary"
+              variant="secondary"
               clicked={open}
             />
           </CenterWrapper>

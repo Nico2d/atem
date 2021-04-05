@@ -25,7 +25,7 @@ export const HeroSectionHeader = ({
       {isDesktop && (
         <Button
           text={isSignIn ? "Załóż konto" : "Zaloguj się"}
-          styleType="secondary"
+          variant="secondary"
           clicked={btnClicked}
         />
       )}
