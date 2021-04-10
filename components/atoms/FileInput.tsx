@@ -55,8 +55,6 @@ const FileInput = (props) => {
 
   return (
     <>
-      <input {...props} id={name} {...getInputProps()} />
-
       {isDesktop ? (
         <Container {...getRootProps()} isDragActive={isDragActive}>
           {!!files?.length ? (
@@ -70,6 +68,7 @@ const FileInput = (props) => {
         </Container>
       ) : (
         <>
+          <input {...props} id={name} {...getInputProps()} />
           <CenterWrapper>
             <Button
               text="Dodaj plik z dysku"

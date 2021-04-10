@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ImFileEmpty } from "@react-icons/all-files/im/ImFileEmpty";
+import { File } from "../atoms/File";
 
 export const FileList = ({ fileList, variant }) => {
   const setStyleVariant = () => {
@@ -14,10 +14,7 @@ export const FileList = ({ fileList, variant }) => {
   return (
     <Wrapper as={setStyleVariant()}>
       {fileList?.map((file) => (
-        <div key={file.path}>
-          <ImFileEmpty />
-          {file.path}
-        </div>
+        <File file={file} key={file.path} />
       ))}
     </Wrapper>
   );
