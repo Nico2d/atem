@@ -11,6 +11,7 @@ import { Step3 } from "../components/molecules/Steps/Step3";
 import { Step4 } from "../components/molecules/Steps/Step4";
 import { Step5 } from "../components/molecules/Steps/Step5";
 import { useForm, FormProvider } from "react-hook-form";
+import { device } from "../Styles/breakpoints";
 
 const AddExercise = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -19,6 +20,10 @@ const AddExercise = () => {
   });
 
   const onSubmit = (data) => console.log("onSubmit(dodanie zadania): ", data);
+
+  const nextStep = () => {
+    currentStep < 5 && setCurrentStep((currentStep) => currentStep + 1);
+  };
 
   return (
     <StyledContainer>
@@ -43,12 +48,9 @@ const AddExercise = () => {
             )}
 
             {currentStep < 5 ? (
-              <Button
-                text="Dalej"
-                clicked={() => setCurrentStep((currentStep) => currentStep + 1)}
-              />
+              <Button text="Dalej" clicked={nextStep} />
             ) : (
-              <Button type="submit" text="Prześlij" />
+              <StyledInput type="submit" value="Prześlij" />
             )}
           </StepNavigation>
         </form>
@@ -60,6 +62,21 @@ const AddExercise = () => {
 };
 
 export default AddExercise;
+
+const StyledInput = styled.input`
+  outline: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 0.5rem 2rem;
+  color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.gradient};
+  border: none;
+
+  @media ${device.tablet} {
+    padding: 1rem 4rem;
+  }
+`;
 
 const StyledContainer = styled.div`
   padding: 0 1rem;
