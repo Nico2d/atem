@@ -13,7 +13,7 @@ export const Step1 = ({ isActive }) => {
 
       <Whitespace height={1} />
 
-      <FileInput multiple name="pictures" mode="append" />
+      <FileInput multiple name="files" mode="append" />
     </StepContentWrapper>
   );
 };

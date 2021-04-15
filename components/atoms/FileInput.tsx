@@ -10,7 +10,7 @@ import { Whitespace } from "./Whitespace";
 import { MdSystemUpdateAlt } from "@react-icons/all-files/md/MdSystemUpdateAlt";
 
 const FileInput = (props) => {
-  const { name, label = name, mode = "update" } = props;
+  const { name, mode = "update" } = props;
   const { register, unregister, setValue, watch } = useFormContext();
   const isDesktop = useMediaQuery(device.tablet);
   const files = watch(name);
@@ -44,8 +44,8 @@ const FileInput = (props) => {
 
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
-    // accept: props.accept,
   });
+
   useEffect(() => {
     register(name);
     return () => {
@@ -86,7 +86,7 @@ const FileInput = (props) => {
 
 export default FileInput;
 
-const InformationWrapper = styled.p`
+const InformationWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;

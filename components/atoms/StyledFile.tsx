@@ -1,32 +1,61 @@
 import { ImFileEmpty } from "@react-icons/all-files/im/ImFileEmpty";
 import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { inputTypes } from "../../utils/enums";
 import { InputField } from "../molecules/inputField";
 import { Button } from "./Button";
-import { PageHeading } from "./pageHeading";
 import { Popup } from "./Popup";
 
-export const File = ({ file }) => {
+export const StyledFile = ({ file }) => {
   const [isPopupClose, setIsPopupClose] = useState<boolean>(true);
+  const { register, unregister, setValue, watch, getValues } = useFormContext();
+
+  const saveSettings = () => {
+    let fileList = watch("files");
+
+    const currentList = fileList.map((item) => {
+      if (item.name === file.name) {
+        let myRenamedFile = new File(
+          [item],
+          `${getValues("newFileName")}.txt`,
+          {
+            type: item.type,
+          }
+        );
+
+        return myRenamedFile;
+      } else {
+        return item;
+      }
+    });
+
+    setValue("files", currentList);
+    unregister("newFileName");
+  };
 
   return (
     <>
-      <StyledFile onClick={() => setIsPopupClose(false)}>
+      <FileWrapper onClick={() => setIsPopupClose(false)}>
         <ImFileEmpty />
-        {file.path}
-      </StyledFile>
+        {file.name}
+      </FileWrapper>
 
       <Popup isClose={isPopupClose} onClose={setIsPopupClose}>
         <StyledHeader>Edycja pliku</StyledHeader>
         <InputField
           placeholder="Nazwa pliku"
-          name="fileName"
+          name="newFileName"
           type={inputTypes.text}
+          register={register}
+          value={file.name.split(".")[0]}
         />
+        <p>Rozmiar pliku: {(file.size / 1024).toFixed(2)} kb</p>
         <StyledButtonWrapper>
-          <Button text="Zapisz" />
+          <Button text="Zapisz" clicked={saveSettings} />
         </StyledButtonWrapper>
+        {/* rozmiar pliku */}
+        {/* jakieś jeszcze informacje - dunno co */}
 
         <ButtonContainer>
           <Button text="Usuń z listy" />
@@ -37,7 +66,7 @@ export const File = ({ file }) => {
   );
 };
 
-const StyledFile = styled.div`
+const FileWrapper = styled.div`
   cursor: pointer;
 `;
 

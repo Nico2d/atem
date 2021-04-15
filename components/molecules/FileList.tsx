@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { File } from "../atoms/File";
+import { StyledFile } from "../atoms/StyledFile";
 
 export const FileList = ({ fileList, variant }) => {
   const setStyleVariant = () => {
@@ -14,7 +14,7 @@ export const FileList = ({ fileList, variant }) => {
   return (
     <Wrapper as={setStyleVariant()}>
       {fileList?.map((file) => (
-        <File file={file} key={file.path} />
+        <StyledFile file={file} key={file.path} />
       ))}
     </Wrapper>
   );
