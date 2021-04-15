@@ -61,6 +61,7 @@ const FileInput = (props) => {
             <FileList fileList={files} variant="grid" />
           ) : (
             <InformationWrapper>
+              <input {...props} id={name} {...getInputProps()} />
               <MdSystemUpdateAlt />
               <p>Przeciągnij i upuść</p>
             </InformationWrapper>
@@ -92,6 +93,7 @@ const InformationWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  cursor: pointer;
 
   svg {
     width: 3rem;

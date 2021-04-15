@@ -35,6 +35,17 @@ export const StyledFile = ({ file }) => {
     setIsPopupClose(true);
   };
 
+  const removeFromList = () => {
+    let fileList = getValues("files");
+
+    const fileListAfterChangeName = fileList.filter(
+      (item) => item.name !== file.name
+    );
+
+    setValue("files", fileListAfterChangeName);
+    setIsPopupClose(true);
+  };
+
   return (
     <>
       <FileWrapper onClick={() => setIsPopupClose(false)}>
@@ -51,13 +62,13 @@ export const StyledFile = ({ file }) => {
           register={register}
           value={fileName}
         />
-        <p>Rozmiar pliku: {(file.size / 1024).toFixed(2)} kb</p>
+        <p>Rozmiar pliku: {(file.size / 1024).toFixed(2)} KB</p>
         <StyledButtonWrapper>
           <Button text="Zapisz" clicked={saveSettings} />
         </StyledButtonWrapper>
 
         <ButtonContainer>
-          <Button text="Usuń z listy" />
+          <Button text="Usuń z listy" clicked={removeFromList} />
           <Button text="Pobierz" />
         </ButtonContainer>
       </Popup>
