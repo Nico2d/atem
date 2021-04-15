@@ -4,12 +4,12 @@ export const getDate = (date) => {
   let day: string | number = dateObj.getUTCDate();
   let year = dateObj.getUTCFullYear();
   let hour = dateObj.getHours();
-  let minuts = dateObj.getMinutes();
+  let minutes = dateObj.getMinutes();
 
   day = day < 10 ? `0${day}` : day;
   month = month < 10 ? `0${month}` : month;
 
-  const fullString = `${day}.${month}.${year} ${hour}:${minuts}`;
+  const fullString = `${day}.${month}.${year} ${hour}:${minutes}`;
 
   return fullString;
 };
