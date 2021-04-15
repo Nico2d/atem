@@ -13,8 +13,8 @@ export const FileList = ({ fileList, variant }) => {
 
   return (
     <Wrapper as={setStyleVariant()}>
-      {fileList?.map((file) => (
-        <StyledFile file={file} key={file.path} />
+      {fileList?.map((file, index) => (
+        <StyledFile file={file} key={index} />
       ))}
     </Wrapper>
   );
