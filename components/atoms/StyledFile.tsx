@@ -51,7 +51,7 @@ export const StyledFile = ({ file }) => {
     <>
       <FileWrapper onClick={() => setIsPopupClose(false)}>
         <ImFileEmpty />
-        {file.name}
+        <span>{file.name}</span>
       </FileWrapper>
 
       <Popup isClose={isPopupClose} onClose={setIsPopupClose}>
@@ -79,6 +79,13 @@ export const StyledFile = ({ file }) => {
 
 const FileWrapper = styled.div`
   cursor: pointer;
+
+  > span {
+    font-size: ${({ theme }) => theme.fonts.fontSize * 0.9}rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    word-break: break-word;
+  }
 `;
 
 const StyledHeader = styled.h3`
@@ -88,7 +95,7 @@ const StyledHeader = styled.h3`
 `;
 
 const StyledDetailWrapper = styled.div`
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 `;
 
 const ButtonContainer = styled.div`
