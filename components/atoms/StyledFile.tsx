@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { inputTypes } from "../../utils/enums";
+import { getDate } from "../../utils/getDate";
 import { InputField } from "../molecules/inputField";
 import { Button } from "./Button";
 import { Popup } from "./Popup";
@@ -62,14 +63,14 @@ export const StyledFile = ({ file }) => {
           register={register}
           value={fileName}
         />
-        <p>Rozmiar pliku: {(file.size / 1024).toFixed(2)} KB</p>
-        <StyledButtonWrapper>
-          <Button text="Zapisz" clicked={saveSettings} />
-        </StyledButtonWrapper>
+        <StyledDetailWrapper>
+          <p>Rozmiar pliku: {(file.size / 1024).toFixed(2)} KB</p>
+          <p>Ostatnio modyfikowany: {getDate(file.lastModified)}</p>
+        </StyledDetailWrapper>
 
         <ButtonContainer>
           <Button text="Usuń z listy" clicked={removeFromList} />
-          <Button text="Pobierz" />
+          <Button text="Zapisz zmiany" clicked={saveSettings} />
         </ButtonContainer>
       </Popup>
     </>
@@ -86,9 +87,8 @@ const StyledHeader = styled.h3`
   font-size: ${({ theme }) => theme.fonts.fontSize * 1.3}rem;
 `;
 
-const StyledButtonWrapper = styled.div`
-  margin-left: auto;
-  margin-top: 1rem;
+const StyledDetailWrapper = styled.div`
+  margin-top: .5rem;
 `;
 
 const ButtonContainer = styled.div`
