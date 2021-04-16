@@ -51,9 +51,11 @@ const StyledInput = styled.input`
   }
 
   &:focus {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
+
     ~ label {
       position: absolute;
-      top: -0.7rem;
+      top: -0.3rem;
       left: 0;
       display: block;
       transition: 0.2s;

@@ -36,12 +36,12 @@ const Container = styled.div`
   position: relative;
   padding: 0.8rem 0 0;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 `;
 
 const StyledLabel = styled.label`
   position: absolute;
-  top: -0.7rem;
+  top: -0.3rem;
   display: block;
   transition: 0.2s;
   opacity: 0.7;
