@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "../../Hooks/useMediaQuery";
-import { Button } from "../atoms/button";
+import { Button, ButtonExtendBlank } from "../atoms/Button";
 import { device } from "../../Styles/breakpoints";
+import Link from "next/link";
 
 type HeroSectionHeaderProps = {
   btnClicked: () => void;
@@ -23,11 +24,9 @@ export const HeroSectionHeader = ({
         płynące ze studiów
       </Slogan>
       {isDesktop && (
-        <Button
-          text={isSignIn ? "Załóż konto" : "Zaloguj się"}
-          styleType="secondary"
-          clicked={btnClicked}
-        />
+        <Link href="/search">
+          <ButtonExtendBlank>Zobacz zadania</ButtonExtendBlank>
+        </Link>
       )}
     </StyledTitleWrapper>
   );

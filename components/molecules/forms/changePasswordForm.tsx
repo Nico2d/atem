@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { SignInForm } from "../../../Types";
 import { inputTypes } from "../../../utils/enums";
-import { Button } from "../../atoms/button";
+import { Button } from "../../atoms/Button";
 import { StyledForm } from "../../atoms/styledForm";
 import { InputField } from "../inputField";
 
@@ -33,7 +33,7 @@ export const ChangePasswordForm = () => {
 
       <Button
         text="Zapisz"
-        styleType="secondary"
+        variant="secondary"
         clicked={handleSubmit(onSubmit)}
       />
     </StyledForm>

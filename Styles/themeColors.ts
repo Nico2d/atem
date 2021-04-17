@@ -3,7 +3,7 @@ import { Colors } from "styled-components";
 export const lightTheme: Colors = {
   primary: "#0065FF",
   gradient: "#0065FF",
-  background: "#E5E5E5",
+  background: "#F2ECFF", //"#E5E5E5",
   cardColor: "#FFFFFF",
   linesColor: "#C9C9C9",
   fontColor: "#121212",

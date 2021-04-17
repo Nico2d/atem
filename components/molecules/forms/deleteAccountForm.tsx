@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { SignInForm } from "../../../Types";
 import { inputTypes } from "../../../utils/enums";
-import { Button } from "../../atoms/button";
+import { Button } from "../../atoms/Button";
 import { CardField } from "../../atoms/card/cardField";
 import { Switch } from "../../atoms/swtich";
 import { InputField } from "../inputField";
@@ -35,7 +35,7 @@ export const DeleteAccountForm = () => {
 
       <Button
         text="Usuń konto"
-        styleType="secondary"
+        variant="secondary"
         clicked={handleSubmit(onSubmit)}
       />
     </StyledContainer>

@@ -5,7 +5,7 @@ import { ErrorMessage } from "@hookform/error-message";
 
 //ATOMS
 import { Message } from "../atoms/message";
-import { Button } from "../atoms/button";
+import { Button } from "../atoms/Button";
 
 //MOLECULES
 import { InputField } from "../molecules/inputField";
@@ -70,7 +70,7 @@ export const SignIn = () => {
           <Message message={error.message} messageType={MessageType.error} />
         ))}
       <Button
-        styleType="primary"
+        variant="primary"
         text="Zaloguj"
         clicked={handleSubmit(onSubmit)}
       />

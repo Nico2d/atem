@@ -8,6 +8,7 @@ export const InputField = ({
   placeholder,
   type,
   register,
+  value,
 }: inputFieldProps) => {
   return (
     <Container>
@@ -16,6 +17,7 @@ export const InputField = ({
         placeholder={placeholder}
         type={type}
         register={register}
+        value={value}
       />
       <StyledLabel htmlFor={name}>{placeholder}</StyledLabel>
     </Container>
@@ -27,18 +29,19 @@ type inputFieldProps = {
   placeholder: string;
   type: inputTypes;
   register?: any;
+  value?: string | number;
 };
 
 const Container = styled.div`
   position: relative;
   padding: 0.8rem 0 0;
   width: 100%;
-  margin-top: .5rem;
+  margin-top: 1rem;
 `;
 
 const StyledLabel = styled.label`
   position: absolute;
-  top: -0.7rem;
+  top: -0.3rem;
   display: block;
   transition: 0.2s;
   opacity: 0.7;

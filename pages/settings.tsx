@@ -25,7 +25,7 @@ const Settings = () => {
   }
 
   return (
-    <>
+    <StyledContainer>
       <PageHeading title="Ustawienia" />
 
       <Account isClose={isClose} setIsClose={setIsClose} />
@@ -34,15 +34,36 @@ const Settings = () => {
         <Notification setIsClose={setIsClose} />
         <Personalization />
       </CardWrapper>
-    </>
+    </StyledContainer>
   );
 };
 
 export default Settings;
 
+const StyledContainer = styled.div`
+  display: inherit;
+  flex-flow: column;
+  width: 100%;
+
+  > h3 {
+    padding: 0 1rem;
+  }
+
+  @media ${device.mobileL} {
+    width: fit-content;
+  }
+
+  @media ${device.tablet} {
+    display: block;
+    max-width: 964px;
+    margin: auto;
+  }
+`;
+
 const CardWrapper = styled.div`
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
 
   @media ${device.laptopM} {
     flex-flow: row;

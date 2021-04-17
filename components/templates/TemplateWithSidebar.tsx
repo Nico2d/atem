@@ -14,9 +14,7 @@ export const TemplateWithSidebar = ({ children }) => {
       <Navigation>
         <Sidebar />
       </Navigation>
-      <StyledMain>
-        <StyledWrapper>{children}</StyledWrapper>
-      </StyledMain>
+      <StyledMain>{children}</StyledMain>
     </Layout>
   );
 };
@@ -30,14 +28,5 @@ const StyledMain = styled.main`
   @media ${device.tablet} {
     padding-top: 0px;
     padding-left: 300px;
-  }
-`;
-
-const StyledWrapper = styled.div`
-  display: inherit;
-  flex-flow: column;
-
-  @media ${device.tablet} {
-    display: block;
   }
 `;
