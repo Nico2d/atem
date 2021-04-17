@@ -13,7 +13,7 @@ export const Button: React.FC<Props> = ({
   clicked,
   variant = "primary",
   type = "button",
-}: Props) => {
+}) => {
   const getButtonStyle = () => {
     switch (variant) {
       case "primary":
