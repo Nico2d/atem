@@ -18,9 +18,13 @@ const Search = () => {
         <InputField placeholder="Szukaj" type={inputTypes.text} name="search" />
         <MdFilterList />
       </SearchWrapper>
-      <SearchFileList page={currentPage} />
+      {/* <SearchFileList page={currentPage} /> */}
 
-      <Pagination pages={currentPage} setPage={setCurrentPage} />
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        lastPage={10}
+      />
     </Container>
   );
 };
