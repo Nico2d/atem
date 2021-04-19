@@ -3,9 +3,22 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "../atoms/Button";
 
-export const SearchFileList = ({ page }) => {
-  const elementsOnPage = 15;
+type SearchFileListProps = {
+  exerciseList: Array<{
+    name: string;
+    grade: number;
+    price: number;
+    type: string;
+  }>;
+  page: number;
+  elementsOnPage: number;
+};
 
+export const SearchFileList: React.FC<SearchFileListProps> = ({
+  exerciseList,
+  page,
+  elementsOnPage,
+}) => {
   return (
     <FileListContainer>
       {exerciseList.map((exercise, index) => {
@@ -14,7 +27,7 @@ export const SearchFileList = ({ page }) => {
           index < elementsOnPage * page
         )
           return (
-            <FileContainer>
+            <FileContainer key={index}>
               <FileIcon />
               <FileTitle>{exercise.name}</FileTitle>
               <InfoWrapper>
@@ -51,6 +64,7 @@ const FileListContainer = styled.div`
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-rows: 1fr 1fr 1fr;
 `;
 
 const FileContainer = styled.div`
@@ -69,132 +83,3 @@ const FileContainer = styled.div`
     margin-top: auto;
   }
 `;
-
-const exerciseList = [
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 0",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 1",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 2",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 2",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 3",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 2",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 3",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 2",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 3",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 2",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 3",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 2",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 13",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 14",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 15",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 16",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 17",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 18",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 19",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 20",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-  {
-    name: "Złożoność obliczeniowa - Lista 2 Zad 21",
-    type: "doc",
-    grade: 4,
-    price: 20,
-  },
-];
