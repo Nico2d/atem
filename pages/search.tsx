@@ -23,7 +23,7 @@ const Search = () => {
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        lastPage={10}
+        lastPage={2}
       />
     </Container>
   );

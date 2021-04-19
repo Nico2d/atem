@@ -6,6 +6,8 @@ import {
   MdLastPage,
 } from "react-icons/md";
 import styled from "styled-components";
+import { useMediaQuery } from "../../Hooks/useMediaQuery";
+import { device } from "../../Styles/breakpoints";
 
 type PaginationProps = {
   currentPage: number;
@@ -18,12 +20,17 @@ export const Pagination: React.FC<PaginationProps> = ({
   setCurrentPage,
   lastPage,
 }) => {
-  const middle =
-    currentPage < 3
-      ? 3
-      : currentPage > lastPage - 2
-      ? lastPage - 2
-      : currentPage;
+  const isDesktop = useMediaQuery(device.tablet);
+
+  let middle: number;
+
+  if (currentPage < 3) {
+    middle = 3;
+  } else if (currentPage > lastPage - 2) {
+    middle = lastPage - 2;
+  } else {
+    middle = currentPage;
+  }
 
   const left = middle - 1 > 2 ? middle - 1 : 2;
   const right = middle + 1 < lastPage - 1 ? middle + 1 : lastPage - 1;
@@ -43,27 +50,36 @@ export const Pagination: React.FC<PaginationProps> = ({
         Poprzednia
       </Wrapper>
 
-      <Wrapper isActive={1 === currentPage} onClick={() => setCurrentPage(1)}>
-        1
-      </Wrapper>
-      {currentPage - 2 > 1 && <Wrapper>...</Wrapper>}
+      {isDesktop ? (
+        <>
+          <Wrapper
+            isActive={1 === currentPage}
+            onClick={() => setCurrentPage(1)}
+          >
+            1
+          </Wrapper>
+          {currentPage - 2 > 1 && <Wrapper>...</Wrapper>}
 
-      {[left, middle, right].map((item) => (
-        <Wrapper
-          isActive={item === currentPage}
-          onClick={() => setCurrentPage(item)}
-        >
-          {item}
-        </Wrapper>
-      ))}
+          {[left, middle, right].map((item) => (
+            <Wrapper
+              isActive={item === currentPage}
+              onClick={() => setCurrentPage(item)}
+            >
+              {item}
+            </Wrapper>
+          ))}
 
-      {currentPage + 2 < lastPage && <Wrapper>...</Wrapper>}
-      <Wrapper
-        isActive={lastPage === currentPage}
-        onClick={() => setCurrentPage(lastPage)}
-      >
-        {lastPage}
-      </Wrapper>
+          {currentPage + 2 < lastPage && <Wrapper>...</Wrapper>}
+          <Wrapper
+            isActive={lastPage === currentPage}
+            onClick={() => setCurrentPage(lastPage)}
+          >
+            {lastPage}
+          </Wrapper>
+        </>
+      ) : (
+        <Wrapper isActive={true}>{currentPage}</Wrapper>
+      )}
 
       <Wrapper onClick={nextPage}>
         Następna
